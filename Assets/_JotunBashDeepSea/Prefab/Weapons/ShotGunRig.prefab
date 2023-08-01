@@ -183,7 +183,7 @@ MonoBehaviour:
   updateControllerTimer: 0
   leftTrigger: 0
   rightTrigger: 0
-  prefabBullet: {fileID: 0}
+  prefabBullet: {fileID: 1670915550725172175, guid: 659a3b8038336094e8d923fb6fa09bc5, type: 3}
   muzzleLocation: {fileID: 9125290886433128698}
   FireSound: {fileID: 8108152141839568755}
   EmptySound: {fileID: 723255393032511326}

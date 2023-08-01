@@ -87,12 +87,13 @@ public class GunGeneric : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        mainGC = GameObject.Find("_GameController").GetComponent<GameController>();
+        mainGC = GameObject.Find("GameController").GetComponent<GameController>();
         myXrGrab = GetComponent<XRGrabInteractable>();
     }
 
     public void fireGun()
     {
+        if (fireDelay > 0f) return;
         if ( Bullets <= 0 )
         {
             if (EmptySound) EmptySound.Play();
