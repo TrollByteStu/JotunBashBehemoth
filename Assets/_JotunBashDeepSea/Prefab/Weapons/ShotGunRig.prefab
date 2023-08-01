@@ -195,6 +195,7 @@ MonoBehaviour:
   Bullets: 10
   clipsize: 10
   reloadDelay: 1
+  IsGrabbing: 0
 --- !u!54 &4162412236084911235
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -235,7 +236,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_InteractionManager: {fileID: 0}
-  m_Colliders: []
+  m_Colliders:
+  - {fileID: 5581351977371490925}
   m_InteractionLayerMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -266,7 +268,19 @@ MonoBehaviour:
       m_Calls: []
   m_FirstSelectEntered:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 884132784428429692}
+        m_TargetAssemblyTypeName: GunGeneric, Assembly-CSharp
+        m_MethodName: fireGun
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_LastSelectExited:
     m_PersistentCalls:
       m_Calls: []

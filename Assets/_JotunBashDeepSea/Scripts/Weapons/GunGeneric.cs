@@ -34,7 +34,7 @@ public class GunGeneric : MonoBehaviour
 
     private XRDirectInteractor interactor = null;
     public bool IsGrabbing = false;
-
+/*
     private void OnEnable()
     {
 
@@ -50,7 +50,7 @@ public class GunGeneric : MonoBehaviour
         myXrGrab.onSelectExited.RemoveListener(StopInput);
 
     }
-
+*/
     private void TakeInput(XRBaseInteractor interactable)
     {
 
@@ -91,7 +91,7 @@ public class GunGeneric : MonoBehaviour
         myXrGrab = GetComponent<XRGrabInteractable>();
     }
 
-    void fireGun()
+    public void fireGun()
     {
         if ( Bullets <= 0 )
         {
