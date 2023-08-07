@@ -59,12 +59,20 @@ public class GunGeneric : MonoBehaviour
     public void eventSelect()
     {
         Debug.Log("Select");
+        beingHeld = true;
+    }
+    public void eventUnSelect()
+    {
+        Debug.Log("UnSelect");
+        beingHeld = false;
     }
 
     public void eventActivate()
     {
         Debug.Log("Active");
+        fireGun();
     }
+
     private void TakeInput(XRBaseInteractor interactable)
     {
 
