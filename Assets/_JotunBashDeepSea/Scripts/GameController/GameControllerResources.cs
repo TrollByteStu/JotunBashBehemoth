@@ -5,5 +5,6 @@ using UnityEngine;
 public class GameControllerResources : MonoBehaviour
 {
     public GameObject[] BulletHoles;
+    public GameObject[] Splashes;
 
 }

@@ -10,11 +10,21 @@ public class BulletGeneric : MonoBehaviour
     {
         // do not allow it to hit the weapon that fired it..
         if (collision.transform.tag == "Weapon") return;
+        GameObject spawn;
+        Quaternion spawnDirection;
+        if (collision.transform.tag == "Water" )
+        {
+            spawn = mainGC.gcResources.Splashes[0];
+            spawnDirection = Quaternion.identity;
+        } else { 
+            spawn = mainGC.gcResources.BulletHoles[0];
+            spawnDirection = Quaternion.LookRotation(collision.contacts[0].normal);
+        }
         ContactPoint contact = collision.contacts[0];
-        GameObject decal = Instantiate(mainGC.gcResources.BulletHoles[0], contact.point, Quaternion.LookRotation(collision.contacts[0].normal));
-        decal.GetComponent<AudioSource>().Play();
+        GameObject decal = Instantiate(spawn, contact.point, spawnDirection);
+        //decal.GetComponent<AudioSource>().Play();
         decal.transform.SetParent(collision.transform);
-        Destroy(decal, 2f);
+        Destroy(decal, 4f);
     }
 
     // Start is called before the first frame update

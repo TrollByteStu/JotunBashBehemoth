@@ -46,6 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gcResources: {fileID: 6091956256042623362}
+  player: {fileID: 0}
 --- !u!114 &6091956256042623362
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -60,3 +61,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BulletHoles:
   - {fileID: 8864699147822566392, guid: 810651275f97e284c870200394f66cc4, type: 3}
+  Splashes:
+  - {fileID: 7369372447250387511, guid: f5da385824eff5f40b331b410927cace, type: 3}
