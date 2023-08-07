@@ -5,13 +5,9 @@ using UnityEngine;
 public class PassiveMoby : MonoBehaviour
 {
     private fishBuoyancy[] _Floaters;
-    public float _Speed;
-    public float _Turn;
-    public float _CircleDistance;
     public GameObject _myPlayer;
     public GameObject _Raft;
     public Animator _Animator;
-    public float _Spin;
     private Rigidbody _myRB;
 
     // time stuff
@@ -25,6 +21,13 @@ public class PassiveMoby : MonoBehaviour
     private float _RandomXCord;
     private float _RandomZCord;
     private Vector3 _RandomVector3;
+
+    // bools and stuff
+    private bool _Emerging = true;
+
+    // animation curves
+    private float _AnimationTimer;
+    public AnimationCurve _EmergingCurve;
 
     void Start()
     {
@@ -47,11 +50,12 @@ public class PassiveMoby : MonoBehaviour
 
     private void FixedUpdate()
     {
+        _AnimationTimer += Time.deltaTime;
         if (_TimeSinceLastDive + _RandomTimeAdded < Time.time)
-        {
             GenerateNumbers();
-            
-        }
+        
+        if (_Emerging)
+            MobyEmerge();
     }
 
     void GenerateNumbers()
@@ -66,19 +70,33 @@ public class PassiveMoby : MonoBehaviour
         _RandomVector3 = new(_RandomXCord, 0f, _RandomZCord);
         if (Vector3.Distance(_RandomVector3 + _Raft.transform.position, _myPlayer.transform.position) < _DistanceFromRaftMin)
         {
-            GenerateNumbers();
+            //GenerateNumbers();
         }
         else
         {
             MobyEmerge();
         }
     }
+    void PlaceMoby()
+    {
+        _RandomVector3.y = -10;
+        transform.position = _RandomVector3;
+        transform.LookAt(new Vector3(_myPlayer.transform.position.x, transform.position.y, _myPlayer.transform.position.z));
+        transform.Rotate(Vector3.up, 90 * PlusOrMinus());
+        transform.position += transform.forward * -10;
+    }
+
+    float PlusOrMinus()
+    {
+        if (Random.Range(1, 2) == 1)
+            return 1;
+        else
+            return -1;
+    }
 
     void MobyEmerge()
     {
-
-        _RandomVector3.y = -10;
-        transform.position = _RandomVector3;
+        transform.position = new Vector3(transform.position.x ,mmm.Evaluate(_AnimationTimer),transform.position.z);
 
     }
 
