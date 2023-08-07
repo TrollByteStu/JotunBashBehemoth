@@ -8,6 +8,11 @@ public class GameController : MonoBehaviour
     public GameControllerResources gcResources;
     public GameObject player;
 
+    private void Awake()
+    {
+        _instance = this;
+    }
+
     public static GameController Instance
     {
         get

@@ -7,7 +7,7 @@ namespace _JotunBashDeepSea.Scripts.Utils
     {
         public bool InWater => _inWater > 0;
         
-        public int _inWater;
+        private int _inWater;
 
         private void OnTriggerEnter(Collider other)
         {
