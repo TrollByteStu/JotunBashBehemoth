@@ -51,6 +51,20 @@ public class GunGeneric : MonoBehaviour
 
     }
 */
+    public void eventFocus()
+    {
+        Debug.Log("Focus");
+    }
+
+    public void eventSelect()
+    {
+        Debug.Log("Select");
+    }
+
+    public void eventActivate()
+    {
+        Debug.Log("Active");
+    }
     private void TakeInput(XRBaseInteractor interactable)
     {
 
