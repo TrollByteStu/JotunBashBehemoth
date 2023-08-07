@@ -33,7 +33,7 @@ public class MobyDick : WaterStateHelper
     private bool _ChargeUp = true;
     private bool _PlayedOnce = false;
 
-    private float _ZOffset = 0;
+    //private float _ZOffset = 0;
     private float _POM = 1; // why did i call it POM wtf does POM  Player Offset Mark???
     public float _FlipCount = 0;
 
@@ -89,11 +89,9 @@ public class MobyDick : WaterStateHelper
                     BellyFlop();
                     break;
                 case 3:
-                    Background();
+                    //Background();
                     break;
             }
-
-            transform.position = new Vector3(transform.position.x, transform.position.y, _ZOffset);
         }
         else
         {
@@ -181,7 +179,7 @@ public class MobyDick : WaterStateHelper
     {
         if (InWater) Move();
         if (_EndOfMoveTime + Random.Range(5f, 30f) <= Time.time)
-            _CurrentMove = Random.Range(1, 3);
+            _CurrentMove = Random.Range(1, 2);
     }
 
     private void SwimAway() // retreat. cant be picked by ChoosingNextMove 
@@ -299,41 +297,42 @@ public class MobyDick : WaterStateHelper
 
     }
 
-    private void Background() // swim in the background
-    {
-        if (_ChargeUp && InWater) // swim away
-        {
-            transform.LookAt(_myPlayer.transform.position + (Vector3.up * 10f));
-            transform.Rotate(Vector3.up, 180);
-            _myRB.AddForce(2 * _Speed * Time.fixedDeltaTime * transform.forward);
-        }
-
-        if (100f <= Vector3.Distance(_myPlayer.transform.position, transform.position) && _ChargeUp) // swim 100 units away 
-        {
-            _ChargeUp = false;
-            _ZOffset = 20;
-        }
-
-        if (!_ChargeUp)
-        {
-            transform.LookAt(_myPlayer.transform.position + new Vector3(80f * _POM, -15f, _ZOffset), Vector3.up);
-            _myRB.AddForce(2 * _Speed * Time.fixedDeltaTime * transform.forward);
-        }
-
-        if (_FlipCount > 3 && !_ChargeUp)
-        {
-            _ZOffset = 0;
-            _CurrentMove = 1;
-        }
-        else if (5f >= Vector3.Distance(_myPlayer.transform.position + new Vector3(80f * _POM, -15f, _ZOffset), transform.position) && !_ChargeUp)
-        {
-            _POM *= -1f;
-            _FlipCount++;
-        }
-
-
-
-    }
+    // change to swim in circles
+    ///private void Background() // swim in the background 
+    ///{
+    ///    if (_ChargeUp && InWater) // swim away
+    ///    {
+    ///        transform.LookAt(_myPlayer.transform.position + (Vector3.up * 10f));
+    ///        transform.Rotate(Vector3.up, 180);
+    ///        _myRB.AddForce(2 * _Speed * Time.fixedDeltaTime * transform.forward);
+    ///    }
+    ///
+    ///    if (100f <= Vector3.Distance(_myPlayer.transform.position, transform.position) && _ChargeUp) // swim 100 units away 
+    ///    {
+    ///        _ChargeUp = false;
+    ///        _ZOffset = 20;
+    ///    }
+    ///
+    ///    if (!_ChargeUp)
+    ///    {
+    ///        transform.LookAt(_myPlayer.transform.position + new Vector3(80f * _POM, -15f, _ZOffset), Vector3.up);
+    ///        _myRB.AddForce(2 * _Speed * Time.fixedDeltaTime * transform.forward);
+    ///    }
+    ///
+    ///    if (_FlipCount > 3 && !_ChargeUp)
+    ///    {
+    ///        _ZOffset = 0;
+    ///        _CurrentMove = 1;
+    ///    }
+    ///    else if (5f >= Vector3.Distance(_myPlayer.transform.position + new Vector3(80f * _POM, -15f, _ZOffset), transform.position) && !_ChargeUp)
+    ///    {
+    ///        _POM *= -1f;
+    ///        _FlipCount++;
+    ///    }
+    ///
+    ///
+    ///
+    ///}
 
     protected override void OnEnterWater()
     {
