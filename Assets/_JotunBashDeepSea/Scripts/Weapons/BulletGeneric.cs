@@ -6,15 +6,14 @@ public class BulletGeneric : MonoBehaviour
 {
     public GameController mainGC;
 
-
-
     private void OnCollisionEnter(Collision collision)
     {
+        // do not allow it to hit the weapon that fired it..
+        if (collision.transform.tag == "Weapon") return;
         ContactPoint contact = collision.contacts[0];
-//        collision.contacts[0].normal;
-//        GameObject decal = Instantiate(mainGC.gcResources.BulletHoles[0], contact.point, Quaternion.LookRotation(contact.normal));
         GameObject decal = Instantiate(mainGC.gcResources.BulletHoles[0], contact.point, Quaternion.LookRotation(collision.contacts[0].normal));
         decal.GetComponent<AudioSource>().Play();
+        decal.transform.SetParent(collision.transform);
         Destroy(decal, 2f);
     }
 
