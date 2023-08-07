@@ -34,23 +34,7 @@ public class GunGeneric : MonoBehaviour
 
     private XRDirectInteractor interactor = null;
     public bool IsGrabbing = false;
-/*
-    private void OnEnable()
-    {
 
-        myXrGrab.onSelectEntered.AddListener(TakeInput);
-        myXrGrab.onSelectExited.AddListener(StopInput);
-
-    }
-
-    private void OnDisable()
-    {
-
-        myXrGrab.onSelectEntered.RemoveListener(TakeInput);
-        myXrGrab.onSelectExited.RemoveListener(StopInput);
-
-    }
-*/
     public void eventFocus()
     {
         Debug.Log("Focus");
@@ -73,28 +57,8 @@ public class GunGeneric : MonoBehaviour
         fireGun();
     }
 
-    private void TakeInput(XRBaseInteractor interactable)
-    {
-
-        IsGrabbing = true;
-        Debug.Log("is grabbing");
-
-    }
-
-    private void StopInput(XRBaseInteractor interactable)
-    {
-
-        IsGrabbing = false;
-        Debug.Log("is releasing");
-
-    }
-
     private void updateController()
-    {
-        if (myXrGrab.isActiveAndEnabled) ReloadSound.Play();
-        if (myXrGrab.isSelected) EmptySound.Play();
-        if (myXrGrab.isFocused) FireSound.Play();
-  
+    {  
         /*
         if (Application.isEditor) return;
         var leftHandDevices = new List<UnityEngine.XR.InputDevice>();
@@ -141,7 +105,7 @@ public class GunGeneric : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        fireDelay -= Time.deltaTime;
         /*
         if (!beingHeld) return;
         leftController.IsPressed(InputHelpers.Button.Trigger, out leftTrigger);
