@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Bitgem.VFX.StylisedWater;
 
 public class rubberDucky : MonoBehaviour
 {
@@ -12,18 +13,45 @@ public class rubberDucky : MonoBehaviour
 
     public GameObject explosionPrefab;
 
-    public bool isDud = false;
+    public bool isDud = true;
+    public bool beingHeld = false;
+
+    private Rigidbody myRigidBody;
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if ( other.transform.tag == "Water")
+        {
+            GetComponent<WateverVolumeFloater>().enabled = true;
+        }
+    }
+
+    public void eventSelect()
+    {
+        Debug.Log("Select");
+        beingHeld = true;
+        BombTicking.Play();
+    }
+
+    public void eventUnSelect()
+    {
+        Debug.Log("UnSelect");
+        myRigidBody.isKinematic = false;
+        transform.SetParent(null);
+        Destroy(gameObject, 10f);
+    }
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        myRigidBody = GetComponent<Rigidbody>();
+        if (Random.Range(1, 3) == 1) isDud = false;
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        if ( !BombTicking.isPlaying && stillTicking)
+        if ( !BombTicking.isPlaying && stillTicking && beingHeld)
         {
             if ( isDud )
             {
@@ -38,7 +66,7 @@ public class rubberDucky : MonoBehaviour
             
         }
 
-        if ( !stillTicking && !Squeaking.isPlaying)
+        if ( !stillTicking && !Squeaking.isPlaying && beingHeld)
         {
             if ( Random.Range(1, squeakDelay) == 1)
             {
