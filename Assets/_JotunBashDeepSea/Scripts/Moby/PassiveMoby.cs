@@ -27,11 +27,10 @@ public class PassiveMoby : MonoBehaviour
     private bool _Emerging = true;
     private bool _MobyPlaced = false;
 
-
-
     // animation curves
     private float _AnimationTimer;
     public AnimationCurve _EmergingCurve;
+    private float angle;
 
     void Start()
     {
@@ -91,6 +90,13 @@ public class PassiveMoby : MonoBehaviour
         _Radius = Vector3.Distance(new Vector3(_RandomXCord, _Raft.transform.position.y, _RandomZCord), _Raft.transform.position);
         _MobyPlaced = true;
         Debug.Log("x = " + _RandomXCord / _Radius + "z = " + _RandomZCord / _Radius);
+        var radian = Mathf.Atan2(_RandomZCord / _Radius, _RandomXCord / _Radius);
+        angle = radian * (180 / Mathf.PI);
+        if (angle < 0)
+            angle += 360f;
+        Debug.Log(angle);
+
+
     }
 
     float PlusOrMinus()
@@ -103,10 +109,8 @@ public class PassiveMoby : MonoBehaviour
 
     void MobyEmerge()
     {
-        //transform.LookAt(new Vector3(transform.position.x, _EmergingCurve.Evaluate(_AnimationTimer), transform.position.z) , Vector3.up);
-        //transform.position = new Vector3()
-        transform.position = new Vector3(transform.position.x ,_EmergingCurve.Evaluate(_AnimationTimer),transform.position.z);
-
+        angle += Time.fixedDeltaTime;
+        transform.position = new Vector3(Mathf.Sin(angle)* _Radius, _EmergingCurve.Evaluate(_AnimationTimer), Mathf.Cos(angle) * _Radius);
 
     }
 
