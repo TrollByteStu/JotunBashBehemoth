@@ -4,18 +4,23 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour
 {
-
+    private static GameController _instance;
     public GameControllerResources gcResources;
+    public GameObject player;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
-        
+        _instance = this;
     }
 
-    // Update is called once per frame
-    void Update()
+    public static GameController Instance
     {
-        
+        get
+        {
+            if (_instance is null)
+                Debug.LogError("Game manager is NULL");
+            return _instance;
+        }
     }
+
 }

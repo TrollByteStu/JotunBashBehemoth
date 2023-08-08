@@ -7,11 +7,6 @@ using UnityEngine.XR;
 
 public class GunGeneric : MonoBehaviour
 {
-    public UnityEngine.XR.InputDevice leftController;
-    public UnityEngine.XR.InputDevice rightController;
-    public float updateControllerTimer = 0f;
-    public bool leftTrigger = false;
-    public bool rightTrigger = false;
 
     public GameObject prefabBullet;
     public Transform muzzleLocation;
@@ -30,27 +25,7 @@ public class GunGeneric : MonoBehaviour
     public float reloadDelay = 1f;
 
     private GameController mainGC;
-    private XRGrabInteractable myXrGrab;
 
-    private XRDirectInteractor interactor = null;
-    public bool IsGrabbing = false;
-/*
-    private void OnEnable()
-    {
-
-        myXrGrab.onSelectEntered.AddListener(TakeInput);
-        myXrGrab.onSelectExited.AddListener(StopInput);
-
-    }
-
-    private void OnDisable()
-    {
-
-        myXrGrab.onSelectEntered.RemoveListener(TakeInput);
-        myXrGrab.onSelectExited.RemoveListener(StopInput);
-
-    }
-*/
     public void eventFocus()
     {
         Debug.Log("Focus");
@@ -73,44 +48,10 @@ public class GunGeneric : MonoBehaviour
         fireGun();
     }
 
-    private void TakeInput(XRBaseInteractor interactable)
-    {
-
-        IsGrabbing = true;
-        Debug.Log("is grabbing");
-
-    }
-
-    private void StopInput(XRBaseInteractor interactable)
-    {
-
-        IsGrabbing = false;
-        Debug.Log("is releasing");
-
-    }
-
-    private void updateController()
-    {
-        if (myXrGrab.isActiveAndEnabled) ReloadSound.Play();
-        if (myXrGrab.isSelected) EmptySound.Play();
-        if (myXrGrab.isFocused) FireSound.Play();
-  
-        /*
-        if (Application.isEditor) return;
-        var leftHandDevices = new List<UnityEngine.XR.InputDevice>();
-        var rightHandDevices = new List<UnityEngine.XR.InputDevice>();
-        UnityEngine.XR.InputDevices.GetDevicesAtXRNode(UnityEngine.XR.XRNode.LeftHand, leftHandDevices);
-        leftController = leftHandDevices[0];
-        UnityEngine.XR.InputDevices.GetDevicesAtXRNode(UnityEngine.XR.XRNode.RightHand, rightHandDevices);
-        rightController = rightHandDevices[0];
-        */
-    }
-
     // Start is called before the first frame update
     void Start()
     {
         mainGC = GameObject.Find("GameController").GetComponent<GameController>();
-        myXrGrab = GetComponent<XRGrabInteractable>();
     }
 
     public void fireGun()
@@ -141,18 +82,7 @@ public class GunGeneric : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-        /*
-        if (!beingHeld) return;
-        leftController.IsPressed(InputHelpers.Button.Trigger, out leftTrigger);
-        rightController.IsPressed(InputHelpers.Button.Trigger, out rightTrigger);
-        if (rightTrigger && fireDelay < 0f ) fireGun();
-        if (transform.forward.y < -.75f && Bullets < clipsize ) reloadGun();
         fireDelay -= Time.deltaTime;
-        updateControllerTimer -= Time.deltaTime;
-        if (!(updateControllerTimer < 0f)) return;
-        */
-        updateController();
-        updateControllerTimer = 1f;
+        if (transform.forward.y < -.75f && Bullets < clipsize) reloadGun();
     }
 }
