@@ -1376,6 +1376,26 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2607312474088619353, guid: c5ba3b5c67a9b2141bd32f005f77de67, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2607312474088619353, guid: c5ba3b5c67a9b2141bd32f005f77de67, type: 3}
+      propertyPath: m_UseForceGrab
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2853412522427425234, guid: c5ba3b5c67a9b2141bd32f005f77de67, type: 3}
+      propertyPath: m_LineType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2853412522427425234, guid: c5ba3b5c67a9b2141bd32f005f77de67, type: 3}
+      propertyPath: m_UseForceGrab
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2853412522427425234, guid: c5ba3b5c67a9b2141bd32f005f77de67, type: 3}
+      propertyPath: m_PlayAudioClipOnSelectEntered
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2871854915827847850, guid: c5ba3b5c67a9b2141bd32f005f77de67, type: 3}
       propertyPath: m_UIScrollAction.m_Action.m_Id
       value: b4c56250-52dc-4136-b4da-9a27fdca4293
@@ -1411,6 +1431,14 @@ PrefabInstance:
     - target: {fileID: 4592956391713993908, guid: c5ba3b5c67a9b2141bd32f005f77de67, type: 3}
       propertyPath: m_Name
       value: Complete XR Origin Set Up Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 6396743587534923916, guid: c5ba3b5c67a9b2141bd32f005f77de67, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6589785594443461639, guid: c5ba3b5c67a9b2141bd32f005f77de67, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7179462289238023466, guid: c5ba3b5c67a9b2141bd32f005f77de67, type: 3}
       propertyPath: m_RootOrder
