@@ -18,12 +18,16 @@ public class PassiveMoby : MonoBehaviour
     // random cords
     public float _DistanceFromRaftMin = 10;
     public float _RandomCordLimit;
-    private float _RandomXCord;
-    private float _RandomZCord;
+    public float _RandomXCord;
+    public float _RandomZCord;
     private Vector3 _RandomVector3;
+    public float _Radius;
 
     // bools and stuff
     private bool _Emerging = true;
+    private bool _MobyPlaced = false;
+
+
 
     // animation curves
     private float _AnimationTimer;
@@ -51,7 +55,7 @@ public class PassiveMoby : MonoBehaviour
     private void FixedUpdate()
     {
         _AnimationTimer += Time.deltaTime;
-        if (_TimeSinceLastDive + _RandomTimeAdded < Time.time)
+        if (_TimeSinceLastDive + _RandomTimeAdded < Time.time && !_MobyPlaced)
             GenerateNumbers();
         
         if (_Emerging)
@@ -70,11 +74,11 @@ public class PassiveMoby : MonoBehaviour
         _RandomVector3 = new(_RandomXCord, 0f, _RandomZCord);
         if (Vector3.Distance(_RandomVector3 + _Raft.transform.position, _myPlayer.transform.position) < _DistanceFromRaftMin)
         {
-            //GenerateNumbers();
+            GenerateNumbers();
         }
         else
         {
-            MobyEmerge();
+            PlaceMoby();
         }
     }
     void PlaceMoby()
@@ -84,6 +88,9 @@ public class PassiveMoby : MonoBehaviour
         transform.LookAt(new Vector3(_myPlayer.transform.position.x, transform.position.y, _myPlayer.transform.position.z));
         transform.Rotate(Vector3.up, 90 * PlusOrMinus());
         transform.position += transform.forward * -10;
+        _Radius = Vector3.Distance(new Vector3(_RandomXCord, _Raft.transform.position.y, _RandomZCord), _Raft.transform.position);
+        _MobyPlaced = true;
+        Debug.Log("x = " + _RandomXCord / _Radius + "z = " + _RandomZCord / _Radius);
     }
 
     float PlusOrMinus()
@@ -96,7 +103,10 @@ public class PassiveMoby : MonoBehaviour
 
     void MobyEmerge()
     {
-        transform.position = new Vector3(transform.position.x ,mmm.Evaluate(_AnimationTimer),transform.position.z);
+        //transform.LookAt(new Vector3(transform.position.x, _EmergingCurve.Evaluate(_AnimationTimer), transform.position.z) , Vector3.up);
+        //transform.position = new Vector3()
+        transform.position = new Vector3(transform.position.x ,_EmergingCurve.Evaluate(_AnimationTimer),transform.position.z);
+
 
     }
 
