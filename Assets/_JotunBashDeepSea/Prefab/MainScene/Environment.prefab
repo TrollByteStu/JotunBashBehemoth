@@ -674,6 +674,7 @@ GameObject:
   - component: {fileID: 191613326787234210}
   - component: {fileID: 4311626180419111225}
   - component: {fileID: 6621954713481730801}
+  - component: {fileID: 5193261439428602732}
   m_Layer: 0
   m_Name: Water
   m_TagString: Water
@@ -777,6 +778,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   WaterVolume: {fileID: 191613326787234210}
+--- !u!65 &5193261439428602732
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4768621557082286730}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 50, y: 50, z: 50}
+  m_Center: {x: 25, y: -25, z: 25}
 --- !u!1 &4977031780067910106
 GameObject:
   m_ObjectHideFlags: 0
