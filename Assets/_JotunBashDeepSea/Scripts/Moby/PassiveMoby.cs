@@ -18,10 +18,17 @@ public class PassiveMoby : MonoBehaviour
     // random cords
     public float _DistanceFromRaftMin = 10;
     public float _RandomCordLimit;
-    public float _RandomXCord;
-    public float _RandomZCord;
+    private float _RandomXCord;
+    private float _RandomZCord;
     private Vector3 _RandomVector3;
-    public float _Radius;
+    private float _Radius;
+
+    // circle stuff
+    private float _Radian;
+    private float _Angle;
+    public float _AngleChangeSpeed = 1;
+    private Vector3 _MobyMovePoint;
+
 
     // bools and stuff
     private bool _Emerging = true;
@@ -30,7 +37,6 @@ public class PassiveMoby : MonoBehaviour
     // animation curves
     private float _AnimationTimer;
     public AnimationCurve _EmergingCurve;
-    private float angle;
 
     void Start()
     {
@@ -89,14 +95,10 @@ public class PassiveMoby : MonoBehaviour
         transform.position += transform.forward * -10;
         _Radius = Vector3.Distance(new Vector3(_RandomXCord, _Raft.transform.position.y, _RandomZCord), _Raft.transform.position);
         _MobyPlaced = true;
-        Debug.Log("x = " + _RandomXCord / _Radius + "z = " + _RandomZCord / _Radius);
-        var radian = Mathf.Atan2(_RandomZCord / _Radius, _RandomXCord / _Radius);
-        angle = radian * (180 / Mathf.PI);
-        if (angle < 0)
-            angle += 360f;
-        Debug.Log(angle);
-
-
+        _Radian = Mathf.Atan2(_RandomZCord / _Radius, _RandomXCord / _Radius);
+        _Angle = _Radian * (180 / Mathf.PI);
+        if (_Angle < 0)
+            _Angle += 360f;
     }
 
     float PlusOrMinus()
@@ -109,8 +111,10 @@ public class PassiveMoby : MonoBehaviour
 
     void MobyEmerge()
     {
-        angle += Time.fixedDeltaTime;
-        transform.position = new Vector3(Mathf.Sin(angle)* _Radius, _EmergingCurve.Evaluate(_AnimationTimer), Mathf.Cos(angle) * _Radius);
+        _Angle += (Time.fixedDeltaTime * _AngleChangeSpeed) / _Radius;
+        _MobyMovePoint = new Vector3(Mathf.Sin(_Angle) * _Radius, _EmergingCurve.Evaluate(_AnimationTimer), Mathf.Cos(_Angle) * _Radius);
+        transform.LookAt(_MobyMovePoint);
+        transform.position = _MobyMovePoint;
 
     }
 
