@@ -10,6 +10,10 @@ public class rubberDucky : MonoBehaviour
 
     public bool stillTicking = true;
 
+    public GameObject explosionPrefab;
+
+    public bool isDud = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -21,8 +25,17 @@ public class rubberDucky : MonoBehaviour
     {
         if ( !BombTicking.isPlaying && stillTicking)
         {
-            stillTicking = false;
-            Squeaking.Play();
+            if ( isDud )
+            {
+                stillTicking = false;
+                Squeaking.Play();
+            } else
+            { // not a dud
+                var explotion = Instantiate(explosionPrefab, transform.position, Quaternion.identity);
+                Destroy(explotion, 5);
+                Destroy(gameObject);
+            }
+            
         }
 
         if ( !stillTicking && !Squeaking.isPlaying)
