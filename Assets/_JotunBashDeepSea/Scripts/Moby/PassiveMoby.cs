@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PassiveMoby : MonoBehaviour
 {
@@ -22,8 +23,6 @@ public class PassiveMoby : MonoBehaviour
     // random cords
     public float _DistanceFromRaftMin = 10;
     public float _RandomCordLimit;
-    private float _RandomXCord;
-    private float _RandomZCord;
     private Vector3 _RandomVector3;
 
     // circle stuff
@@ -34,13 +33,17 @@ public class PassiveMoby : MonoBehaviour
     private float _AngleDirectionMod;
     private Vector3 _MobyMovePoint;
 
-
     // bools and stuff
     private bool _Emerging = true;
+    private bool _MobyPlaced = false;
 
     // animation curves
     private float _AnimationTimer;
     public AnimationCurve _EmergingCurve;
+
+    // hits and suff
+    public int _HitPoints = 3;
+    private bool _Invulnerable = false;
 
     void Start()
     {
@@ -48,7 +51,7 @@ public class PassiveMoby : MonoBehaviour
         _myRB = GetComponent<Rigidbody>();
         if (_myPlayer == null)
             _myPlayer = GameController.Instance.player;
-        GenerateCords();
+        GenerateCords(0);
     }
         // generate 2 random number on a grid 
         // check if the numbers are too close to player
@@ -64,27 +67,28 @@ public class PassiveMoby : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (_Emerging)
+        if (_HitPoints <= 0)
+            MobySceneChange();
+        else if (_Emerging)
             MobyEmerge();
         else
             MobySink();
     }
 
-    void GenerateCords()
+    void GenerateCords(float number)
     {
-        _RandomXCord = Random.Range(-_RandomCordLimit, _RandomCordLimit);
-        _RandomZCord = Random.Range(-_RandomCordLimit, _RandomCordLimit);
-        CheckDistanceFromPlayer();
+        _RandomVector3.x = Random.Range(-(_RandomCordLimit + number), _RandomCordLimit + number);
+        _RandomVector3.z = Random.Range(-(_RandomCordLimit + number), _RandomCordLimit + number);
+        CheckDistanceFromPlayer(number);
     }
 
-    void CheckDistanceFromPlayer()
+    void CheckDistanceFromPlayer(float number)
     {
-        _RandomVector3 = new(_RandomXCord, 0f, _RandomZCord);
         if (Vector3.Distance(_RandomVector3 + _Raft.transform.position, _myPlayer.transform.position) < _DistanceFromRaftMin)
         {
-            GenerateCords();
+            GenerateCords(number);
         }
-        else
+        else if (_HitPoints <= 0)
         {
             PlaceMoby();
         }
@@ -96,8 +100,8 @@ public class PassiveMoby : MonoBehaviour
         transform.LookAt(new Vector3(_myPlayer.transform.position.x, transform.position.y, _myPlayer.transform.position.z));
         transform.Rotate(Vector3.up, 90 * PlusOrMinus());
         transform.position += transform.forward * -10;
-        _Radius = Vector3.Distance(new Vector3(_RandomXCord, _Raft.transform.position.y, _RandomZCord), _Raft.transform.position);
-        _Radian = Mathf.Atan2(_RandomZCord / _Radius, _RandomXCord / _Radius);
+        _Radius = Vector3.Distance(new Vector3(_RandomVector3.x, _Raft.transform.position.y, _RandomVector3.z), _Raft.transform.position);
+        _Radian = Mathf.Atan2(_RandomVector3.z / _Radius, _RandomVector3.x / _Radius);
         _Angle = _Radian * (180 / Mathf.PI);
         if (_Angle < 0)
             _Angle += 360f;
@@ -152,10 +156,48 @@ public class PassiveMoby : MonoBehaviour
         if (_TimeSinceDive + _DiveTime + _RandomTimeAdded < Time.time)
         {
             _Emerging = true;
-            GenerateCords();
+            _Invulnerable = false;
+            GenerateCords(0);
             _AnimationTimer = 0;
         }
+    }
 
+    void PlaceMobyEnding()
+    {
+        GenerateCords(10);
+        _RandomVector3.y = -10;
+        transform.position = _RandomVector3;
+        transform.LookAt(new Vector3(_Raft.transform.position.x, transform.position.y, _Raft.transform.position.z));
+        transform.position += transform.forward * -10;
+        _MobyPlaced = true;
+        _AnimationTimer = 0;
+    }
+    void MobySceneChange()
+    {
+        if (!_MobyPlaced)
+            PlaceMobyEnding();
+        _AnimationTimer += Time.deltaTime;
+        _MobyMovePoint = new Vector3(Vector3.MoveTowards(transform.position,_Raft.transform.position, Time.deltaTime * 3).x, _EmergingCurve.Evaluate(_AnimationTimer), Vector3.MoveTowards(transform.position, _Raft.transform.position, Time.deltaTime * 3).z);
+        transform.LookAt(_MobyMovePoint);
+        transform.position = _MobyMovePoint;
+        if (Vector3.Distance(transform.position, _Raft.transform.position) <= 23f)
+        {
+            _Animator.SetTrigger("Bite");
+        }
+
+        if (Vector3.Distance(transform.position, _Raft.transform.position) <= 12f)
+        {
+            SceneManager.LoadScene(0);
+        }
+    }
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (!_Invulnerable)
+        {
+            _Invulnerable = true;
+            MobyDive();
+            _HitPoints--;
+        }
     }
 
 
