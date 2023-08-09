@@ -11,9 +11,13 @@ public class PassiveMoby : MonoBehaviour
     private Rigidbody _myRB;
 
     // time stuff
-    private float _TimeSinceLastDive;
-    private float _RandomTimeAdded;
     private float _TimeSinceSurface;
+    public float _SurfaceTime;
+    private float _TimeSinceDive;
+    public float _DiveTime;
+    private float _RandomTimeAdded;
+    public float _RandomTimeAddedMax;
+    
 
     // random cords
     public float _DistanceFromRaftMin = 10;
@@ -21,18 +25,18 @@ public class PassiveMoby : MonoBehaviour
     private float _RandomXCord;
     private float _RandomZCord;
     private Vector3 _RandomVector3;
-    private float _Radius;
 
     // circle stuff
+    private float _Radius;
     private float _Radian;
     private float _Angle;
     public float _AngleChangeSpeed = 1;
+    private float _AngleDirectionMod;
     private Vector3 _MobyMovePoint;
 
 
     // bools and stuff
     private bool _Emerging = true;
-    private bool _MobyPlaced = false;
 
     // animation curves
     private float _AnimationTimer;
@@ -44,6 +48,7 @@ public class PassiveMoby : MonoBehaviour
         _myRB = GetComponent<Rigidbody>();
         if (_myPlayer == null)
             _myPlayer = GameController.Instance.player;
+        GenerateCords();
     }
         // generate 2 random number on a grid 
         // check if the numbers are too close to player
@@ -59,15 +64,13 @@ public class PassiveMoby : MonoBehaviour
 
     private void FixedUpdate()
     {
-        _AnimationTimer += Time.deltaTime;
-        if (_TimeSinceLastDive + _RandomTimeAdded < Time.time && !_MobyPlaced)
-            GenerateNumbers();
-        
         if (_Emerging)
             MobyEmerge();
+        else
+            MobySink();
     }
 
-    void GenerateNumbers()
+    void GenerateCords()
     {
         _RandomXCord = Random.Range(-_RandomCordLimit, _RandomCordLimit);
         _RandomZCord = Random.Range(-_RandomCordLimit, _RandomCordLimit);
@@ -79,7 +82,7 @@ public class PassiveMoby : MonoBehaviour
         _RandomVector3 = new(_RandomXCord, 0f, _RandomZCord);
         if (Vector3.Distance(_RandomVector3 + _Raft.transform.position, _myPlayer.transform.position) < _DistanceFromRaftMin)
         {
-            GenerateNumbers();
+            GenerateCords();
         }
         else
         {
@@ -94,11 +97,12 @@ public class PassiveMoby : MonoBehaviour
         transform.Rotate(Vector3.up, 90 * PlusOrMinus());
         transform.position += transform.forward * -10;
         _Radius = Vector3.Distance(new Vector3(_RandomXCord, _Raft.transform.position.y, _RandomZCord), _Raft.transform.position);
-        _MobyPlaced = true;
         _Radian = Mathf.Atan2(_RandomZCord / _Radius, _RandomXCord / _Radius);
         _Angle = _Radian * (180 / Mathf.PI);
         if (_Angle < 0)
             _Angle += 360f;
+        _AngleDirectionMod = PlusOrMinus();
+        _TimeSinceSurface = Time.time;
     }
 
     float PlusOrMinus()
@@ -108,13 +112,49 @@ public class PassiveMoby : MonoBehaviour
         else
             return -1;
     }
+    float PlusOrMinus(float Number)
+    {
+        if (Random.Range(1, 2) == 1)
+            return Number;
+        else
+            return -Number;
+    }
 
     void MobyEmerge()
     {
-        _Angle += (Time.fixedDeltaTime * _AngleChangeSpeed) / _Radius;
+        _AnimationTimer += Time.deltaTime;
+        _Angle += (Time.fixedDeltaTime * _AngleChangeSpeed * _AngleDirectionMod) / _Radius;
         _MobyMovePoint = new Vector3(Mathf.Sin(_Angle) * _Radius, _EmergingCurve.Evaluate(_AnimationTimer), Mathf.Cos(_Angle) * _Radius);
         transform.LookAt(_MobyMovePoint);
         transform.position = _MobyMovePoint;
+        if (_TimeSinceSurface + _SurfaceTime < Time.time)
+        {
+            MobyDive();
+        }
+
+    }
+
+    void MobyDive()
+    {
+        _Emerging = false;
+        _AnimationTimer = _EmergingCurve[_EmergingCurve.length - 1].time;
+        _TimeSinceDive = Time.time;
+        _RandomTimeAdded = Random.Range(0f, _RandomTimeAddedMax);
+    }
+
+    void MobySink()
+    {
+        _AnimationTimer -= Time.deltaTime;
+        _Angle += (Time.fixedDeltaTime * _AngleChangeSpeed * _AngleDirectionMod) / _Radius;
+        _MobyMovePoint = new Vector3(Mathf.Sin(_Angle) * _Radius, _EmergingCurve.Evaluate(_AnimationTimer), Mathf.Cos(_Angle) * _Radius);
+        transform.LookAt(_MobyMovePoint);
+        transform.position = _MobyMovePoint;
+        if (_TimeSinceDive + _DiveTime + _RandomTimeAdded < Time.time)
+        {
+            _Emerging = true;
+            GenerateCords();
+            _AnimationTimer = 0;
+        }
 
     }
 
