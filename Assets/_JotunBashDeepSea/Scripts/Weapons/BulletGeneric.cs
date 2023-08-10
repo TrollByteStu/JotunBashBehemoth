@@ -39,10 +39,11 @@ public class BulletGeneric : MonoBehaviour
             Destroy(decal, 4f);
         }
     }
-    private void ontrigg(Collision collision)
+    private void onCollisionEnter(Collision collision)
     {
         // do not allow it to hit the weapon that fired it..
         if (collision.transform.tag == "Weapon") return;
+        // Will add logic for diffeent decals and sound on hitting different materials, we hope
         GameObject spawn;
         Quaternion spawnDirection;
         spawn = mainGC.gcResources.BulletHoles[0];

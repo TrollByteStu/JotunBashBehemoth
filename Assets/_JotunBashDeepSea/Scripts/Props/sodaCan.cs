@@ -35,9 +35,17 @@ public class sodaCan : MonoBehaviour
             SoundOpening.Play();
         }
     }
-
     private void OnTriggerEnter(Collider other)
     {
+        if (other.transform.tag == "Water")
+        {
+            GameObject spawn;
+            Quaternion spawnDirection;
+            spawn = GameObject.Find("GameController").GetComponent<GameController>().gcResources.Splashes[0];
+            spawnDirection = Quaternion.identity;
+            GameObject decal = Instantiate(spawn, transform.position, spawnDirection);
+            Destroy(decal, 4f);
+        }
         if (other.transform.tag == "PlayerFace" && canOpen && drinksLeft > 0)
         {
             drinksLeft--;
