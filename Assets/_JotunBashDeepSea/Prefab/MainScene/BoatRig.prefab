@@ -12015,7 +12015,7 @@ GameObject:
   - component: {fileID: 4434870895337188081}
   m_Layer: 0
   m_Name: FaceArea
-  m_TagString: Untagged
+  m_TagString: PlayerFace
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
