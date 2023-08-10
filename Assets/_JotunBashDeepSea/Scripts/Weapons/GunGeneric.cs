@@ -16,8 +16,6 @@ public class GunGeneric : MonoBehaviour
 
     public bool beingHeld = false;
 
-    public float GrabDistanceCap = 0.1f;
-
     public float fireDelayMax = 0.2f;
     public float fireDelay = 0f;
     public float bulletForce = 2000f;
@@ -28,25 +26,19 @@ public class GunGeneric : MonoBehaviour
 
     private GameController mainGC;
     private XRGrabInteractable myGrab;
-
-    public void eventFocus()
-    {
-        Debug.Log("Focus");
-    }
+    private Rigidbody myRigidBody;
 
     public void eventSelect()
     {
         Debug.Log("Select");
-        //float distance = Vector3.Distance(myGrab.transform.position, myGrab.selectingInteractor.transform.position);
-        //if (distance < GrabDistanceCap)
-        //{
-            beingHeld = true;
-        //}
+        beingHeld = true;
     }
     public void eventUnSelect()
     {
         Debug.Log("UnSelect");
         beingHeld = false;
+        myRigidBody.isKinematic = false;
+        transform.SetParent(null);
     }
 
     public void eventActivate()
@@ -60,6 +52,7 @@ public class GunGeneric : MonoBehaviour
     {
         mainGC = GameObject.Find("GameController").GetComponent<GameController>();
         myGrab = GetComponent<XRGrabInteractable>();
+        myRigidBody = GetComponent<Rigidbody>();
     }
 
     public void fireGun()
