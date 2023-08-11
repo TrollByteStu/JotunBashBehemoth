@@ -18,7 +18,7 @@ public class GameControllerWeather : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        sliderWind = Mathf.Clamp( sliderWind + Time.deltaTime * 0.001f, 0f, 1f);
+        sliderWind = Mathf.Clamp( sliderWind + Time.deltaTime * 0.01f, 0f, 1f);
         myWeatherAssets.UpdateWind( sliderWind );
     }
 }

@@ -15,12 +15,13 @@ public class rubberDucky : MonoBehaviour
 
     public bool isDud = true;
     public bool beingHeld = false;
+    public bool beenPickedUp = false;
 
     private Rigidbody myRigidBody;
 
     private void OnTriggerEnter(Collider other)
     {
-        if ( other.transform.tag == "Water")
+        if ( other.transform.tag == "Water" && beenPickedUp )
         {
             GetComponent<WateverVolumeFloater>().enabled = true;
         }
@@ -30,6 +31,7 @@ public class rubberDucky : MonoBehaviour
     {
         Debug.Log("Select");
         beingHeld = true;
+        beenPickedUp = true;
         BombTicking.Play();
     }
 
