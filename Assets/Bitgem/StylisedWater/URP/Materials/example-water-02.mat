@@ -105,7 +105,7 @@ Material:
     - _SrcBlend: 1
     - _Surface: 0
     - _WaveFrequency: 0.6
-    - _WaveScale: 0.22092557
+    - _WaveScale: 0.3706923
     - _WaveSpeed: 1
     - _WorkflowMode: 1
     - _ZWrite: 1
