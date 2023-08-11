@@ -65,6 +65,8 @@ MonoBehaviour:
   - {fileID: 8864699147822566392, guid: 810651275f97e284c870200394f66cc4, type: 3}
   Splashes:
   - {fileID: 7369372447250387511, guid: f5da385824eff5f40b331b410927cace, type: 3}
+  UFOS:
+  - {fileID: 2743792803986061744, guid: d3b4e16757b2fcd4691762507eb16915, type: 3}
 --- !u!114 &8166171912722226122
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -77,3 +79,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3064c10e9209bf458a16c39df1a54ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  myWeatherAssets: {fileID: 0}
+  sliderWind: 0
