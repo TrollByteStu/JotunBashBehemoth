@@ -6,5 +6,5 @@ public class GameControllerResources : MonoBehaviour
 {
     public GameObject[] BulletHoles;
     public GameObject[] Splashes;
-
+    public GameObject[] UFOS;
 }
