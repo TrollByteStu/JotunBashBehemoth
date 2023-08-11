@@ -172,6 +172,7 @@ public class PassiveMoby : MonoBehaviour
         _MobyPlaced = true;
         _AnimationTimer = 0;
     }
+
     void MobySceneChange()
     {
         if (!_MobyPlaced)
@@ -190,7 +191,8 @@ public class PassiveMoby : MonoBehaviour
             SceneManager.LoadScene(0);
         }
     }
-    private void OnCollisionEnter(Collision collision)
+
+    void OnCollisionEnter(Collision collision)
     {
         if (!_Invulnerable)
         {
@@ -198,6 +200,42 @@ public class PassiveMoby : MonoBehaviour
             MobyDive();
             _HitPoints--;
         }
+    }
+
+    public void MobyHit()
+    {
+        if (!_Invulnerable)
+        {
+            _Invulnerable = true;
+            MobyDive();
+            _HitPoints--;
+        }
+    }
+
+    public void MobyHit(float hitNumber)
+    {
+        if (!_Invulnerable)
+        {
+            _Invulnerable = true;
+            MobyDive();
+            _HitPoints -= (int)hitNumber;
+        }
+    }
+
+    public void MobyHit(int hitNumber)
+    {
+        if (!_Invulnerable)
+        {
+            _Invulnerable = true;
+            MobyDive();
+            _HitPoints -= hitNumber;
+        }
+    }
+
+    public void MobyAnger()
+    {
+        MobyDive();
+        _HitPoints = 0;
     }
 
 
