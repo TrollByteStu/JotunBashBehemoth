@@ -18,10 +18,12 @@ public class RopeHandler : MonoBehaviour
     bool reset, spawn, snapFirst, snapLast;
 
 
+    private LineRenderer myLine;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        myLine = GetComponent<LineRenderer>(); 
     }
 
     // Update is called once per frame
@@ -42,6 +44,15 @@ public class RopeHandler : MonoBehaviour
             spawn = false;
         }
 
+        if ( transform.childCount > 0)
+        {
+            myLine.positionCount = transform.childCount;
+            myLine.SetWidth(.005f, .005f);
+            for (int i = 0; i < transform.childCount; i++)
+            {
+                myLine.SetPosition(i, transform.GetChild(i).position);
+            }
+        }
     }
 
     void simpleSpawn()
