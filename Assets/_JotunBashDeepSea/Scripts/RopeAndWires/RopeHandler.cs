@@ -59,11 +59,14 @@ public class RopeHandler : MonoBehaviour
             if (i == 0)
             {
                 Destroy(tmp.GetComponent<CharacterJoint>());
+                if (snapFirst) tmp.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
             } else
             {
                 tmp.GetComponent<CharacterJoint>().connectedBody = lastTmp.GetComponent<Rigidbody>();    
             }
             lastTmp = tmp;
         }
+
+        if (snapLast) lastTmp.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
     }
 }
