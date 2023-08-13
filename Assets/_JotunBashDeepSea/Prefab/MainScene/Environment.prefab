@@ -5174,7 +5174,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WaveMaterial: {fileID: 2100000, guid: fb659c98d6ac4db41b88596ff2c4e2e1, type: 2}
   WaveMin: 0
-  WaveMax: 0.5
+  WaveMax: 0.4
   windZone: {fileID: 3224037442806171904}
   WindMin: 0.5
   WindMax: 2

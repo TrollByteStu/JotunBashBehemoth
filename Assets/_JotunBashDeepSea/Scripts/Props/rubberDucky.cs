@@ -16,6 +16,7 @@ public class rubberDucky : MonoBehaviour
     public bool isDud = true;
     public bool beingHeld = false;
     public bool beenPickedUp = false;
+    public bool floating = false;
 
     private Rigidbody myRigidBody;
 
@@ -24,6 +25,9 @@ public class rubberDucky : MonoBehaviour
         if ( other.transform.tag == "Water" && beenPickedUp )
         {
             GetComponent<WateverVolumeFloater>().enabled = true;
+            myRigidBody.drag = 1f;
+            myRigidBody.angularDrag = 1f;
+            floating = true;
         }
     }
 
@@ -47,12 +51,18 @@ public class rubberDucky : MonoBehaviour
     void Start()
     {
         myRigidBody = GetComponent<Rigidbody>();
-        if (Random.Range(1, 3) == 1) isDud = false;
+        if (Random.Range(1, 10) == 1) isDud = false;
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
+        if ( floating )
+        {
+            Quaternion targetRotation = Quaternion.LookRotation(transform.forward, Vector3.up);
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime);
+        }
+
         if ( !BombTicking.isPlaying && stillTicking && beingHeld)
         {
             if ( isDud )
