@@ -17,13 +17,22 @@ public class RopeHandler : MonoBehaviour
     [SerializeField]
     bool reset, spawn, snapFirst, snapLast;
 
-
     private LineRenderer myLine;
+    private Transform TheWinch;
+
+    public void simpleLineToWinch()
+    {
+        myLine.SetPosition(0, transform.position);
+        myLine.SetPosition(1, TheWinch.position);
+    }
 
     // Start is called before the first frame update
     void Start()
     {
-        myLine = GetComponent<LineRenderer>(); 
+        myLine = GetComponent<LineRenderer>();
+        TheWinch = GameObject.Find("RaftWinch").transform;
+        myLine.positionCount = 2;
+        myLine.SetWidth(.005f, .005f);
     }
 
     // Update is called once per frame
@@ -47,7 +56,6 @@ public class RopeHandler : MonoBehaviour
         if ( transform.childCount > 0)
         {
             myLine.positionCount = transform.childCount;
-            myLine.SetWidth(.005f, .005f);
             for (int i = 0; i < transform.childCount; i++)
             {
                 myLine.SetPosition(i, transform.GetChild(i).position);
@@ -57,6 +65,7 @@ public class RopeHandler : MonoBehaviour
 
     void simpleSpawn()
     {
+        return;
         int count = (int)(LengthOfRope / segmentDistance);
 
         GameObject tmp;
