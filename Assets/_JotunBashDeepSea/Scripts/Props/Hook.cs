@@ -9,6 +9,7 @@ public class Hook : MonoBehaviour
 
     public bool beingHeld = false;
     public bool beenPickedUp = false;
+    public bool hooked = false;
 
     private Rigidbody myRigidBody;
 
@@ -31,6 +32,8 @@ public class Hook : MonoBehaviour
         {
             transform.SetParent(collision.transform);
             myRigidBody.isKinematic = true;
+            hooked = true;
+            myRope.spawnFromPointToPoint();
         }
     }
 
@@ -59,7 +62,7 @@ public class Hook : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        myRope.simpleLineToWinch();
+        if (!hooked ) myRope.simpleLineToWinch();
         if (beenPickedUp && !beingHeld) transform.LookAt(transform.position + myRigidBody.velocity*10f);
         if (transform.position.y < -100) Destroy(gameObject);
     }
