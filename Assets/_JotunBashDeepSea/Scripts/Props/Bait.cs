@@ -21,7 +21,13 @@ public class Bait : MonoBehaviour
     void Start()
     {
         mainGC = GameObject.Find("GameController").GetComponent<GameController>();
+        mainGC.activeBait.Add(this);
         myRigidBody = GetComponent<Rigidbody>();
+    }
+
+    private void OnDisable()
+    {
+        mainGC.activeBait.Remove(this);
     }
 
     // Update is called once per frame
