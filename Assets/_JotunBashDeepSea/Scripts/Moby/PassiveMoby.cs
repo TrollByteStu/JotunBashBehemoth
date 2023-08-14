@@ -67,7 +67,7 @@ public class PassiveMoby : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (_HitPoints <= 0 && _TimeSinceDive + _DiveTime + _RandomTimeAdded < Time.time)
+        if (_HitPoints <= 0 && _TimeSinceDive + _DiveTime + _RandomTimeAdded < Time.time && _Emerging)
             MobySceneChange();
         else if (_Emerging)
             MobyEmerge();
@@ -192,15 +192,15 @@ public class PassiveMoby : MonoBehaviour
         }
     }
 
-    void OnCollisionEnter(Collision collision)
-    {
-        if (!_Invulnerable)
-        {
-            _Invulnerable = true;
-            MobyDive();
-            _HitPoints--;
-        }
-    }
+    ///void OnCollisionEnter(Collision collision)
+    ///{
+    ///    if (!_Invulnerable)
+    ///    {
+    ///        _Invulnerable = true;
+    ///        MobyDive();
+    ///        _HitPoints--;
+    ///    }
+    ///}
 
     public void MobyHit()
     {
