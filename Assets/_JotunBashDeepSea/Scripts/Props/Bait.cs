@@ -6,6 +6,9 @@ public class Bait : MonoBehaviour
 {
     public List<GameObject> baitWorkOnPrefabs;
 
+    private GameController mainGC;
+    private Rigidbody myRigidBody;
+
     public bool doesThisBaitWorkOnMe(GameObject myPrefab)
     {
         if (baitWorkOnPrefabs.Contains(myPrefab))
@@ -17,7 +20,8 @@ public class Bait : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        mainGC = GameObject.Find("GameController").GetComponent<GameController>();
+        myRigidBody = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame

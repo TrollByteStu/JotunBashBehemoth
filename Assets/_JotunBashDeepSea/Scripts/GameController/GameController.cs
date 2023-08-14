@@ -9,6 +9,8 @@ public class GameController : MonoBehaviour
     public GameControllerWeather gcWeather;
     public GameObject player;
 
+    public List<Bait> activeBait;
+
     private void Awake()
     {
         _instance = this;
