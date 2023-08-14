@@ -36,6 +36,7 @@ public class Hook : MonoBehaviour
     {
         Debug.Log("UnSelect");
         myRigidBody.isKinematic = false;
+        beingHeld = false;
         transform.SetParent(null);
     }
 
