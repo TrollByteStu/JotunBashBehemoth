@@ -6,6 +6,7 @@ public class GameController : MonoBehaviour
 {
     private static GameController _instance;
     public GameControllerResources gcResources;
+    public GameControllerWeather gcWeather;
     public GameObject player;
 
     private void Awake()

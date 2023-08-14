@@ -25,11 +25,8 @@ public class GunGeneric : MonoBehaviour
     public float reloadDelay = 1f;
 
     private GameController mainGC;
-
-    public void eventFocus()
-    {
-        Debug.Log("Focus");
-    }
+    private XRGrabInteractable myGrab;
+    private Rigidbody myRigidBody;
 
     public void eventSelect()
     {
@@ -40,6 +37,8 @@ public class GunGeneric : MonoBehaviour
     {
         Debug.Log("UnSelect");
         beingHeld = false;
+        myRigidBody.isKinematic = false;
+        transform.SetParent(null);
     }
 
     public void eventActivate()
@@ -52,6 +51,8 @@ public class GunGeneric : MonoBehaviour
     void Start()
     {
         mainGC = GameObject.Find("GameController").GetComponent<GameController>();
+        myGrab = GetComponent<XRGrabInteractable>();
+        myRigidBody = GetComponent<Rigidbody>();
     }
 
     public void fireGun()
