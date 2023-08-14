@@ -34,7 +34,7 @@ public class MobyDick : WaterStateHelper
     private bool _PlayedOnce = false;
 
     //private float _ZOffset = 0;
-    private float _POM = 1; // why did i call it POM wtf does POM  Player Offset Mark???
+    ///private float _POM = 1; // why did i call it POM wtf does POM  Player Offset Mark???
     public float _FlipCount = 0;
 
 
