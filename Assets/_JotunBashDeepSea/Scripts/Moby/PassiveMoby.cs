@@ -67,7 +67,7 @@ public class PassiveMoby : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (_HitPoints <= 0)
+        if (_HitPoints <= 0 && _TimeSinceDive + _DiveTime + _RandomTimeAdded < Time.time)
             MobySceneChange();
         else if (_Emerging)
             MobyEmerge();
@@ -164,7 +164,7 @@ public class PassiveMoby : MonoBehaviour
 
     void PlaceMobyEnding()
     {
-        GenerateCords(10);
+        GenerateCords(20);
         _RandomVector3.y = -10;
         transform.position = _RandomVector3;
         transform.LookAt(new Vector3(_Raft.transform.position.x, transform.position.y, _Raft.transform.position.z));
