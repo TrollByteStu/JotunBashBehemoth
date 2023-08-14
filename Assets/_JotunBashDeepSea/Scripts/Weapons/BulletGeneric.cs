@@ -5,11 +5,14 @@ using UnityEngine;
 public class BulletGeneric : MonoBehaviour
 {
     public GameController mainGC;
+    public int _Damage = 1;
 
     private void OnCollisionEnter(Collision collision)
     {
         // do not allow it to hit the weapon that fired it..
         if (collision.transform.tag == "Weapon") return;
+        if (collision.transform.CompareTag("Boss") && collision.gameObject.GetComponent<PassiveMoby>())
+            collision.gameObject.GetComponent<PassiveMoby>().MobyHit(_Damage);
         GameObject spawn;
         Quaternion spawnDirection;
         if (collision.transform.tag == "Water" )
@@ -39,31 +42,21 @@ public class BulletGeneric : MonoBehaviour
             Destroy(decal, 4f);
         }
     }
-    private void onCollisionEnter(Collision collision)
-    {
-        // do not allow it to hit the weapon that fired it..
-        if (collision.transform.tag == "Weapon") return;
-        // Will add logic for diffeent decals and sound on hitting different materials, we hope
-        GameObject spawn;
-        Quaternion spawnDirection;
-        spawn = mainGC.gcResources.BulletHoles[0];
-        spawnDirection = Quaternion.LookRotation(collision.contacts[0].normal);
-        ContactPoint contact = collision.contacts[0];
-        GameObject decal = Instantiate(spawn, contact.point, spawnDirection);
-        decal.GetComponent<AudioSource>().Play();
-        decal.transform.SetParent(collision.transform);
-        Destroy(decal, 2f);
-    }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    //private void onCollisionEnter(Collision collision)
+    //{
+    //    // do not allow it to hit the weapon that fired it..
+    //    if (collision.transform.tag == "Weapon") return;
+    //    // Will add logic for diffeent decals and sound on hitting different materials, we hope
+    //    GameObject spawn;
+    //    Quaternion spawnDirection;
+    //    spawn = mainGC.gcResources.BulletHoles[0];
+    //    spawnDirection = Quaternion.LookRotation(collision.contacts[0].normal);
+    //    ContactPoint contact = collision.contacts[0];
+    //    GameObject decal = Instantiate(spawn, contact.point, spawnDirection);
+    //    decal.GetComponent<AudioSource>().Play();
+    //    decal.transform.SetParent(collision.transform);
+    //    Destroy(decal, 2f);
+    //}
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
 }
