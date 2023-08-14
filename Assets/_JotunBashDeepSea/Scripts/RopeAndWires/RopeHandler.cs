@@ -63,6 +63,36 @@ public class RopeHandler : MonoBehaviour
         }
     }
 
+    public void spawnFromPointToPoint()
+    {
+        int count = (int)(Vector3.Distance(transform.position, TheWinch.position) / segmentDistance);
+
+        GameObject tmp;
+        GameObject lastTmp = gameObject;
+        Vector3 tmpPos;
+        float steps = 1 / count;
+
+        for (int i = 0; i < count; i++)
+        {
+            tmpPos = Vector3.Lerp(transform.position, TheWinch.position, steps * i);
+            tmp = Instantiate(SegmentPrefab, tmpPos, Quaternion.identity, transform);
+            tmp.name = "Rope Segment " + i.ToString();
+
+            if (i == 0)
+            {
+                Destroy(tmp.GetComponent<CharacterJoint>());
+                tmp.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
+            }
+            else
+            {
+                tmp.GetComponent<CharacterJoint>().connectedBody = lastTmp.GetComponent<Rigidbody>();
+            }
+            lastTmp = tmp;
+        }
+
+        lastTmp.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
+    }
+
     void simpleSpawn()
     {
         return;
