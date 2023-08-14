@@ -25,6 +25,15 @@ public class Hook : MonoBehaviour
         }
     }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        if ( collision.transform.tag == "Hookable" && beenPickedUp && !beingHeld)
+        {
+            transform.SetParent(collision.transform);
+            myRigidBody.isKinematic = true;
+        }
+    }
+
     public void eventSelect()
     {
         Debug.Log("Select");
