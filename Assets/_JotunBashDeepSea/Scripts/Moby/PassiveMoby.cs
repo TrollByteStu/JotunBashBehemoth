@@ -88,7 +88,7 @@ public class PassiveMoby : MonoBehaviour
         {
             GenerateCords(number);
         }
-        else if (_HitPoints <= 0)
+        else if (_HitPoints >= 0)
         {
             PlaceMoby();
         }
