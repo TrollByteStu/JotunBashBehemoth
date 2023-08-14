@@ -16,6 +16,7 @@ MonoBehaviour:
   shortName: On the Boat
   description: On the boat, sailing the savage seas
   characters:
+  - workspaces/savage_seas/characters/crazy_old_man
   - workspaces/savage_seas/characters/soggy_sam
   - workspaces/savage_seas/characters/parrot
   triggers: []
