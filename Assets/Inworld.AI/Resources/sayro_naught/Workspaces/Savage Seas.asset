@@ -15,7 +15,7 @@ MonoBehaviour:
   title: Savage Seas
   fullName: workspaces/savage_seas
   characters:
-  - {fileID: 0}
+  - {fileID: 11400000, guid: 68b310c051eeea44284aa0af9fbe0e4f, type: 2}
   - {fileID: 11400000, guid: 06ded26f4ec86f444b1d66e64fe165e1, type: 2}
   scenes:
   - {fileID: 11400000, guid: bbf37a7d1b225d24793cc54e7ad9dbfe, type: 2}

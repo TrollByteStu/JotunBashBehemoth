@@ -47,6 +47,11 @@ public class rubberDucky : MonoBehaviour
         Destroy(gameObject, 10f);
     }
 
+    public void eventActivate()
+    {
+        Squeaking.Play();
+    }
+
     // Start is called before the first frame update
     void Start()
     {

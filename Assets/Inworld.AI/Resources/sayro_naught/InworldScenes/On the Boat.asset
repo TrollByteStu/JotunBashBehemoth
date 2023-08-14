@@ -17,5 +17,6 @@ MonoBehaviour:
   description: On the boat, sailing the savage seas
   characters:
   - workspaces/savage_seas/characters/soggy_sam
+  - workspaces/savage_seas/characters/parrot
   triggers: []
   index: 0
