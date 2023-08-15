@@ -14591,6 +14591,51 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &5709399321906260619
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4927195630832762568}
+  - component: {fileID: 4387794171503306037}
+  m_Layer: 0
+  m_Name: SpearSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4927195630832762568
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5709399321906260619}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.8191259, y: -0.004589869, z: -0.006555013, w: 0.5735581}
+  m_LocalPosition: {x: 2.749, y: 1.154, z: -1.085}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8420354838528476742}
+  m_LocalEulerAnglesHint: {x: -110, y: -0.9169922, z: 0}
+--- !u!114 &4387794171503306037
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5709399321906260619}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a03d03e62660b044eb3d5c84fe8357a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnedPrefab: {fileID: 8742251009410473172, guid: e235795d17387ed4ab339aa51c8fec32, type: 3}
 --- !u!1 &5742826656093936514
 GameObject:
   m_ObjectHideFlags: 0
@@ -16481,6 +16526,7 @@ Transform:
   - {fileID: 7904997589965101175}
   - {fileID: 7151152087535590199}
   - {fileID: 3736412646848254516}
+  - {fileID: 4927195630832762568}
   m_Father: {fileID: 6785270045119047173}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &4860729291735058915
