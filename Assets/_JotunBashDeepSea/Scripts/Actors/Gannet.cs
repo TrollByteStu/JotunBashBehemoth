@@ -15,7 +15,12 @@ public class Gannet : MonoBehaviour
     private Vector3 _MovePos;
 
     // current state
-    private int _CurrentState = 0;
+    public int _CurrentState = 0;
+
+    // orbits
+    private bool _RadiusPicked = false;
+    private float _Angle;
+    private float _Radius;
 
     private void Start()
     {
@@ -42,6 +47,18 @@ public class Gannet : MonoBehaviour
         }
     }
 
+    void CircleRaft() // defo not done
+    {
+        if (!_RadiusPicked)
+        {
+            _RadiusPicked = true;
+            _Radius = Random.Range(5, 10);
+        }
+        _Angle += Time.fixedDeltaTime /(_Radius / 2);
+        transform.LookAt( new Vector3(Mathf.Cos(_Angle) * _Radius, 7, Mathf.Sin(_Angle) * _Radius) , Vector3.up);
+        transform.position = new(Mathf.Cos(_Angle) * _Radius, 7, Mathf.Sin(_Angle) * _Radius);
+    }
+
     void GannetLand()
     {
         _LandingCurveTime += Time.fixedDeltaTime;
@@ -50,12 +67,49 @@ public class Gannet : MonoBehaviour
         _MovePos = _GannetIdlePoints.GetChild(_LandingPointInt).transform.position;
         _MovePos.y = _GannetIdlePoints.GetChild(_LandingPointInt).transform.position.y + _LandingCurve.Evaluate(_LandingCurveTime);
         transform.position = Vector3.MoveTowards(transform.position, _MovePos, Time.fixedDeltaTime * 3);
+        if (Vector3.Distance(transform.position, _MovePos) <= 1)
+            GannetLanded();
+    }
 
+    void GannetLanded()
+    {
+        _CurrentState = 3;
+    }
+
+    void Idle()
+    {
+
+    }
+
+    float PlusOrMinus()
+    {
+        if (Random.Range(1, 2) == 1)
+            return 1;
+        else
+            return -1;
+    }
+    float PlusOrMinus(float Number)
+    {
+        if (Random.Range(1, 2) == 1)
+            return Number;
+        else
+            return -Number;
     }
 
     void FixedUpdate()
     {
-        GannetLand();
+        switch (_CurrentState)
+        {
+            case 1:
+                CircleRaft();
+                break;
+            case 2:
+                GannetLand();
+                break;
+            case 3:
+                Idle();
+                break;
+        }
     }
 
 }
