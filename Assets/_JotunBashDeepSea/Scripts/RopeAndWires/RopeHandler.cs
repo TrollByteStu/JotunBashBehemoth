@@ -74,14 +74,15 @@ public class RopeHandler : MonoBehaviour
 
         for (int i = 0; i < count; i++)
         {
-            tmpPos = Vector3.Lerp(transform.position, TheWinch.position, steps * i);
+            tmpPos = Vector3.Lerp( TheWinch.position, transform.position, steps * i);
             tmp = Instantiate(SegmentPrefab, tmpPos, Quaternion.identity, transform);
             tmp.name = "Rope Segment " + i.ToString();
 
             if (i == 0)
             {
-                Destroy(tmp.GetComponent<CharacterJoint>());
-                tmp.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
+                //Destroy(tmp.GetComponent<CharacterJoint>());
+                //tmp.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
+                tmp.GetComponent<CharacterJoint>().connectedBody = TheWinch.gameObject.GetComponent<Rigidbody>();
             }
             else
             {
@@ -89,8 +90,9 @@ public class RopeHandler : MonoBehaviour
             }
             lastTmp = tmp;
         }
-
+        lastTmp.transform.position = transform.position;
         lastTmp.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
+        lastTmp.GetComponent<Rigidbody>().isKinematic = true;
     }
 
     void simpleSpawn()
