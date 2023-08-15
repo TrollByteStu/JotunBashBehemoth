@@ -1881,7 +1881,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wholeBottle: {fileID: 4689258750841394851}
-  fractureedBottle: {fileID: 8323359571715366151}
+  fracturedBottle: {fileID: 8323359571715366151}
 --- !u!1 &5218689135908775518
 GameObject:
   m_ObjectHideFlags: 0
@@ -3103,7 +3103,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6299724542494821265
 Transform:
   m_ObjectHideFlags: 0
