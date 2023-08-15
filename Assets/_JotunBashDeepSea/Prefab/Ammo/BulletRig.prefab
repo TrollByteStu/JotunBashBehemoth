@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7569234912362480625}
   m_Layer: 0
   m_Name: BulletRig
-  m_TagString: Untagged
+  m_TagString: Ammo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -48,6 +48,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainGC: {fileID: 0}
+  _Damage: 1
 --- !u!136 &3687091957258390748
 CapsuleCollider:
   m_ObjectHideFlags: 0
