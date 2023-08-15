@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class spear : MonoBehaviour
 {
-    public bool _Touched = false;
-    public bool beingHeld = false;
     private Rigidbody myRB;
     public int _Damage = 1;
+    public bool _Touched = false;
+    public bool beingHeld = false;
     public bool _StuckInEnemy = false;
     public bool _Stuck = false;
     private float _DestroyTime;
