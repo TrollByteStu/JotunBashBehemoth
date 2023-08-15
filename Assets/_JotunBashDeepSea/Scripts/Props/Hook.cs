@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.XR.Interaction.Toolkit;
+using UnityEngine.XR;
 
 public class Hook : MonoBehaviour
 {
@@ -12,6 +14,7 @@ public class Hook : MonoBehaviour
     public bool hooked = false;
 
     private Rigidbody myRigidBody;
+    private Rigidbody hookedRigidbody;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -34,6 +37,8 @@ public class Hook : MonoBehaviour
             myRigidBody.isKinematic = true;
             hooked = true;
             myRope.spawnFromPointToPoint();
+            hookedRigidbody = collision.gameObject.GetComponent<Rigidbody>();
+            Destroy( GetComponent<XRGrabInteractable>() );
         }
     }
 
@@ -62,7 +67,12 @@ public class Hook : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!hooked ) myRope.simpleLineToWinch();
+        if (!hooked) 
+        { 
+            myRope.simpleLineToWinch();
+        } else {
+            hookedRigidbody.AddForce(myRope.TheWinch.position - hookedRigidbody.transform.position );
+        }
         if (beenPickedUp && !beingHeld) transform.LookAt(transform.position + myRigidBody.velocity*10f);
         if (transform.position.y < -100) Destroy(gameObject);
     }
