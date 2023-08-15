@@ -10,6 +10,7 @@ TagManager:
   - food
   - PlayerFace
   - Hookable
+  - Ammo
   layers:
   - Default
   - TransparentFX
