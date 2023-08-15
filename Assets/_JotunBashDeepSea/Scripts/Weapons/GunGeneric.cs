@@ -25,7 +25,6 @@ public class GunGeneric : MonoBehaviour
     public float reloadDelay = 1f;
 
     private GameController mainGC;
-    private XRGrabInteractable myGrab;
     private Rigidbody myRigidBody;
 
     public void eventSelect()
@@ -51,7 +50,6 @@ public class GunGeneric : MonoBehaviour
     void Start()
     {
         mainGC = GameObject.Find("GameController").GetComponent<GameController>();
-        myGrab = GetComponent<XRGrabInteractable>();
         myRigidBody = GetComponent<Rigidbody>();
     }
 
