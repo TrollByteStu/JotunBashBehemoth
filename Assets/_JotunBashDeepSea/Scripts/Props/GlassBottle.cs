@@ -5,7 +5,7 @@ using UnityEngine;
 public class GlassBottle : MonoBehaviour
 {
     public GameObject wholeBottle;
-    public GameObject fractureedBottle;
+    public GameObject fracturedBottle;
 
     private Rigidbody myRigidBody;
 
@@ -25,7 +25,7 @@ public class GlassBottle : MonoBehaviour
         if (collision.transform.tag == "Ammo")
         {
             wholeBottle.SetActive(false);
-            fractureedBottle.SetActive(true);
+            fracturedBottle.SetActive(true);
             Destroy(gameObject, 5f);
         }
     }
