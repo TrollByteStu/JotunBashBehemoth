@@ -8,6 +8,8 @@ public class GameController : MonoBehaviour
     public GameControllerResources gcResources;
     public GameControllerWeather gcWeather;
     public GameObject player;
+    public Transform _GannetIdlePoints;
+
 
     public List<Bait> activeBait;
 
