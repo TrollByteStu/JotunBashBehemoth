@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class Gannet : MonoBehaviour
 {
+    // others
+    private GameObject _Player;
+    private Animator _Animator;
+
     // landing Curves
     public AnimationCurve _LandingCurve;
     private float _LandingCurveTime;
@@ -11,8 +15,9 @@ public class Gannet : MonoBehaviour
     // landing stuff
     private Transform _GannetIdlePoints;
     private int _LandingPointInt;
-    public bool _ReadyToLand = false;
+    private bool _ReadyToLand = false;
     private Vector3 _MovePos;
+    private float _LandingTime;
 
     // current state
     public int _CurrentState = 0;
@@ -22,9 +27,19 @@ public class Gannet : MonoBehaviour
     private float _Angle;
     private float _Radius;
 
+    // idle
+    private float _AttentionTime;
+    private Vector3 _LookDirection;
+    private float onesec;
+    private int frame = 0;
+
     private void Start()
     {
         _GannetIdlePoints = GameController.Instance._GannetIdlePoints.transform;
+        _Player = GameController.Instance.player;
+        _Animator = transform.GetComponentInChildren<Animator>();
+        if (_Animator == null)
+            Debug.LogError("could not find Animator on " + gameObject.name);
     }
 
     // fly in circles around the raft 
@@ -74,11 +89,38 @@ public class Gannet : MonoBehaviour
     void GannetLanded()
     {
         _CurrentState = 3;
+        transform.parent = _GannetIdlePoints.GetChild(_LandingPointInt);
+        transform.localPosition = Vector3.zero;
+        _Animator.SetBool("Idle", true);
+        _LandingTime = Time.time;
+
     }
 
-    void Idle()
+    void Idle() // need to find a way to slowly rotate it
     {
+        if (_AttentionTime + 10 < Time.time)
+        {
+            _LookDirection = GenerateRandomVector2(-10,10);
+            _LookDirection.z = _LookDirection.y;
+            _LookDirection.y = transform.position.y;
+            //transform.LookAt(_LookDirection, Vector3.up);
+            _AttentionTime = Time.time;
+        }
+        if (onesec + 1 < Time.time)
+        {
+            onesec = Time.time;
+            //Debug.Log(Vector3.Angle(transform.position, _LookDirection) + " " + frame++ + " " + transform.position + " " + _LookDirection);
+            //transform.Rotate(Vector3.up , Vector3.Angle(transform.position, _LookDirection));
+            //Debug.Log(Vector3.Angle(transform.position, _LookDirection) + " " + frame + " " + transform.position + " " + _LookDirection);
+            //Debug.Log(Quaternion.SetLookRotation(_LookDirection));
+        }
+        
 
+    }
+
+    Vector2 GenerateRandomVector2(float min , float max)
+    {
+        return new Vector2(Random.Range(min, max), Random.Range(min, max));
     }
 
     float PlusOrMinus()
