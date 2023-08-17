@@ -71,6 +71,7 @@ public class Bait : MonoBehaviour
             mainGC.activeBait.Add(this);
             ActiveBaitInWorld = true;
         }
+        Destroy(gameObject, TimeToLiveAfterThrow);
     }
 
     private void OnDisable()
