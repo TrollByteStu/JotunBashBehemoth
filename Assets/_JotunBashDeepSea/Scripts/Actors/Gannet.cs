@@ -7,6 +7,7 @@ public class Gannet : MonoBehaviour
     // others
     private GameObject _Player;
     private Animator _Animator;
+    private AudioSource _AudioSource;
 
     // landing Curves
     public AnimationCurve _LandingCurve;
@@ -33,6 +34,10 @@ public class Gannet : MonoBehaviour
     private float onesec;
     private int frame = 0;
 
+    // screaming
+    public int _ScreamingInterval = 10000;
+    public int _ScreamCountDown;
+
     private void Start()
     {
         _GannetIdlePoints = GameController.Instance._GannetIdlePoints.transform;
@@ -40,6 +45,12 @@ public class Gannet : MonoBehaviour
         _Animator = transform.GetComponentInChildren<Animator>();
         if (_Animator == null)
             Debug.LogError("could not find Animator on " + gameObject.name);
+        _AudioSource = GetComponent<AudioSource>();
+        if (_AudioSource == null)
+            Debug.LogError("could not find AudioSource on " + gameObject.name);
+        else if (_AudioSource.clip == null)
+            Debug.LogError("could not find AudioClip on " + gameObject.name);
+        _ScreamCountDown = _ScreamingInterval;
     }
 
     // fly in circles around the raft 
@@ -109,11 +120,8 @@ public class Gannet : MonoBehaviour
         if (onesec + 1 < Time.time)
         {
             onesec = Time.time;
-            //Debug.Log(Vector3.Angle(transform.position, _LookDirection) + " " + frame++ + " " + transform.position + " " + _LookDirection);
-            //transform.Rotate(Vector3.up , Vector3.Angle(transform.position, _LookDirection));
-            //Debug.Log(Vector3.Angle(transform.position, _LookDirection) + " " + frame + " " + transform.position + " " + _LookDirection);
-            //Debug.Log(Quaternion.SetLookRotation(_LookDirection));
         }
+            transform.LookAt(Vector3.Lerp(_LookDirection * 10, transform.forward, Time.fixedDeltaTime)); // dos not work
         
 
     }
@@ -140,6 +148,11 @@ public class Gannet : MonoBehaviour
 
     void FixedUpdate()
     {
+        if ( Random.Range(1,_ScreamCountDown--) == 1 && !_AudioSource.isPlaying)
+        {
+            _AudioSource.Play();
+            _ScreamCountDown = _ScreamingInterval;
+        }
         switch (_CurrentState)
         {
             case 1:
@@ -153,5 +166,6 @@ public class Gannet : MonoBehaviour
                 break;
         }
     }
+
 
 }
