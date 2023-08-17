@@ -12,10 +12,10 @@ public class GameController : MonoBehaviour
     public List<Bait> activeBait;
 
 
-    private GameControllerResources gcResources;
-    private GameControllerWeather gcWeather;
-    private GameControllerInventory gcInventory;
-    private GameControllerPointsAndDeaths gcPointsAndDeaths;
+    public GameControllerResources gcResources;
+    public GameControllerWeather gcWeather;
+    public GameControllerInventory gcInventory;
+    public GameControllerPointsAndDeaths gcPointsAndDeaths;
 
     public Bait checkForBaits(GameObject ownPrefab, Transform ownTransform)
     {
