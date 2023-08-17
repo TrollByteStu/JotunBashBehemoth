@@ -10,6 +10,8 @@ public class Bait : MonoBehaviour
     public bool ActivateBaitOnThrowing = false;
     public bool DoesThisBaitFloat = false;
 
+    public float TimeToLiveAfterThrow = 30f;
+
     public bool ActiveBaitInWorld = false;
     public bool beingHeld = false;
     public bool beenPickedUp = false;
