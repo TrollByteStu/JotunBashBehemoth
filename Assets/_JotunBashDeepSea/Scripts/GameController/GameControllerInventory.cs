@@ -4,6 +4,50 @@ using UnityEngine;
 
 public class GameControllerInventory : MonoBehaviour
 {
+    public Dictionary<GameObject,int> inventory = new System.Collections.Generic.Dictionary<GameObject,int>();
+
+
+    private int reuseIndex;
+
+    public void ItemDecrease(GameObject prefab)
+    {
+        inventory[prefab]--;
+        if (inventory[prefab] < 0) inventory[prefab] = 0;
+    }
+
+    public void itemAdd(GameObject prefab, int amount)
+    {
+        reuseIndex = ItemFindIndexOfPrefab(prefab);
+        if (reuseIndex == -1)
+        {
+            inventory.Add(prefab, amount);
+        } else {
+            inventory[prefab] += amount;
+        }
+    }
+
+    public int ItemHowMany(GameObject prefab)
+    {
+        reuseIndex = ItemFindIndexOfPrefab(prefab);
+        if (reuseIndex > -1)
+            return inventory[prefab];
+        else return 0;
+    }
+
+    public int ItemFindIndexOfPrefab(GameObject prefab)
+    {
+        if (inventory.ContainsKey(prefab))
+        {
+            List<GameObject> keysList = new List<GameObject>(inventory.Keys);
+            int index = keysList.IndexOf(prefab);
+            return index;
+        }
+        else
+        {
+            return -1; // Prefab not found in the inventory
+        }
+    }
+
     // Start is called before the first frame update
     void Start()
     {
