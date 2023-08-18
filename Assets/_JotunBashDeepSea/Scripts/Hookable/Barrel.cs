@@ -33,5 +33,8 @@ public class Barrel : MonoBehaviour
     {
         // bobbing around in the wind
         myRigidBody.AddForce(mainWind.transform.forward * (mainWind.windMain * 0.1f) + Random.insideUnitSphere * mainWind.windTurbulence, ForceMode.Force);
+
+        // fallen off the map, delete them
+        if (transform.position.y < -100) Destroy(gameObject);
     }
 }
