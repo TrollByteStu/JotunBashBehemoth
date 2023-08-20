@@ -48,6 +48,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83d86813e21b4894b9e5da841aa082bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  myOwnPrefab: {fileID: 7359744747742380797}
   distance: 20
   speed: 0.2
 --- !u!114 &2751124058871237914
