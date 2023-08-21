@@ -5,11 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class PassiveMoby : MonoBehaviour
 {
-    private fishBuoyancy[] _Floaters;
     public GameObject _myPlayer;
     public GameObject _Raft;
     public Animator _Animator;
-    private Rigidbody _myRB;
 
     // time stuff
     private float _TimeSinceSurface;
@@ -47,8 +45,6 @@ public class PassiveMoby : MonoBehaviour
 
     void Start()
     {
-        _Floaters = transform.GetComponentsInChildren<fishBuoyancy>();
-        _myRB = GetComponent<Rigidbody>();
         if (_myPlayer == null)
             _myPlayer = GameController.Instance.player;
         GenerateCords(0);
@@ -191,16 +187,6 @@ public class PassiveMoby : MonoBehaviour
             SceneManager.LoadScene(0);
         }
     }
-
-    ///void OnCollisionEnter(Collision collision)
-    ///{
-    ///    if (!_Invulnerable)
-    ///    {
-    ///        _Invulnerable = true;
-    ///        MobyDive();
-    ///        _HitPoints--;
-    ///    }
-    ///}
 
     public void MobyHit()
     {
