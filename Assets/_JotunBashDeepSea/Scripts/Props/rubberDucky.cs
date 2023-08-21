@@ -85,7 +85,7 @@ public class rubberDucky : MonoBehaviour
 
         if ( !stillTicking && !Squeaking.isPlaying && beingHeld)
         {
-            if ( Random.Range(1, squeakDelay) == 1)
+            if ( Random.Range(0, squeakDelay) == 1)
             {
                 Squeaking.Play();
             }

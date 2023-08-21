@@ -14,7 +14,7 @@ public class actorSpawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (transform.childCount < 1 && lastSpawn <= 0f && Random.Range(1, randomSpawnInhibitor) == 1)
+        if (transform.childCount < 1 && lastSpawn <= 0f && Random.Range(0, randomSpawnInhibitor) == 1)
         {
             var spawned = Instantiate(spawnedPrefab, transform.position, transform.rotation, transform);
             lastSpawn = afterSpawnDisableTimer;
