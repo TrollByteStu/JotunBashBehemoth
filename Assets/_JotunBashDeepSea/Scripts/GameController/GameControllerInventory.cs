@@ -6,6 +6,9 @@ public class GameControllerInventory : MonoBehaviour
 {
     public Dictionary<GameObject,int> inventory = new System.Collections.Generic.Dictionary<GameObject,int>();
 
+    public GameObject[] debugPrefabs;
+    public int[] debugAmounts;
+
     private int reuseIndex;
 
     public void ItemDecrease(GameObject prefab)
@@ -56,6 +59,16 @@ public class GameControllerInventory : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (inventory.Count > 0)
+        {
+            debugPrefabs = new GameObject[inventory.Count];
+            debugAmounts = new int[inventory.Count];
+            int i = 0;
+            foreach (KeyValuePair<GameObject, int> item in inventory)
+            {
+                debugPrefabs[i++] = item.Key;
+                debugAmounts[i++] = item.Value;
+            }  
+        }
     }
 }
