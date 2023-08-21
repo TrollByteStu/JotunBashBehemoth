@@ -5,13 +5,17 @@ using UnityEngine;
 public class GameController : MonoBehaviour
 {
     private static GameController _instance;
-    public GameControllerResources gcResources;
-    public GameControllerWeather gcWeather;
     public GameObject player;
     public Transform _GannetIdlePoints;
 
 
     public List<Bait> activeBait;
+
+
+    public GameControllerResources gcResources;
+    public GameControllerWeather gcWeather;
+    public GameControllerInventory gcInventory;
+    public GameControllerPointsAndDeaths gcPointsAndDeaths;
 
     public Bait checkForBaits(GameObject ownPrefab, Transform ownTransform)
     {
@@ -39,6 +43,10 @@ public class GameController : MonoBehaviour
     private void Awake()
     {
         _instance = this;
+        gcResources = GetComponent<GameControllerResources>();
+        gcWeather = GetComponent<GameControllerWeather>();
+        gcInventory = GetComponent<GameControllerInventory>();
+        gcPointsAndDeaths = GetComponent<GameControllerPointsAndDeaths>();
     }
 
     public static GameController Instance

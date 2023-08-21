@@ -24,6 +24,11 @@ public class WeatherAssets : MonoBehaviour
         
     }
 
+    private void OnDisable()
+    { // after testing reset material, so we dont get that damn spam in github.. lol
+        WaveMaterial.SetFloat("_WaveScale", 0);
+    }
+
     // Update is called once per frame
     void Update()
     {

@@ -9,13 +9,20 @@ public class circlingShark : MonoBehaviour
     private Vector3 orbit;
     private bool reachedSurface = false;
 
+    public GameObject myOwnPrefab;
+
     public float distance = 20f;
     public float speed = .1f;
+
+    private Rigidbody myRigidBody;
+    private GameController mainGC;
 
     // Start is called before the first frame update
     void Start()
     {
         BoatRig = GameObject.Find("BoatRig");
+        myRigidBody = GetComponent<Rigidbody>();
+        mainGC = GameObject.Find("GameController").GetComponent<GameController>();
     }
 
     // Update is called once per frame
@@ -27,11 +34,14 @@ public class circlingShark : MonoBehaviour
         transform.Rotate(Vector3.up, 90);
         if ( !reachedSurface )
         {
-            if (Vector3.Distance(transform.position, BoatRig.transform.position + orbit) < 1f)
+            if (transform.position.y > -0.5f)
             {
                 GetComponent<WateverVolumeFloater>().enabled = true;
                 reachedSurface = true;
+                myRigidBody.useGravity = true;
             }
+
+        } else {
 
         }
     }

@@ -18,7 +18,7 @@ public class RopeHandler : MonoBehaviour
     bool reset, spawn, snapFirst, snapLast;
 
     private LineRenderer myLine;
-    private Transform TheWinch;
+    public Transform TheWinch;
 
     public void simpleLineToWinch()
     {

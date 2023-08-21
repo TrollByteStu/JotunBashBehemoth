@@ -11,6 +11,8 @@ TagManager:
   - PlayerFace
   - Hookable
   - Ammo
+  - Bait
+  - Raft
   layers:
   - Default
   - TransparentFX

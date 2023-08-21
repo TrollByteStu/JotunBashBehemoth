@@ -6,13 +6,15 @@ public class GameControllerWeather : MonoBehaviour
 {
     public WeatherAssets myWeatherAssets;
 
+    public WindZone mainWind;
+
     // These slider work from 0(calm day at sea) to 1(Massive biblical storm) 
     public float sliderWind = 0f;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        
+        mainWind = GameObject.Find("WindZone").GetComponent<WindZone>();
     }
 
     // Update is called once per frame
