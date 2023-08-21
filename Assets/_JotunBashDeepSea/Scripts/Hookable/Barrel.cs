@@ -1,11 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Bitgem.VFX.StylisedWater;
 
 public class Barrel : MonoBehaviour
 {
     public GameObject AddInventoryPrefab;
     public int AddInventoryAmount = 10;
+
+    public bool floating = false;
 
     private GameController mainGC;
     private Rigidbody myRigidBody;
@@ -32,7 +35,7 @@ public class Barrel : MonoBehaviour
     void Update()
     {
         // bobbing around in the wind
-        myRigidBody.AddForce(mainWind.transform.forward * (mainWind.windMain * 0.1f) + Random.insideUnitSphere * mainWind.windTurbulence, ForceMode.Force);
+        myRigidBody.AddForce(mainWind.transform.forward * (mainWind.windMain * 0.5f) + Random.insideUnitSphere * mainWind.windTurbulence, ForceMode.Force);
 
         // fallen off the map, delete them
         if (transform.position.y < -100) Destroy(gameObject);

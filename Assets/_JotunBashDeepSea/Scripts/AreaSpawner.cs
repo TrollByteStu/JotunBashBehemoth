@@ -9,6 +9,7 @@ public class AreaSpawner : MonoBehaviour
 
     public GameObject[] spawnedPrefabs;
     public int spawnAmount = 1;
+    public int spawnMinimum = 0;
 
     public float afterSpawnDisableTimer = 30f;
     public float randomSpawnInhibitor = 360f;
@@ -30,7 +31,7 @@ public class AreaSpawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (transform.childCount < spawnAmount && lastSpawn <= 0f && Random.Range(1, randomSpawnInhibitor) == 1)
+        if (transform.childCount < spawnAmount && lastSpawn <= 0f && Random.Range(1, randomSpawnInhibitor) == 1 || transform.childCount < spawnMinimum )
         {
             var spawned = Instantiate(spawnedPrefabs[Random.Range(0,spawnedPrefabs.Length-1)],
                 new Vector3(Random.Range(spawnMin.x,spawnMax.x), Random.Range(spawnMin.y, spawnMax.y), Random.Range(spawnMin.z, spawnMax.z)), 
