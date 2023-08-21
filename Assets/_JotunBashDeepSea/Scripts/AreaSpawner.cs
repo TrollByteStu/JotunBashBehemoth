@@ -31,7 +31,7 @@ public class AreaSpawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (transform.childCount < spawnAmount && lastSpawn <= 0f && Random.Range(0, randomSpawnInhibitor) == 1 || transform.childCount < spawnMinimum )
+        if (transform.childCount < spawnAmount && lastSpawn <= 0f && Random.Range(0, randomSpawnInhibitor) <= 1 || transform.childCount < spawnMinimum )
         {
             var spawned = Instantiate(spawnedPrefabs[Random.Range(0,spawnedPrefabs.Length-1)],
                 new Vector3(Random.Range(spawnMin.x,spawnMax.x), Random.Range(spawnMin.y, spawnMax.y), Random.Range(spawnMin.z, spawnMax.z)), 
