@@ -6,7 +6,6 @@ public class GameControllerInventory : MonoBehaviour
 {
     public Dictionary<GameObject,int> inventory = new System.Collections.Generic.Dictionary<GameObject,int>();
 
-
     private int reuseIndex;
 
     public void ItemDecrease(GameObject prefab)

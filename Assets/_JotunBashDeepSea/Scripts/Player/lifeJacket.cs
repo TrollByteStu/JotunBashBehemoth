@@ -12,7 +12,7 @@ public class lifeJacket : MonoBehaviour
     {
         if (other.transform.tag == "Water")
         {
-            GetComponent<WateverVolumeFloater>().enabled = true;
+            GetComponent<OurWateverVolumeFloater>().enabled = true;
             myRigidBody.drag = 1f;
             myRigidBody.angularDrag = 1f;
             myRigidBody.isKinematic = false;
