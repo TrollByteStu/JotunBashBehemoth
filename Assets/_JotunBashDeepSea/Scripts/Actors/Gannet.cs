@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Gannet : MonoBehaviour
+public class Gannet : InfBadMath
 {
     // others
     private GameObject _Player;
@@ -18,21 +18,27 @@ public class Gannet : MonoBehaviour
     private int _LandingPointInt;
     private bool _ReadyToLand = false;
     private Vector3 _MovePos;
-    private float _LandingTime;
-
     // current state
     public int _CurrentState = 0;
 
     // orbits
     private bool _RadiusPicked = false;
     private float _Angle;
+    private float _AngleMod;
     private float _Radius;
+    private float _FlightTime;
+    private float _StartFlightTime;
 
     // idle
     private float _AttentionTime;
     private Vector3 _LookDirection;
-    private float onesec;
-    private int frame = 0;
+    public AnimationCurve _JumpCurve;
+    private float _JumpTime;
+    private bool _LookAtPlayer = false;
+    private Vector3 _LookReset;
+    private bool _DontRotate = false;
+    private int _TurnCount;
+    private int _TurnCountLimit;
 
     // screaming
     public int _ScreamingInterval = 10000;
@@ -79,10 +85,16 @@ public class Gannet : MonoBehaviour
         {
             _RadiusPicked = true;
             _Radius = Random.Range(5, 10);
+            _StartFlightTime = Time.time;
+            _FlightTime = Random.Range(10f, 30f);
+            _AngleMod = PlusOrMinus();
         }
-        _Angle += Time.fixedDeltaTime /(_Radius / 2);
-        transform.LookAt( new Vector3(Mathf.Cos(_Angle) * _Radius, 7, Mathf.Sin(_Angle) * _Radius) , Vector3.up);
-        transform.position = new(Mathf.Cos(_Angle) * _Radius, 7, Mathf.Sin(_Angle) * _Radius);
+        if (_StartFlightTime + _FlightTime < Time.time)
+            _CurrentState = 2;
+        _Angle += (Time.fixedDeltaTime /(_Radius / 2)) * _AngleMod;
+        _MovePos = new(Mathf.Cos(_Angle) * _Radius, 7, Mathf.Sin(_Angle) * _Radius);
+        transform.LookAt(_MovePos , Vector3.up);
+        transform.position = Vector3.MoveTowards(transform.position, _MovePos,Time.fixedDeltaTime * 4);
     }
 
     void GannetLand()
@@ -93,7 +105,14 @@ public class Gannet : MonoBehaviour
         _MovePos = _GannetIdlePoints.GetChild(_LandingPointInt).transform.position;
         _MovePos.y = _GannetIdlePoints.GetChild(_LandingPointInt).transform.position.y + _LandingCurve.Evaluate(_LandingCurveTime);
         transform.position = Vector3.MoveTowards(transform.position, _MovePos, Time.fixedDeltaTime * 3);
-        if (Vector3.Distance(transform.position, _MovePos) <= 1)
+        transform.LookAt(Vector3.MoveTowards(transform.position, _MovePos, Time.fixedDeltaTime * 3));
+        if (_GannetIdlePoints.GetChild(_LandingPointInt).childCount != 0)
+        {
+            _CurrentState = 1;
+            _RadiusPicked = false;
+        }
+        
+        if (Vector3.Distance(transform.position, _GannetIdlePoints.GetChild(_LandingPointInt).transform.position) <= 1)
             GannetLanded();
     }
 
@@ -102,27 +121,67 @@ public class Gannet : MonoBehaviour
         _CurrentState = 3;
         transform.parent = _GannetIdlePoints.GetChild(_LandingPointInt);
         transform.localPosition = Vector3.zero;
+        transform.localRotation = Quaternion.identity;
         _Animator.SetBool("Idle", true);
-        _LandingTime = Time.time;
-
+        _MovePos.x = 0;
+        _MovePos.z = 0;
+        _TurnCountLimit = Random.Range(2, 10);
+        _TurnCount = 0;
     }
 
-    void Idle() // need to find a way to slowly rotate it
+    void Idle() // done
     {
         if (_AttentionTime + 10 < Time.time)
         {
-            _LookDirection = GenerateRandomVector2(-10,10);
-            _LookDirection.z = _LookDirection.y;
-            _LookDirection.y = transform.position.y;
-            //transform.LookAt(_LookDirection, Vector3.up);
+            _LookReset = transform.forward;
+            _LookReset.y = transform.position.y;
+            transform.LookAt(_LookReset);
+            _DontRotate = false;
+            if (Random.Range(1,5) >= 3)
+            {
+                _LookDirection = GenerateRandomVector2(-10,10);
+                _LookDirection.z = _LookDirection.y;
+                _LookDirection.y = transform.position.y;
+                _LookAtPlayer = false;
+                //Debug.Log("not player");
+            }
+            else
+            {
+                //Debug.Log("player");
+                _LookAtPlayer = true;
+                _LookDirection = _Player.transform.position;
+            }
+            if (_TurnCount++ == _TurnCountLimit)
+            {
+                _Animator.SetBool("Idle", false);
+                _RadiusPicked = false;
+                _CurrentState = 1;
+                transform.SetParent(null);
+            }
             _AttentionTime = Time.time;
         }
-        if (onesec + 1 < Time.time)
+
+        if (LeftOrRightAngle(BadAngle(_LookDirection), 3) != 0 && !_DontRotate)
         {
-            onesec = Time.time;
+
+
+            _JumpTime += Time.fixedDeltaTime;
+            transform.Rotate(Vector3.up, LeftOrRightAngle(BadAngle(_LookDirection), 3));
+            _MovePos.y = _JumpCurve.Evaluate(_JumpTime);
+            transform.localPosition = _MovePos;
+
         }
-            transform.LookAt(Vector3.Lerp(_LookDirection * 10, transform.forward, Time.fixedDeltaTime)); // dos not work
-        
+        else if (_LookAtPlayer && !_DontRotate)
+        {
+            transform.LookAt(_Player.transform.position);
+            _LookAtPlayer = false;
+            _DontRotate = true;
+        }
+        else
+        {
+            _JumpTime = 0;
+            transform.localPosition = Vector3.zero;
+        }
 
     }
 
@@ -131,20 +190,6 @@ public class Gannet : MonoBehaviour
         return new Vector2(Random.Range(min, max), Random.Range(min, max));
     }
 
-    float PlusOrMinus()
-    {
-        if (Random.Range(1, 2) == 1)
-            return 1;
-        else
-            return -1;
-    }
-    float PlusOrMinus(float Number)
-    {
-        if (Random.Range(1, 2) == 1)
-            return Number;
-        else
-            return -Number;
-    }
 
     void FixedUpdate()
     {
