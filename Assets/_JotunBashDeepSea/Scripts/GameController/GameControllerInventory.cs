@@ -66,7 +66,7 @@ public class GameControllerInventory : MonoBehaviour
             int i = 0;
             foreach (KeyValuePair<GameObject, int> item in inventory)
             {
-                debugPrefabs[i++] = item.Key;
+                debugPrefabs[i] = item.Key;
                 debugAmounts[i++] = item.Value;
             }  
         }

@@ -19,6 +19,7 @@ public class Barrel : MonoBehaviour
     {
         if ( collision.transform.tag == "Raft")
         { // this has been picked up, add to inventory
+            mainGC.gcInventory.itemAdd(AddInventoryPrefab, AddInventoryAmount);
             Destroy(gameObject);
         }
     }
