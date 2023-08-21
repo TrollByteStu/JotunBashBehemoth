@@ -7156,6 +7156,52 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   WaterVolumeHelper: {fileID: 0}
+--- !u!1 &2880678656389083542
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1621215960912608101}
+  - component: {fileID: 6386221511694332514}
+  m_Layer: 0
+  m_Name: BlueSharkTeddySpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1621215960912608101
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2880678656389083542}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -1.7926404, y: 0.557, z: 0.20712364}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8420354838528476742}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6386221511694332514
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2880678656389083542}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a03d03e62660b044eb3d5c84fe8357a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnedPrefab: {fileID: 6916742277770698165, guid: c876082e2e5df914f9ed78cb07f132d0, type: 3}
+  useInventoryToSpawn: 1
 --- !u!1 &2897736273244645421
 GameObject:
   m_ObjectHideFlags: 0
@@ -17037,6 +17083,7 @@ Transform:
   - {fileID: 7904997589965101175}
   - {fileID: 7151152087535590199}
   - {fileID: 3736412646848254516}
+  - {fileID: 1621215960912608101}
   - {fileID: 4927195630832762568}
   - {fileID: 7038688208908537011}
   m_Father: {fileID: 6785270045119047173}

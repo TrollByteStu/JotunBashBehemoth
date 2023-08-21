@@ -83,7 +83,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AddInventoryPrefab: {fileID: 5192282367127467434, guid: c32452edeeb0c904498354849a6d831b, type: 3}
-  AddInventoryAmount: 10
+  AddInventoryAmount: 15
   floating: 0
 --- !u!54 &1715454161071742477
 Rigidbody:
