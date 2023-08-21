@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class PassiveMoby : MonoBehaviour
+public class PassiveMoby : InfBadMath
 {
     public GameObject _myPlayer;
     public GameObject _Raft;
@@ -103,21 +103,6 @@ public class PassiveMoby : MonoBehaviour
             _Angle += 360f;
         _AngleDirectionMod = PlusOrMinus();
         _TimeSinceSurface = Time.time;
-    }
-
-    float PlusOrMinus()
-    {
-        if (Random.Range(1, 2) == 1)
-            return 1;
-        else
-            return -1;
-    }
-    float PlusOrMinus(float Number)
-    {
-        if (Random.Range(1, 2) == 1)
-            return Number;
-        else
-            return -Number;
     }
 
     void MobyEmerge()

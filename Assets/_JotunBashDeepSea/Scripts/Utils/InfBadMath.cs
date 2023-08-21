@@ -66,11 +66,9 @@ public class InfBadMath : MonoBehaviour
 
     }
 
-
-
     protected float PlusOrMinus()
     {
-        if (Random.Range(1, 2) == 1)
+        if (Random.Range(1, 3) == 1)
             return 1;
         else
             return -1;
@@ -78,7 +76,7 @@ public class InfBadMath : MonoBehaviour
 
     protected float PlusOrMinus(float f)
     {
-        if (Random.Range(1, 2) == 1)
+        if (Random.Range(1, 3) == 1)
             return f;
         else
             return -f;
@@ -86,7 +84,7 @@ public class InfBadMath : MonoBehaviour
 
     protected int PlusOrMinus(int i)
     {
-        if (Random.Range(1, 2) == 1)
+        if (Random.Range(1, 3) == 1)
             return i;
         else
             return -i;
