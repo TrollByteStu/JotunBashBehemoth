@@ -68,18 +68,19 @@ public class Gannet : InfBadMath
 
     void FindLandingPoint()
     {
-        _LandingPointInt = Random.Range(1, _GannetIdlePoints.childCount);
+
+        _LandingPointInt = Random.Range(0, _GannetIdlePoints.childCount);
         if (_GannetIdlePoints.GetChild(_LandingPointInt).childCount == 0)
         {
             _ReadyToLand = true;
         }
-        else
+        else if (Random.Range(1,10) == 1)
         {
             FindLandingPoint();
         }
     }
 
-    void CircleRaft() // defo not done
+    void CircleRaft()
     {
         if (!_RadiusPicked)
         {
@@ -143,11 +144,9 @@ public class Gannet : InfBadMath
                 _LookDirection.z = _LookDirection.y;
                 _LookDirection.y = transform.position.y;
                 _LookAtPlayer = false;
-                //Debug.Log("not player");
             }
             else
             {
-                //Debug.Log("player");
                 _LookAtPlayer = true;
                 _LookDirection = _Player.transform.position;
             }
@@ -157,14 +156,13 @@ public class Gannet : InfBadMath
                 _RadiusPicked = false;
                 _CurrentState = 1;
                 transform.SetParent(null);
+                return;
             }
             _AttentionTime = Time.time;
         }
 
         if (LeftOrRightAngle(BadAngle(_LookDirection), 3) != 0 && !_DontRotate)
         {
-
-
             _JumpTime += Time.fixedDeltaTime;
             transform.Rotate(Vector3.up, LeftOrRightAngle(BadAngle(_LookDirection), 3));
             _MovePos.y = _JumpCurve.Evaluate(_JumpTime);
@@ -211,6 +209,4 @@ public class Gannet : InfBadMath
                 break;
         }
     }
-
-
 }
