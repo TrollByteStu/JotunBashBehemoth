@@ -22,14 +22,27 @@ public class GlassBottle : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.transform.tag == "Ammo")
+        if (collision.transform.tag == "Ammo" || myRigidBody.velocity.magnitude > 4f)
         {
             wholeBottle.SetActive(false);
             fracturedBottle.SetActive(true);
             Destroy(gameObject, 5f);
         }
+        Debug.Log("Glass hit something at speed : "+myRigidBody.velocity.magnitude.ToString());
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.transform.tag == "Water")
+        {
+            GameObject spawn;
+            Quaternion spawnDirection;
+            spawn = GameObject.Find("GameController").GetComponent<GameController>().gcResources.Splashes[0];
+            spawnDirection = Quaternion.identity;
+            GameObject decal = Instantiate(spawn, transform.position, spawnDirection);
+            Destroy(decal, 4f);
+        }
+    }
     // Start is called before the first frame update
     void Start()
     {
