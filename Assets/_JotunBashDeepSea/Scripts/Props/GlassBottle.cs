@@ -22,12 +22,13 @@ public class GlassBottle : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.transform.tag == "Ammo")
+        if (collision.transform.tag == "Ammo" || myRigidBody.velocity.magnitude > 4f)
         {
             wholeBottle.SetActive(false);
             fracturedBottle.SetActive(true);
             Destroy(gameObject, 5f);
         }
+        Debug.Log("Glass hit something at speed : "+myRigidBody.velocity.magnitude.ToString());
     }
 
     private void OnTriggerEnter(Collider other)
