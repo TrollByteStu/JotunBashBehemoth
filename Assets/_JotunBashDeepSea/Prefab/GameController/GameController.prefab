@@ -48,11 +48,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2270cc3059e5afe4d83cbbbd399ffd97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gcResources: {fileID: 6091956256042623362}
-  gcWeather: {fileID: 8166171912722226122}
   player: {fileID: 0}
   _GannetIdlePoints: {fileID: 0}
   activeBait: []
+  gcResources: {fileID: 6091956256042623362}
+  gcWeather: {fileID: 8166171912722226122}
+  gcInventory: {fileID: 0}
+  gcPointsAndDeaths: {fileID: 0}
 --- !u!114 &6091956256042623362
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -86,7 +88,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myWeatherAssets: {fileID: 0}
-  sliderWind: 0
+  mainWind: {fileID: 0}
+  sliderWind: 0.25
 --- !u!114 &7352066247059187421
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -99,6 +102,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20e273c40204b474c9b48573dcca4c9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  debugPrefabs: []
+  debugAmounts: 
 --- !u!114 &1124523438304836449
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -111,3 +116,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1de5de91a9766b64f98037cb35ac30b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DeathEatenByWhale: 0

@@ -9,7 +9,7 @@ public class GameControllerWeather : MonoBehaviour
     public WindZone mainWind;
 
     // These slider work from 0(calm day at sea) to 1(Massive biblical storm) 
-    public float sliderWind = 0f;
+    public float sliderWind = 0.25f;
 
     // Start is called before the first frame update
     void Awake()
@@ -20,7 +20,7 @@ public class GameControllerWeather : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        sliderWind = Mathf.Clamp( sliderWind + Time.deltaTime * 0.01f, 0f, 1f);
+        sliderWind = Mathf.Clamp( sliderWind + Time.deltaTime * 0.001f, 0f, 1f);
         myWeatherAssets.UpdateWind( sliderWind );
     }
 }
