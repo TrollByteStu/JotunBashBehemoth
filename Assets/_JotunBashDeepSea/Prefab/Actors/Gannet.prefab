@@ -1566,7 +1566,9 @@ GameObject:
   m_Component:
   - component: {fileID: 5548659547092534762}
   - component: {fileID: 2059481203460603292}
+  - component: {fileID: 4266379508692784010}
   - component: {fileID: 2450293857599629609}
+  - component: {fileID: 5382812050717074339}
   m_Layer: 0
   m_Name: Gannet
   m_TagString: Untagged
@@ -1653,6 +1655,35 @@ MonoBehaviour:
     m_RotationOrder: 4
   _ScreamingInterval: 1000
   _ScreamCountDown: 0
+  _Dead: 0
+  _FeatherExplosion: {fileID: 4766095639271237258, guid: d8b0cd794cd836b4dbe5a34f04527602, type: 3}
+--- !u!54 &4266379508692784010
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5907204676904888687}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!82 &2450293857599629609
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1749,6 +1780,27 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!135 &5382812050717074339
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5907204676904888687}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.13571489
+  m_Center: {x: 0, y: 0.0392915, z: 0.04642339}
 --- !u!1 &5948350149213445588
 GameObject:
   m_ObjectHideFlags: 0

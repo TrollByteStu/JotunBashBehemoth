@@ -13,6 +13,8 @@ public class BulletGeneric : MonoBehaviour
         if (collision.transform.tag == "Weapon") return;
         if (collision.transform.CompareTag("Boss") && collision.gameObject.GetComponent<PassiveMoby>())
             collision.gameObject.GetComponent<PassiveMoby>().MobyHit(_Damage);
+        if (collision.gameObject.GetComponent<Gannet>())
+            collision.gameObject.GetComponent<Gannet>().OnDeath();
         GameObject spawn;
         Quaternion spawnDirection;
         if (collision.transform.tag == "Water" )

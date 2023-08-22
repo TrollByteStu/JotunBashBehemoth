@@ -5,6 +5,7 @@ using UnityEngine;
 public class Gannet : InfBadMath
 {
     // others
+    private Rigidbody _Rigidbody;
     private GameObject _Player;
     private Animator _Animator;
     private AudioSource _AudioSource;
@@ -45,12 +46,14 @@ public class Gannet : InfBadMath
     public int _ScreamCountDown;
 
     // death
+    public bool _Dead = false;
     public GameObject _FeatherExplosion;
 
     private void Start()
     {
         _GannetIdlePoints = GameController.Instance._GannetIdlePoints.transform;
         _Player = GameController.Instance.player;
+        _Rigidbody = GetComponent<Rigidbody>();
         _Animator = transform.GetComponentInChildren<Animator>();
         if (_Animator == null)
             Debug.LogError("could not find Animator on " + gameObject.name);
@@ -192,25 +195,45 @@ public class Gannet : InfBadMath
         return new Vector2(Random.Range(min, max), Random.Range(min, max));
     }
 
+    public void OnDeath()
+    {
+        var Explosion = Instantiate(_FeatherExplosion,transform);
+        Destroy(Explosion, 2);
+        _Animator.Play("Dive");
+        _Rigidbody.isKinematic = false;
+    }
+
+    public void OnExplosion()
+    {
+        var Explosion = Instantiate(_FeatherExplosion, transform);
+        Destroy(Explosion, 2);
+        Destroy(gameObject);
+    }
 
     void FixedUpdate()
     {
-        if ( Random.Range(1,_ScreamCountDown--) == 1 && !_AudioSource.isPlaying)
+        if (!_Dead)
         {
-            _AudioSource.Play();
-            _ScreamCountDown = _ScreamingInterval;
+            if ( Random.Range(1,_ScreamCountDown--) == 1 && !_AudioSource.isPlaying)
+            {
+                _AudioSource.Play();
+                _ScreamCountDown = _ScreamingInterval;
+            }
+            switch (_CurrentState)
+            {
+                case 1:
+                    CircleRaft();
+                    break;
+                case 2:
+                    GannetLand();
+                    break;
+                case 3:
+                    Idle();
+                    break;
+            }
         }
-        switch (_CurrentState)
-        {
-            case 1:
-                CircleRaft();
-                break;
-            case 2:
-                GannetLand();
-                break;
-            case 3:
-                Idle();
-                break;
-        }
+
+        if (transform.position.y <= -5)
+            Destroy(gameObject);
     }
 }
