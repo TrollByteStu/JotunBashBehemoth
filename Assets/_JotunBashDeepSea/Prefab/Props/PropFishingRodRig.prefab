@@ -272,22 +272,22 @@ CharacterJoint:
     spring: 10000
     damper: 1
   m_LowTwistLimit:
-    limit: -5
+    limit: 2
     bounciness: 1
     contactDistance: 0
   m_HighTwistLimit:
-    limit: 5
+    limit: 2
     bounciness: 1
     contactDistance: 0
   m_SwingLimitSpring:
     spring: 10000
     damper: 1
   m_Swing1Limit:
-    limit: 5
+    limit: 3
     bounciness: 1
     contactDistance: 0
   m_Swing2Limit:
-    limit: 5
+    limit: 3
     bounciness: 1
     contactDistance: 0
   m_EnableProjection: 0
@@ -434,22 +434,22 @@ CharacterJoint:
     spring: 10000
     damper: 1
   m_LowTwistLimit:
-    limit: -5
+    limit: 2
     bounciness: 1
     contactDistance: 0
   m_HighTwistLimit:
-    limit: 5
+    limit: 2
     bounciness: 1
     contactDistance: 0
   m_SwingLimitSpring:
     spring: 10000
     damper: 1
   m_Swing1Limit:
-    limit: 5
+    limit: 3
     bounciness: 1
     contactDistance: 0
   m_Swing2Limit:
-    limit: 5
+    limit: 3
     bounciness: 1
     contactDistance: 0
   m_EnableProjection: 0
@@ -564,22 +564,22 @@ CharacterJoint:
     spring: 10000
     damper: 1
   m_LowTwistLimit:
-    limit: -5
+    limit: 2
     bounciness: 1
     contactDistance: 0
   m_HighTwistLimit:
-    limit: 5
+    limit: 2
     bounciness: 1
     contactDistance: 0
   m_SwingLimitSpring:
     spring: 10000
     damper: 1
   m_Swing1Limit:
-    limit: 5
+    limit: 3
     bounciness: 1
     contactDistance: 0
   m_Swing2Limit:
-    limit: 5
+    limit: 3
     bounciness: 1
     contactDistance: 0
   m_EnableProjection: 0
@@ -695,22 +695,22 @@ CharacterJoint:
     spring: 10000
     damper: 1
   m_LowTwistLimit:
-    limit: -5
+    limit: 2
     bounciness: 1
     contactDistance: 0
   m_HighTwistLimit:
-    limit: 5
+    limit: 2
     bounciness: 1
     contactDistance: 0
   m_SwingLimitSpring:
     spring: 10000
     damper: 1
   m_Swing1Limit:
-    limit: 5
+    limit: 3
     bounciness: 1
     contactDistance: 0
   m_Swing2Limit:
-    limit: 5
+    limit: 3
     bounciness: 1
     contactDistance: 0
   m_EnableProjection: 0
@@ -980,22 +980,22 @@ CharacterJoint:
     spring: 10000
     damper: 1
   m_LowTwistLimit:
-    limit: -5
+    limit: 2
     bounciness: 1
     contactDistance: 0
   m_HighTwistLimit:
-    limit: 5
+    limit: 2
     bounciness: 1
     contactDistance: 0
   m_SwingLimitSpring:
     spring: 10000
     damper: 1
   m_Swing1Limit:
-    limit: 5
+    limit: 3
     bounciness: 1
     contactDistance: 0
   m_Swing2Limit:
-    limit: 5
+    limit: 3
     bounciness: 1
     contactDistance: 0
   m_EnableProjection: 0
@@ -1146,22 +1146,22 @@ CharacterJoint:
     spring: 10000
     damper: 1
   m_LowTwistLimit:
-    limit: -5
+    limit: 2
     bounciness: 1
     contactDistance: 0
   m_HighTwistLimit:
-    limit: 5
+    limit: 2
     bounciness: 1
     contactDistance: 0
   m_SwingLimitSpring:
     spring: 10000
     damper: 1
   m_Swing1Limit:
-    limit: 5
+    limit: 3
     bounciness: 1
     contactDistance: 0
   m_Swing2Limit:
-    limit: 5
+    limit: 3
     bounciness: 1
     contactDistance: 0
   m_EnableProjection: 0
@@ -1309,22 +1309,22 @@ CharacterJoint:
     spring: 10000
     damper: 1
   m_LowTwistLimit:
-    limit: -5
+    limit: 2
     bounciness: 1
     contactDistance: 0
   m_HighTwistLimit:
-    limit: 5
+    limit: 2
     bounciness: 1
     contactDistance: 0
   m_SwingLimitSpring:
     spring: 10000
     damper: 1
   m_Swing1Limit:
-    limit: 5
+    limit: 3
     bounciness: 1
     contactDistance: 0
   m_Swing2Limit:
-    limit: 5
+    limit: 3
     bounciness: 1
     contactDistance: 0
   m_EnableProjection: 0
@@ -1724,22 +1724,22 @@ CharacterJoint:
     spring: 10000
     damper: 1
   m_LowTwistLimit:
-    limit: -5
+    limit: 2
     bounciness: 1
     contactDistance: 0
   m_HighTwistLimit:
-    limit: 5
+    limit: 2
     bounciness: 1
     contactDistance: 0
   m_SwingLimitSpring:
     spring: 10000
     damper: 1
   m_Swing1Limit:
-    limit: 5
+    limit: 3
     bounciness: 1
     contactDistance: 0
   m_Swing2Limit:
-    limit: 5
+    limit: 3
     bounciness: 1
     contactDistance: 0
   m_EnableProjection: 0
