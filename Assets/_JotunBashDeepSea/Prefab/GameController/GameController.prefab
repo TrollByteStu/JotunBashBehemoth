@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 8166171912722226122}
   - component: {fileID: 7352066247059187421}
   - component: {fileID: 1124523438304836449}
+  - component: {fileID: 957186878230388222}
   m_Layer: 0
   m_Name: GameController
   m_TagString: Untagged
@@ -117,3 +118,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DeathEatenByWhale: 0
+--- !u!114 &957186878230388222
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2990120566836365814}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13c919b384692094eb0f02e349a30bc9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _LastSpawnTime: 0
+  _SpawnDelay: 10
+  _GannetPrefab: {fileID: 5907204676904888687, guid: 6696bf6ee4edb5a49811ee0f8bdd4a4d, type: 3}
+  _StartSpawn: 5
+  _MaxGannets: 10
+  _Gannets: []

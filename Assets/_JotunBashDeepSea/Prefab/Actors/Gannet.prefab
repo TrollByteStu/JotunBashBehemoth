@@ -1653,7 +1653,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 0
     m_RotationOrder: 4
-  _ScreamingInterval: 1000
+  _ScreamingInterval: 3000
   _ScreamCountDown: 0
   _Dead: 0
   _FeatherExplosion: {fileID: 4766095639271237258, guid: d8b0cd794cd836b4dbe5a34f04527602, type: 3}
