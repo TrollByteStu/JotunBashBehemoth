@@ -4,37 +4,23 @@ using UnityEngine;
 
 public class ClothWindEffect : MonoBehaviour
 {
-    private Cloth clothMod;
-    private Vector3 TargetWindForce;
+    public float windScale = 2f;
 
-    public Vector3 MaxWindForce;
-    public float WindForceIntervals = 1;
-    public Vector3 NegativeWindForce;
+    private Cloth clothMod;
+    private GameController mainGC;
+    private WindZone mainWind;
 
     // Use this for initialization
     void Start()
     {
+        mainGC = GameObject.Find("GameController").GetComponent<GameController>();
         clothMod = this.GetComponent<Cloth>();
-        clothMod.externalAcceleration = NegativeWindForce;
-        TargetWindForce = MaxWindForce;
-        if (WindForceIntervals <= 0)
-        {
-            WindForceIntervals = 0.1f;
-        }
+        mainWind = mainGC.gcWeather.mainWind;
     }
 
     // Update is called once per frame
     void Update()
     {
-        clothMod.externalAcceleration = Vector3.MoveTowards(clothMod.externalAcceleration, TargetWindForce, WindForceIntervals * Time.deltaTime);
-
-        if (clothMod.externalAcceleration == MaxWindForce)
-        {
-            TargetWindForce = NegativeWindForce;
-        }
-        if (clothMod.externalAcceleration == NegativeWindForce)
-        {
-            TargetWindForce = MaxWindForce;
-        }
+        clothMod.externalAcceleration = mainWind.transform.forward * (mainWind.windMain * windScale) + Random.insideUnitSphere * mainWind.windTurbulence;
     }
 }
