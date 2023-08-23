@@ -4,18 +4,26 @@ using UnityEngine;
 
 public class GannetHandler : MonoBehaviour
 {
-    public float _LastSpawnTime;
-    public float _SpawnDelay;
-    public GameObject _GannetPrefab;
     public int _StartSpawn;
     public int _MaxGannets;
+    public float _LastSpawnTime;
+    public float _SpawnDelay;
     public List<GameObject> _Gannets;
+    public GameObject _GannetPrefab;
+    public GameObject _FeatherExplosion;
 
     Vector3 RandomSpawnVector(float radius)
     {
         float angle = Random.Range(0f, 360f);
 
         return new Vector3(Mathf.Sin(angle)* radius, 7 , Mathf.Cos(angle)* radius);
+    }
+
+    public void KillGannet(GameObject go)
+    {
+        var Explosion = Instantiate(_FeatherExplosion, go.transform);
+        Destroy(Explosion, 2);
+        _Gannets.Remove(go);
     }
 
     private void Start()

@@ -6,8 +6,10 @@ public class GameController : MonoBehaviour
 {
     private static GameController _instance;
     public GameObject player;
-    public Transform _GannetIdlePoints;
 
+    // Gannets
+    public Transform _GannetIdlePoints;
+    public GannetHandler _GannetHandler;
 
     public List<Bait> activeBait;
 
@@ -43,6 +45,7 @@ public class GameController : MonoBehaviour
     private void Awake()
     {
         _instance = this;
+        _GannetHandler = GetComponent<GannetHandler>();
         gcResources = GetComponent<GameControllerResources>();
         gcWeather = GetComponent<GameControllerWeather>();
         gcInventory = GetComponent<GameControllerInventory>();

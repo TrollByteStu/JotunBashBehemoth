@@ -47,7 +47,7 @@ public class Gannet : InfBadMath
 
     // death
     public bool _Dead = false;
-    public GameObject _FeatherExplosion;
+    public bool _Debug = false;
 
     private void Start()
     {
@@ -197,16 +197,16 @@ public class Gannet : InfBadMath
 
     public void OnDeath()
     {
-        var Explosion = Instantiate(_FeatherExplosion,transform);
-        Destroy(Explosion, 2);
+        GameController.Instance._GannetHandler.KillGannet(gameObject);
         _Animator.Play("Dive");
         _Rigidbody.isKinematic = false;
+        transform.SetParent(null);
+
     }
 
     public void OnExplosion()
     {
-        var Explosion = Instantiate(_FeatherExplosion, transform);
-        Destroy(Explosion, 2);
+        GameController.Instance._GannetHandler.KillGannet(gameObject);
         Destroy(gameObject);
     }
 
