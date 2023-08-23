@@ -60,8 +60,6 @@ public class Gannet : InfBadMath
         _AudioSource = GetComponent<AudioSource>();
         if (_AudioSource == null)
             Debug.LogError("could not find AudioSource on " + gameObject.name);
-        else if (_AudioSource.clip == null)
-            Debug.LogError("could not find AudioClip on " + gameObject.name);
         _ScreamCountDown = _ScreamingInterval;
     }
 
@@ -199,6 +197,8 @@ public class Gannet : InfBadMath
     {
         GameController.Instance._GannetHandler.KillGannet(gameObject);
         _Animator.Play("Dive");
+        _AudioSource.clip = GameController.Instance._GannetHandler._PainSounds[Random.Range(0, GameController.Instance._GannetHandler._PainSounds.Count)];
+        _AudioSource.Play();
         _Rigidbody.isKinematic = false;
         transform.SetParent(null);
 
@@ -216,6 +216,7 @@ public class Gannet : InfBadMath
         {
             if ( Random.Range(1,_ScreamCountDown--) == 1 && !_AudioSource.isPlaying)
             {
+                _AudioSource.clip = GameController.Instance._GannetHandler._RandomSounds[Random.Range(0, GameController.Instance._GannetHandler._RandomSounds.Count)];
                 _AudioSource.Play();
                 _ScreamCountDown = _ScreamingInterval;
             }
@@ -231,6 +232,11 @@ public class Gannet : InfBadMath
                     Idle();
                     break;
             }
+        }
+        else if (_Dead && !_Debug)
+        {
+            _Debug = true;
+            OnDeath();
         }
 
         if (transform.position.y <= -5)

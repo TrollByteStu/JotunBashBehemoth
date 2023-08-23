@@ -51,6 +51,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   _GannetIdlePoints: {fileID: 0}
+  _GannetHandler: {fileID: 0}
   activeBait: []
   gcResources: {fileID: 6091956256042623362}
   gcWeather: {fileID: 8166171912722226122}
@@ -130,9 +131,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13c919b384692094eb0f02e349a30bc9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _LastSpawnTime: 0
-  _SpawnDelay: 10
-  _GannetPrefab: {fileID: 5907204676904888687, guid: 6696bf6ee4edb5a49811ee0f8bdd4a4d, type: 3}
   _StartSpawn: 5
   _MaxGannets: 10
+  _LastSpawnTime: 0
+  _SpawnDelay: 10
   _Gannets: []
+  _GannetPrefab: {fileID: 5907204676904888687, guid: 6696bf6ee4edb5a49811ee0f8bdd4a4d, type: 3}
+  _FeatherExplosion: {fileID: 4766095639271237258, guid: d8b0cd794cd836b4dbe5a34f04527602, type: 3}
+  _RandomSounds:
+  - {fileID: 8300000, guid: 4297545717dfc8a4da62f24c4af76754, type: 3}
+  _PainSounds:
+  - {fileID: 8300000, guid: b45cc23ece828d048b7e2a0db16233f5, type: 3}
