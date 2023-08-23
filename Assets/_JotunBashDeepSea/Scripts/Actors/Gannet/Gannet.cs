@@ -5,7 +5,7 @@ using UnityEngine;
 public class Gannet : InfBadMath
 {
     // others
-    private Rigidbody _Rigidbody;
+    public List<Rigidbody> _Rigidbodys;
     private GameObject _Player;
     private Animator _Animator;
     private AudioSource _AudioSource;
@@ -53,8 +53,11 @@ public class Gannet : InfBadMath
     {
         _GannetIdlePoints = GameController.Instance._GannetIdlePoints.transform;
         _Player = GameController.Instance.player;
-        _Rigidbody = GetComponent<Rigidbody>();
-        _Animator = transform.GetComponentInChildren<Animator>();
+        Rigidbody[] array = GetComponentsInChildren<Rigidbody>();
+        _Rigidbodys.AddRange(array);
+        foreach (Rigidbody rb in _Rigidbodys)
+            rb.isKinematic = true;
+        _Animator = GetComponentInChildren<Animator>();
         if (_Animator == null)
             Debug.LogError("could not find Animator on " + gameObject.name);
         _AudioSource = GetComponent<AudioSource>();
@@ -196,11 +199,13 @@ public class Gannet : InfBadMath
     public void OnDeath()
     {
         GameController.Instance._GannetHandler.KillGannet(gameObject);
-        _Animator.Play("Dive");
         _AudioSource.clip = GameController.Instance._GannetHandler._PainSounds[Random.Range(0, GameController.Instance._GannetHandler._PainSounds.Count)];
         _AudioSource.Play();
-        _Rigidbody.isKinematic = false;
+        _Animator.enabled = false;
+        foreach (Rigidbody rb in _Rigidbodys)
+            rb.isKinematic = false;
         transform.SetParent(null);
+        Destroy(gameObject, 20);
 
     }
 

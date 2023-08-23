@@ -55,9 +55,9 @@ public class spear : MonoBehaviour
                 transform.SetParent(collision.transform);
                 myRB.isKinematic = true;
             }
-            else if (collision.gameObject.GetComponent<Gannet>())
+            else if (collision.gameObject.GetComponentInParent<Gannet>())
             {
-                collision.gameObject.GetComponent<Gannet>().OnExplosion();
+                collision.gameObject.GetComponentInParent<Gannet>().OnExplosion();
 
             }
             else
