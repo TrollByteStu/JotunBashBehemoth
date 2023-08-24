@@ -50,12 +50,17 @@ public class PassiveMoby : InfBadMath
     public Transform blowHoleTransform;
     public bool blowDisabled = false;
 
+    // sounds
+    public AudioClip MobyDickAttackSound;
+    private AudioSource myAS;
+
     void Start()
     {
         if (_myPlayer == null)
             _myPlayer = GameController.Instance.player;
         GenerateCords(0);
         mainGC = GameObject.Find("GameController").GetComponent<GameController>();
+        myAS = GetComponent<AudioSource>();
     }
         // generate 2 random number on a grid 
         // check if the numbers are too close to player
@@ -132,7 +137,6 @@ public class PassiveMoby : InfBadMath
         {
             MobyDive();
         }
-
     }
 
     void MobyDive()
@@ -169,6 +173,9 @@ public class PassiveMoby : InfBadMath
         transform.position += transform.forward * -10;
         _MobyPlaced = true;
         _AnimationTimer = 0;
+        myAS.clip = MobyDickAttackSound;
+        myAS.volume = 1f;
+        myAS.Play();
     }
 
     void MobySceneChange()

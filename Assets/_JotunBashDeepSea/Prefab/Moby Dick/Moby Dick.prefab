@@ -648,10 +648,10 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 5acefd3f5e4eeec4fb67ae69e77af73a, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 840dc0600c861c140b520ecff4395216, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.5
-  m_Pitch: 1
+  m_Volume: 0.75
+  m_Pitch: 0.5
   Loop: 1
   Mute: 0
   Spatialize: 0
@@ -790,6 +790,8 @@ MonoBehaviour:
     m_RotationOrder: 4
   _HitPoints: 3
   blowHoleTransform: {fileID: 8958887108541430180}
+  blowDisabled: 0
+  MobyDickAttackSound: {fileID: 8300000, guid: 9835cce8c862bc047a68ca132bcb81f1, type: 3}
 --- !u!1 &4043817891371087848
 GameObject:
   m_ObjectHideFlags: 0
