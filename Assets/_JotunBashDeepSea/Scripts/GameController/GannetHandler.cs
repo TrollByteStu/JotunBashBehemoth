@@ -25,7 +25,7 @@ public class GannetHandler : MonoBehaviour
 
     public void KillGannet(GameObject go)
     {
-        var Explosion = Instantiate(_FeatherExplosion, go.transform);
+        var Explosion = Instantiate(_FeatherExplosion, go.transform.position, go.transform.rotation);
         Destroy(Explosion, 2);
         _Gannets.Remove(go);
     }
