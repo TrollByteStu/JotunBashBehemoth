@@ -48,7 +48,7 @@ public class PassiveMoby : InfBadMath
 
     // blowhole logic
     public Transform blowHoleTransform;
-    private float blowDisableTimer = 0f;
+    public bool blowDisabled = false;
 
     void Start()
     {
@@ -115,7 +115,7 @@ public class PassiveMoby : InfBadMath
 
     void MobyBlow()
     { // when whale surfaces, spawn blow particles and wait before it will do this again..
-        blowDisableTimer = 30f;
+        blowDisabled = true;
         var blowEffect = Instantiate(mainGC.gcResources.BlowHoleSprays[0], blowHoleTransform.position, blowHoleTransform.rotation, blowHoleTransform);
         Destroy(blowEffect, 10f);
     }
@@ -127,8 +127,7 @@ public class PassiveMoby : InfBadMath
         _MobyMovePoint = new Vector3(Mathf.Sin(_Angle) * _Radius, _EmergingCurve.Evaluate(_AnimationTimer), Mathf.Cos(_Angle) * _Radius);
         transform.LookAt(_MobyMovePoint);
         transform.position = _MobyMovePoint;
-        if (blowDisableTimer < 0f) MobyBlow();
-            else blowDisableTimer -= Time.deltaTime;
+        if (!blowDisabled && transform.position.y > -2.5f) MobyBlow();
         if (_TimeSinceSurface + _SurfaceTime < Time.time)
         {
             MobyDive();
@@ -146,6 +145,7 @@ public class PassiveMoby : InfBadMath
 
     void MobySink()
     {
+        blowDisabled = false;
         _AnimationTimer -= Time.deltaTime;
         _Angle += (Time.fixedDeltaTime * _AngleChangeSpeed * _AngleDirectionMod) / _Radius;
         _MobyMovePoint = new Vector3(Mathf.Sin(_Angle) * _Radius, _EmergingCurve.Evaluate(_AnimationTimer), Mathf.Cos(_Angle) * _Radius);

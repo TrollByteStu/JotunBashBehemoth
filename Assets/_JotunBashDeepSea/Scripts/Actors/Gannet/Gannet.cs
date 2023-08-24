@@ -49,7 +49,7 @@ public class Gannet : InfBadMath
     public bool _Dead = false;
     public GameObject _FeatherExplosion;
 
-    private void Start()
+    private void Awake()
     {
         _GannetIdlePoints = GameController.Instance._GannetIdlePoints.transform;
         _Player = GameController.Instance.player;
