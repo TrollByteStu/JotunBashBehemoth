@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class FishingRod : MonoBehaviour
 {
+    public GameObject BobberPrefab;
+    public Rigidbody AttachmentRigidBody;
+
 
     public bool beingHeld = false;
     public bool beenPickedUp = false;
 
-    public fishingBobber myBobber;
-
+    private fishingBobber myBobber;
     private Rigidbody myRigidBody;
 
     public void eventSelect()
@@ -36,11 +38,19 @@ public class FishingRod : MonoBehaviour
         myBobber.eventDeactiveate();
     }
 
+    void SpawnFishingBobber()
+    {
+        var bobber = Instantiate(BobberPrefab, AttachmentRigidBody.transform.position, Quaternion.identity);
+        myBobber = bobber.GetComponent<fishingBobber>();
+        bobber.GetComponent<SpringJoint>().connectedBody = AttachmentRigidBody;
+        bobber.GetComponentInChildren<StringHandler>().stringAttach = AttachmentRigidBody;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
         myRigidBody = GetComponent<Rigidbody>();
-        myBobber = GetComponentInChildren<fishingBobber>();
+        SpawnFishingBobber();
     }
 
     // Update is called once per frame

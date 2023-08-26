@@ -1431,7 +1431,6 @@ Transform:
   m_Children:
   - {fileID: 4783438864515078675}
   - {fileID: 5013617496843348477}
-  - {fileID: 7066051513056001744}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &878830213678888629
@@ -1590,7 +1589,19 @@ MonoBehaviour:
         m_CallState: 2
   m_Deactivated:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 7432711399998718115}
+        m_TargetAssemblyTypeName: FishingRod, Assembly-CSharp
+        m_MethodName: eventDeactiveate
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_StartingHoverFilters: []
   m_StartingSelectFilters: []
   m_StartingInteractionStrengthFilters: []
@@ -1679,6 +1690,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a39e819ce22b5c34286819b6367c4d99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BobberPrefab: {fileID: 6509872030178261282, guid: 5d10c22f3454f60499dcfc4985bc8cba, type: 3}
+  AttachmentRigidBody: {fileID: 3712493485242798136}
   beingHeld: 0
   beenPickedUp: 0
   myBobber: {fileID: 0}
@@ -1813,101 +1826,3 @@ CharacterJoint:
   m_EnablePreprocessing: 1
   m_MassScale: 1
   m_ConnectedMassScale: 1
---- !u!1001 &8016743743065496137
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 9175448573344564509}
-    m_Modifications:
-    - target: {fileID: 527767943696487728, guid: 5d10c22f3454f60499dcfc4985bc8cba, type: 3}
-      propertyPath: m_Damper
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 527767943696487728, guid: 5d10c22f3454f60499dcfc4985bc8cba, type: 3}
-      propertyPath: m_Spring
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 527767943696487728, guid: 5d10c22f3454f60499dcfc4985bc8cba, type: 3}
-      propertyPath: m_Anchor.y
-      value: 0.05
-      objectReference: {fileID: 0}
-    - target: {fileID: 527767943696487728, guid: 5d10c22f3454f60499dcfc4985bc8cba, type: 3}
-      propertyPath: m_ConnectedBody
-      value: 
-      objectReference: {fileID: 3712493485242798136}
-    - target: {fileID: 527767943696487728, guid: 5d10c22f3454f60499dcfc4985bc8cba, type: 3}
-      propertyPath: m_ConnectedAnchor.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 527767943696487728, guid: 5d10c22f3454f60499dcfc4985bc8cba, type: 3}
-      propertyPath: m_ConnectedAnchor.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 527767943696487728, guid: 5d10c22f3454f60499dcfc4985bc8cba, type: 3}
-      propertyPath: m_ConnectedAnchor.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 527767943696487728, guid: 5d10c22f3454f60499dcfc4985bc8cba, type: 3}
-      propertyPath: m_AutoConfigureConnectedAnchor
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 958872667389256857, guid: 5d10c22f3454f60499dcfc4985bc8cba, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 958872667389256857, guid: 5d10c22f3454f60499dcfc4985bc8cba, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 958872667389256857, guid: 5d10c22f3454f60499dcfc4985bc8cba, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -0.26
-      objectReference: {fileID: 0}
-    - target: {fileID: 958872667389256857, guid: 5d10c22f3454f60499dcfc4985bc8cba, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 958872667389256857, guid: 5d10c22f3454f60499dcfc4985bc8cba, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 958872667389256857, guid: 5d10c22f3454f60499dcfc4985bc8cba, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 958872667389256857, guid: 5d10c22f3454f60499dcfc4985bc8cba, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 958872667389256857, guid: 5d10c22f3454f60499dcfc4985bc8cba, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 958872667389256857, guid: 5d10c22f3454f60499dcfc4985bc8cba, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 958872667389256857, guid: 5d10c22f3454f60499dcfc4985bc8cba, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6509872030178261282, guid: 5d10c22f3454f60499dcfc4985bc8cba, type: 3}
-      propertyPath: m_Name
-      value: FishingBobber
-      objectReference: {fileID: 0}
-    - target: {fileID: 7937396632650860921, guid: 5d10c22f3454f60499dcfc4985bc8cba, type: 3}
-      propertyPath: stringAttach
-      value: 
-      objectReference: {fileID: 3712493485242798136}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 5d10c22f3454f60499dcfc4985bc8cba, type: 3}
---- !u!4 &7066051513056001744 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 958872667389256857, guid: 5d10c22f3454f60499dcfc4985bc8cba, type: 3}
-  m_PrefabInstance: {fileID: 8016743743065496137}
-  m_PrefabAsset: {fileID: 0}
