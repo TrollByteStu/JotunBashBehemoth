@@ -7,12 +7,15 @@ public class FishingRod : MonoBehaviour
     public GameObject BobberPrefab;
     public Rigidbody AttachmentRigidBody;
 
+    public AudioSource AudioReeling;
+    public AudioSource AudioWhoosh;
 
     public bool beingHeld = false;
     public bool beenPickedUp = false;
 
     private fishingBobber myBobber;
     private Rigidbody myRigidBody;
+    private Rigidbody lastRigidBody;
 
     public void eventSelect()
     {
@@ -42,6 +45,7 @@ public class FishingRod : MonoBehaviour
     {
         var bobber = Instantiate(BobberPrefab, AttachmentRigidBody.transform.position, Quaternion.identity);
         myBobber = bobber.GetComponent<fishingBobber>();
+        myBobber.myFishingRod = this;
         bobber.GetComponent<SpringJoint>().connectedBody = AttachmentRigidBody;
         bobber.GetComponentInChildren<StringHandler>().stringAttach = AttachmentRigidBody;
     }
@@ -51,6 +55,7 @@ public class FishingRod : MonoBehaviour
     {
         myRigidBody = GetComponent<Rigidbody>();
         SpawnFishingBobber();
+        lastRigidBody = AttachmentRigidBody.transform.parent.GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame

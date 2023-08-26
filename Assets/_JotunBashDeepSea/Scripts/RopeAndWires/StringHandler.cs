@@ -11,6 +11,7 @@ public class StringHandler : MonoBehaviour
 
     public void simpleLineToAttachment()
     {
+        if (!stringAttach) return;
         myLine.SetPosition(0, transform.position);
         myLine.SetPosition(1, stringAttach.transform.position);
     }
