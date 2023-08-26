@@ -223,7 +223,7 @@ CapsuleCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.0005
-  m_Height: 0.003
+  m_Height: 0.0025
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &5726702298238020976
@@ -270,7 +270,7 @@ CharacterJoint:
   m_SwingAxis: {x: 0, y: 1, z: 0}
   m_TwistLimitSpring:
     spring: 10000
-    damper: 10
+    damper: 100
   m_LowTwistLimit:
     limit: 2
     bounciness: 1
@@ -281,7 +281,7 @@ CharacterJoint:
     contactDistance: 0
   m_SwingLimitSpring:
     spring: 10000
-    damper: 1
+    damper: 100
   m_Swing1Limit:
     limit: 3
     bounciness: 1
@@ -385,7 +385,7 @@ CapsuleCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.0005
-  m_Height: 0.003
+  m_Height: 0.0025
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &2365083432879844110
@@ -432,7 +432,7 @@ CharacterJoint:
   m_SwingAxis: {x: 0, y: 1, z: 0}
   m_TwistLimitSpring:
     spring: 10000
-    damper: 10
+    damper: 100
   m_LowTwistLimit:
     limit: 2
     bounciness: 1
@@ -443,7 +443,7 @@ CharacterJoint:
     contactDistance: 0
   m_SwingLimitSpring:
     spring: 10000
-    damper: 1
+    damper: 100
   m_Swing1Limit:
     limit: 3
     bounciness: 1
@@ -516,7 +516,7 @@ CapsuleCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.0005
-  m_Height: 0.003
+  m_Height: 0.0025
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &3229746392557008327
@@ -563,7 +563,7 @@ CharacterJoint:
   m_SwingAxis: {x: 0, y: 1, z: 0}
   m_TwistLimitSpring:
     spring: 10000
-    damper: 10
+    damper: 100
   m_LowTwistLimit:
     limit: 2
     bounciness: 1
@@ -574,7 +574,7 @@ CharacterJoint:
     contactDistance: 0
   m_SwingLimitSpring:
     spring: 10000
-    damper: 1
+    damper: 100
   m_Swing1Limit:
     limit: 3
     bounciness: 1
@@ -647,7 +647,7 @@ CapsuleCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.0005
-  m_Height: 0.003
+  m_Height: 0.0025
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &2775588652301896857
@@ -694,7 +694,7 @@ CharacterJoint:
   m_SwingAxis: {x: 0, y: 1, z: 0}
   m_TwistLimitSpring:
     spring: 10000
-    damper: 10
+    damper: 100
   m_LowTwistLimit:
     limit: 2
     bounciness: 1
@@ -705,7 +705,7 @@ CharacterJoint:
     contactDistance: 0
   m_SwingLimitSpring:
     spring: 10000
-    damper: 1
+    damper: 100
   m_Swing1Limit:
     limit: 3
     bounciness: 1
@@ -991,7 +991,7 @@ CapsuleCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.0005
-  m_Height: 0.003
+  m_Height: 0.0025
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &8426330839092604005
@@ -1038,7 +1038,7 @@ CharacterJoint:
   m_SwingAxis: {x: 0, y: 1, z: 0}
   m_TwistLimitSpring:
     spring: 10000
-    damper: 10
+    damper: 100
   m_LowTwistLimit:
     limit: 2
     bounciness: 1
@@ -1049,7 +1049,7 @@ CharacterJoint:
     contactDistance: 0
   m_SwingLimitSpring:
     spring: 10000
-    damper: 1
+    damper: 100
   m_Swing1Limit:
     limit: 3
     bounciness: 1
@@ -1157,7 +1157,7 @@ CapsuleCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.0005
-  m_Height: 0.003
+  m_Height: 0.0025
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &4542374610048660978
@@ -1204,7 +1204,7 @@ CharacterJoint:
   m_SwingAxis: {x: 0, y: 1, z: 0}
   m_TwistLimitSpring:
     spring: 10000
-    damper: 10
+    damper: 100
   m_LowTwistLimit:
     limit: 2
     bounciness: 1
@@ -1215,7 +1215,7 @@ CharacterJoint:
     contactDistance: 0
   m_SwingLimitSpring:
     spring: 10000
-    damper: 1
+    damper: 100
   m_Swing1Limit:
     limit: 3
     bounciness: 1
@@ -1320,7 +1320,7 @@ CapsuleCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.0005
-  m_Height: 0.003
+  m_Height: 0.0025
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &7637137459175018503
@@ -1367,7 +1367,7 @@ CharacterJoint:
   m_SwingAxis: {x: 0, y: 1, z: 0}
   m_TwistLimitSpring:
     spring: 10000
-    damper: 10
+    damper: 100
   m_LowTwistLimit:
     limit: 2
     bounciness: 1
@@ -1378,7 +1378,7 @@ CharacterJoint:
     contactDistance: 0
   m_SwingLimitSpring:
     spring: 10000
-    damper: 1
+    damper: 100
   m_Swing1Limit:
     limit: 3
     bounciness: 1
@@ -1736,7 +1736,7 @@ CapsuleCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.0005
-  m_Height: 0.003
+  m_Height: 0.0025
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &8113007403018635428
@@ -1783,7 +1783,7 @@ CharacterJoint:
   m_SwingAxis: {x: 0, y: 1, z: 0}
   m_TwistLimitSpring:
     spring: 10000
-    damper: 10
+    damper: 100
   m_LowTwistLimit:
     limit: 2
     bounciness: 1
@@ -1794,7 +1794,7 @@ CharacterJoint:
     contactDistance: 0
   m_SwingLimitSpring:
     spring: 10000
-    damper: 1
+    damper: 100
   m_Swing1Limit:
     limit: 3
     bounciness: 1
