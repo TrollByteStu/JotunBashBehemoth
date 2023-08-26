@@ -28,12 +28,12 @@ public class FishingRod : MonoBehaviour
 
     public void eventActivate()
     {
-
+        myBobber.eventActivate();
     }
 
     public void eventDeactiveate()
     {
-
+        myBobber.eventDeactiveate();
     }
 
     // Start is called before the first frame update
