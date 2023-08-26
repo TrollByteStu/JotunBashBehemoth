@@ -1681,6 +1681,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   beingHeld: 0
   beenPickedUp: 0
+  myBobber: {fileID: 0}
 --- !u!1 &8822852952583805143
 GameObject:
   m_ObjectHideFlags: 0
@@ -1821,6 +1822,18 @@ PrefabInstance:
     m_TransformParent: {fileID: 9175448573344564509}
     m_Modifications:
     - target: {fileID: 527767943696487728, guid: 5d10c22f3454f60499dcfc4985bc8cba, type: 3}
+      propertyPath: m_Damper
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 527767943696487728, guid: 5d10c22f3454f60499dcfc4985bc8cba, type: 3}
+      propertyPath: m_Spring
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 527767943696487728, guid: 5d10c22f3454f60499dcfc4985bc8cba, type: 3}
+      propertyPath: m_Anchor.y
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 527767943696487728, guid: 5d10c22f3454f60499dcfc4985bc8cba, type: 3}
       propertyPath: m_ConnectedBody
       value: 
       objectReference: {fileID: 3712493485242798136}
@@ -1834,6 +1847,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 527767943696487728, guid: 5d10c22f3454f60499dcfc4985bc8cba, type: 3}
       propertyPath: m_ConnectedAnchor.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 527767943696487728, guid: 5d10c22f3454f60499dcfc4985bc8cba, type: 3}
+      propertyPath: m_AutoConfigureConnectedAnchor
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 958872667389256857, guid: 5d10c22f3454f60499dcfc4985bc8cba, type: 3}

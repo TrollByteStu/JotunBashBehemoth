@@ -8,6 +8,8 @@ public class FishingRod : MonoBehaviour
     public bool beingHeld = false;
     public bool beenPickedUp = false;
 
+    public fishingBobber myBobber;
+
     private Rigidbody myRigidBody;
 
     public void eventSelect()
@@ -26,12 +28,19 @@ public class FishingRod : MonoBehaviour
 
     public void eventActivate()
     {
+
+    }
+
+    public void eventDeactiveate()
+    {
+
     }
 
     // Start is called before the first frame update
     void Start()
     {
         myRigidBody = GetComponent<Rigidbody>();
+        myBobber = GetComponentInChildren<fishingBobber>();
     }
 
     // Update is called once per frame
