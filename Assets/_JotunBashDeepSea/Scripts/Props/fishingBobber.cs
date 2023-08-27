@@ -17,6 +17,13 @@ public class fishingBobber : MonoBehaviour
     private GameController mainGC;
     private StringHandler myStringHandler;
 
+    private void addSpringJoint()
+    {
+        mySpringJoint = gameObject.AddComponent<SpringJoint>();
+        mySpringJoint.connectedBody = myStringHandler.stringAttach;
+        mySpringJoint.maxDistance = Vector3.Distance(transform.position, myStringHandler.stringAttach.transform.position);
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.transform.tag == "Water" && (currentState == states.flying || currentState == states.reeling))
@@ -28,9 +35,8 @@ public class fishingBobber : MonoBehaviour
             GameObject decal = Instantiate(spawn, transform.position, spawnDirection);
             Destroy(decal, 4f);
             myFloater.enabled = true;
-            mySpringJoint.connectedBody = myStringHandler.stringAttach;
-            mySpringJoint.maxDistance = Vector3.Distance(transform.position, myStringHandler.stringAttach.transform.position);
             hitTheWater = true;
+            addSpringJoint();
         }
     }
 
@@ -41,7 +47,14 @@ public class fishingBobber : MonoBehaviour
             currentState = states.flying;
             mySpringJoint.connectedBody = null;
         }
-        if ( currentState == states.bobbing || currentState == states.flying )
+        if ( currentState == states.flying )
+        {
+            currentState = states.reeling;
+            mySpringJoint = gameObject.AddComponent<SpringJoint>();
+            mySpringJoint.connectedBody = myStringHandler.stringAttach;
+            mySpringJoint.maxDistance = Vector3.Distance(transform.position, myStringHandler.stringAttach.transform.position);
+        }
+        if ( currentState == states.bobbing )
         {
             currentState = states.reeling;
             mySpringJoint.connectedBody = myStringHandler.stringAttach;
@@ -77,7 +90,17 @@ public class fishingBobber : MonoBehaviour
         if (!myFishingRod) Destroy(gameObject);
         if ( currentState == states.reeling)
         {
-
+            mySpringJoint.maxDistance -= Time.deltaTime * 0.5f;
+            if ( Vector3.Distance(transform.position, myStringHandler.stringAttach.transform.position) < 3f && hitTheWater )
+            {
+                myFloater.enabled = false;
+                hitTheWater = false;
+            }
+            if ( Vector3.Distance(transform.position, myStringHandler.stringAttach.transform.position) < 1f && !hitTheWater )
+            {
+                mySpringJoint.maxDistance = .5f;
+                currentState = states.hanging;
+            }
         }
     }
 }

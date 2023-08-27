@@ -61,6 +61,8 @@ public class FishingRod : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (myBobber.currentState == fishingBobber.states.reeling)
+            AudioReeling.volume = 1f;
+        else AudioReeling.volume = 0f;
     }
 }
