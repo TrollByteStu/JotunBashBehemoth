@@ -17,6 +17,7 @@ public class fishingBobber : MonoBehaviour
     private WateverVolumeFloater myFloater;
     private GameController mainGC;
     private StringHandler myStringHandler;
+    private Rigidbody myRigidBody;
 
     private void addSpringJoint()
     {
@@ -37,7 +38,6 @@ public class fishingBobber : MonoBehaviour
             Destroy(decal, 4f);
             myFloater.enabled = true;
             hitTheWater = true;
-            addSpringJoint();
         }
     }
 
@@ -55,7 +55,7 @@ public class fishingBobber : MonoBehaviour
         if ( currentState == states.hanging )
         {
             currentState = states.flying;
-            mySpringJoint.connectedBody = null;
+            Destroy(mySpringJoint);
             return;
         }
         if ( currentState == states.flying )
@@ -69,8 +69,6 @@ public class fishingBobber : MonoBehaviour
         if ( currentState == states.bobbing )
         {
             currentState = states.reeling;
-            mySpringJoint.connectedBody = myStringHandler.stringAttach;
-            mySpringJoint.maxDistance = Vector3.Distance(transform.position, myStringHandler.stringAttach.transform.position);
         }
     }
 
@@ -94,6 +92,7 @@ public class fishingBobber : MonoBehaviour
         myFloater = GetComponent<WateverVolumeFloater>();
         mainGC = GameObject.Find("GameController").GetComponent<GameController>();
         myStringHandler = GetComponentInChildren<StringHandler>();
+        myRigidBody = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
@@ -102,12 +101,7 @@ public class fishingBobber : MonoBehaviour
         if (!myFishingRod) Destroy(gameObject);
         if ( currentState == states.reeling)
         {
-            mySpringJoint.maxDistance -= Time.deltaTime * 0.5f;
-            if ( Vector3.Distance(transform.position, myStringHandler.stringAttach.transform.position) < 3f && hitTheWater )
-            {
-                myFloater.enabled = false;
-                hitTheWater = false;
-            }
+            myRigidBody.AddForce((Vector3.zero - transform.position)*Time.deltaTime);
             if ( Vector3.Distance(transform.position, myStringHandler.stringAttach.transform.position) < 1f && !hitTheWater )
             {
                 Destroy(gameObject);
