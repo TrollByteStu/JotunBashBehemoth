@@ -5,44 +5,47 @@ using Bitgem.VFX.StylisedWater;
 
 public class circlingShark : MonoBehaviour
 {
-    private GameObject BoatRig;
-    private Vector3 orbit;
+    private GameObject _BoatRig;
+
+    private Vector3 _Orbit;
+    private float _Angle;
+
     private bool reachedSurface = false;
 
     public GameObject myOwnPrefab;
 
     public float distance = 20f;
+    private float distanceSin;
     public float speed = .1f;
+    public float _UpSpeed;
 
     private Rigidbody myRigidBody;
-    private GameController mainGC;
 
     // Start is called before the first frame update
     void Start()
     {
-        BoatRig = GameObject.Find("BoatRig");
         myRigidBody = GetComponent<Rigidbody>();
-        mainGC = GameObject.Find("GameController").GetComponent<GameController>();
+        _BoatRig = GameController.Instance.BoatRig;
+
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        orbit = new Vector3(Mathf.Cos(Time.unscaledTime * speed) * distance, 0, Mathf.Sin(Time.unscaledTime * speed) * distance);
-        transform.position = Vector3.Lerp(transform.position, BoatRig.transform.position + orbit, Time.deltaTime * 0.2f);
-        transform.LookAt(BoatRig.transform);
-        transform.Rotate(Vector3.up, 90);
+        distanceSin = Mathf.Sin(Time.time) *2 + distance;
+        _Angle += Time.fixedDeltaTime * speed;
+        _Orbit = new Vector3(Mathf.Sin(_Angle) * distanceSin, transform.position.y + _UpSpeed, Mathf.Cos(_Angle) * distanceSin);
+        transform.position = Vector3.Lerp(transform.position, _Orbit, speed);
+        transform.LookAt(Vector3.Lerp(transform.position, _Orbit, speed));
+
         if ( !reachedSurface )
         {
             if (transform.position.y > -0.5f)
             {
                 GetComponent<WateverVolumeFloater>().enabled = true;
                 reachedSurface = true;
-                myRigidBody.useGravity = true;
+                _UpSpeed = 0;
             }
-
-        } else {
-
         }
     }
 }

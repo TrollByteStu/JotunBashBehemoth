@@ -59,7 +59,7 @@ public class PassiveMoby : InfBadMath
         if (_myPlayer == null)
             _myPlayer = GameController.Instance.player;
         GenerateCords(0);
-        mainGC = GameObject.Find("GameController").GetComponent<GameController>();
+        mainGC = GameController.Instance;
         myAS = GetComponent<AudioSource>();
     }
         // generate 2 random number on a grid 

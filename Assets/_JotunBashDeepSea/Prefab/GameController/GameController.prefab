@@ -136,7 +136,7 @@ MonoBehaviour:
   _StartSpawn: 5
   _MaxGannets: 10
   _LastSpawnTime: 0
-  _SpawnDelay: 10
+  _SpawnDelay: 20
   _Gannets: []
   _GannetPrefab: {fileID: 5907204676904888687, guid: 6696bf6ee4edb5a49811ee0f8bdd4a4d, type: 3}
   _FeatherExplosion: {fileID: 4766095639271237258, guid: d8b0cd794cd836b4dbe5a34f04527602, type: 3}
