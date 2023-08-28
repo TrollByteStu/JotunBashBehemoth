@@ -6,6 +6,7 @@ public class GameController : MonoBehaviour
 {
     private static GameController _instance;
     public GameObject player;
+    public GameObject BoatRig;
 
     // Gannets
     public Transform _GannetIdlePoints;
