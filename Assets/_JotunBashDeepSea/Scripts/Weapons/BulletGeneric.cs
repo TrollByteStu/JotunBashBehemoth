@@ -15,21 +15,19 @@ public class BulletGeneric : MonoBehaviour
             collision.gameObject.GetComponent<PassiveMoby>().MobyHit(_Damage);
         if (collision.gameObject.GetComponent<Gannet>())
             collision.gameObject.GetComponent<Gannet>().OnDeath();
-        GameObject spawn;
-        Quaternion spawnDirection;
         if (collision.transform.tag == "Water" )
         {
-            spawn = mainGC.gcResources.Splashes[0];
+            GameObject spawn;
+            Quaternion spawnDirection;
+            spawn = GameObject.Find("GameController").GetComponent<GameController>().gcResources.Splashes[0];
             spawnDirection = Quaternion.identity;
+            GameObject decal = Instantiate(spawn, transform.position, spawnDirection);
+            Destroy(decal, 4f);
         } else { 
-            spawn = mainGC.gcResources.BulletHoles[0];
-            spawnDirection = Quaternion.LookRotation(collision.contacts[0].normal);
+            // old buttelhole thingy
         }
-        ContactPoint contact = collision.contacts[0];
-        GameObject decal = Instantiate(spawn, contact.point, spawnDirection);
         //decal.GetComponent<AudioSource>().Play();
-        decal.transform.SetParent(collision.transform);
-        Destroy(decal, 4f);
+       // decal.transform.SetParent(collision.transform);
     }
 
     private void OnTriggerEnter(Collider other)
