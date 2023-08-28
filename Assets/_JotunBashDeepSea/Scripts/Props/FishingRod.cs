@@ -69,7 +69,7 @@ public class FishingRod : MonoBehaviour
         if (myBobber.currentState == fishingBobber.states.reeling)
             AudioReeling.volume = 1f;
         else AudioReeling.volume = 0f;
-        if (lastRigidBody.velocity.magnitude > 6f && Time.realtimeSinceStartup > audioWhooshDelay)
+        if (lastRigidBody.velocity.magnitude > 6f && Time.realtimeSinceStartup > audioWhooshDelay && beingHeld)
         {
             AudioWhoosh.Play();
             audioWhooshDelay = Time.realtimeSinceStartup + 0.5f;

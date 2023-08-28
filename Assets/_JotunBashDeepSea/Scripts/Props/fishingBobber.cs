@@ -11,7 +11,7 @@ public class fishingBobber : MonoBehaviour
     public enum states { hanging,flying, bobbing, reeling }
     public states currentState = states.hanging;
 
-    private bool hitTheWater = false;
+    private bool floating = false;
 
     private SpringJoint mySpringJoint;
     private WateverVolumeFloater myFloater;
@@ -37,7 +37,7 @@ public class fishingBobber : MonoBehaviour
             GameObject decal = Instantiate(spawn, transform.position, spawnDirection);
             Destroy(decal, 4f);
             myFloater.enabled = true;
-            hitTheWater = true;
+            floating = true;
         }
     }
 
@@ -76,7 +76,7 @@ public class fishingBobber : MonoBehaviour
     {
         if ( currentState == states.reeling)
         {
-            if ( hitTheWater)
+            if ( floating)
             {
                 currentState = states.bobbing;
             } else {
@@ -99,13 +99,14 @@ public class fishingBobber : MonoBehaviour
     void Update()
     {
         if (!myFishingRod) Destroy(gameObject);
+        if (floating)
+        {
+            Quaternion targetRotation = Quaternion.LookRotation(transform.forward, Vector3.up);
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime);
+        }
         if ( currentState == states.reeling)
         {
-            myRigidBody.AddForce((Vector3.zero - transform.position)*Time.deltaTime);
-            if ( Vector3.Distance(transform.position, myStringHandler.stringAttach.transform.position) < 1f && !hitTheWater )
-            {
-                Destroy(gameObject);
-            }
+            myRigidBody.AddForce((myFishingRod.AttachmentRigidBody.position - transform.position)*Time.deltaTime);
         }
     }
 }
