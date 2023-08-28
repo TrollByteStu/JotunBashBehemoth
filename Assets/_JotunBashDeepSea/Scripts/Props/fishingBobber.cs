@@ -6,6 +6,7 @@ using Bitgem.VFX.StylisedWater;
 public class fishingBobber : MonoBehaviour
 {
     public FishingRod myFishingRod;
+    public Transform myCatchHolder;
 
     public enum states { hanging,flying, bobbing, reeling }
     public states currentState = states.hanging;
@@ -40,12 +41,22 @@ public class fishingBobber : MonoBehaviour
         }
     }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.transform.tag == "Raft")
+        { // this has been picked up, add to inventory
+            //mainGC.gcInventory.itemAdd(AddInventoryPrefab, AddInventoryAmount);
+            Destroy(gameObject);
+        }
+    }
+
     public void eventActivate()
     {
         if ( currentState == states.hanging )
         {
             currentState = states.flying;
             mySpringJoint.connectedBody = null;
+            return;
         }
         if ( currentState == states.flying )
         {
@@ -53,6 +64,7 @@ public class fishingBobber : MonoBehaviour
             mySpringJoint = gameObject.AddComponent<SpringJoint>();
             mySpringJoint.connectedBody = myStringHandler.stringAttach;
             mySpringJoint.maxDistance = Vector3.Distance(transform.position, myStringHandler.stringAttach.transform.position);
+            return;
         }
         if ( currentState == states.bobbing )
         {
@@ -98,8 +110,7 @@ public class fishingBobber : MonoBehaviour
             }
             if ( Vector3.Distance(transform.position, myStringHandler.stringAttach.transform.position) < 1f && !hitTheWater )
             {
-                mySpringJoint.maxDistance = .5f;
-                currentState = states.hanging;
+                Destroy(gameObject);
             }
         }
     }

@@ -19,13 +19,14 @@ public class FishingRod : MonoBehaviour
 
     public void eventSelect()
     {
-        Debug.Log("Select");
+        Debug.Log("Rod Select");
         beingHeld = true;
         beenPickedUp = true;
     }
 
     public void eventUnSelect()
     {
+        Debug.Log("Rod Unselect");
         myRigidBody.isKinematic = false;
         transform.SetParent(null);
         Destroy(gameObject, 10f);
@@ -33,11 +34,13 @@ public class FishingRod : MonoBehaviour
 
     public void eventActivate()
     {
+        Debug.Log("Rod Activate");
         myBobber.eventActivate();
     }
 
     public void eventDeactiveate()
     {
+        Debug.Log("Rod Deactivate");
         myBobber.eventDeactiveate();
     }
 
@@ -61,6 +64,7 @@ public class FishingRod : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!myBobber) SpawnFishingBobber();
         if (myBobber.currentState == fishingBobber.states.reeling)
             AudioReeling.volume = 1f;
         else AudioReeling.volume = 0f;
