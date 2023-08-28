@@ -3133,6 +3133,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4698260914634452213, guid: ba0f3f424c04bbb49bcc3c91054ebaff, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6365878907929556166, guid: ba0f3f424c04bbb49bcc3c91054ebaff, type: 3}
       propertyPath: OnGoalCompleted.m_PersistentCalls.m_Calls.Array.size
       value: 1
