@@ -43,11 +43,24 @@ public class PassiveMoby : InfBadMath
     public int _HitPoints = 3;
     private bool _Invulnerable = false;
 
+    // game controller
+    private GameController mainGC;
+
+    // blowhole logic
+    public Transform blowHoleTransform;
+    public bool blowDisabled = false;
+
+    // sounds
+    public AudioClip MobyDickAttackSound;
+    private AudioSource myAS;
+
     void Start()
     {
         if (_myPlayer == null)
             _myPlayer = GameController.Instance.player;
         GenerateCords(0);
+        mainGC = GameObject.Find("GameController").GetComponent<GameController>();
+        myAS = GetComponent<AudioSource>();
     }
         // generate 2 random number on a grid 
         // check if the numbers are too close to player
@@ -105,6 +118,13 @@ public class PassiveMoby : InfBadMath
         _TimeSinceSurface = Time.time;
     }
 
+    void MobyBlow()
+    { // when whale surfaces, spawn blow particles and wait before it will do this again..
+        blowDisabled = true;
+        var blowEffect = Instantiate(mainGC.gcResources.BlowHoleSprays[0], blowHoleTransform.position, blowHoleTransform.rotation, blowHoleTransform);
+        Destroy(blowEffect, 10f);
+    }
+
     void MobyEmerge()
     {
         _AnimationTimer += Time.deltaTime;
@@ -112,11 +132,11 @@ public class PassiveMoby : InfBadMath
         _MobyMovePoint = new Vector3(Mathf.Sin(_Angle) * _Radius, _EmergingCurve.Evaluate(_AnimationTimer), Mathf.Cos(_Angle) * _Radius);
         transform.LookAt(_MobyMovePoint);
         transform.position = _MobyMovePoint;
+        if (!blowDisabled && transform.position.y > -2.5f) MobyBlow();
         if (_TimeSinceSurface + _SurfaceTime < Time.time)
         {
             MobyDive();
         }
-
     }
 
     void MobyDive()
@@ -129,6 +149,7 @@ public class PassiveMoby : InfBadMath
 
     void MobySink()
     {
+        blowDisabled = false;
         _AnimationTimer -= Time.deltaTime;
         _Angle += (Time.fixedDeltaTime * _AngleChangeSpeed * _AngleDirectionMod) / _Radius;
         _MobyMovePoint = new Vector3(Mathf.Sin(_Angle) * _Radius, _EmergingCurve.Evaluate(_AnimationTimer), Mathf.Cos(_Angle) * _Radius);
@@ -152,6 +173,9 @@ public class PassiveMoby : InfBadMath
         transform.position += transform.forward * -10;
         _MobyPlaced = true;
         _AnimationTimer = 0;
+        myAS.clip = MobyDickAttackSound;
+        myAS.volume = 1f;
+        myAS.Play();
     }
 
     void MobySceneChange()

@@ -8,6 +8,7 @@ public class GameControllerResources : MonoBehaviour
     public GameObject[] BulletImpact;
     public GameObject[] Splashes;
     public GameObject[] UFOS;
+    public GameObject[] BlowHoleSprays;
 
     public AudioClip BulletHitFlesh;
 }

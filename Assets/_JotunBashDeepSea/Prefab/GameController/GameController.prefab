@@ -76,6 +76,8 @@ MonoBehaviour:
   - {fileID: 7369372447250387511, guid: f5da385824eff5f40b331b410927cace, type: 3}
   UFOS:
   - {fileID: 2743792803986061744, guid: d3b4e16757b2fcd4691762507eb16915, type: 3}
+  BlowHoleSprays:
+  - {fileID: 1973308582180803259, guid: af8a9dda34b152542ad791e72bca95a3, type: 3}
   BulletHitFlesh: {fileID: 0}
 --- !u!114 &8166171912722226122
 MonoBehaviour:
