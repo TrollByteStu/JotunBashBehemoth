@@ -7,7 +7,6 @@ using UnityEngine.XR;
 
 public class GunGeneric : MonoBehaviour
 {
-
     public GameObject prefabBullet;
     public Transform muzzleLocation;
     public AudioSource FireSound;
@@ -15,6 +14,8 @@ public class GunGeneric : MonoBehaviour
     public AudioSource ReloadSound;
 
     public bool beingHeld = false;
+    private bool _Touched = false;
+    private float _DropTime;
 
     public float fireDelayMax = 0.2f;
     public float fireDelay = 0f;
@@ -24,18 +25,19 @@ public class GunGeneric : MonoBehaviour
     public int clipsize = 10;
     public float reloadDelay = 1f;
 
-    private GameController mainGC;
     private Rigidbody myRigidBody;
 
     public void eventSelect()
     {
         Debug.Log("Select");
+        _Touched = true;
         beingHeld = true;
     }
     public void eventUnSelect()
     {
         Debug.Log("UnSelect");
         beingHeld = false;
+        _DropTime = Time.time;
         myRigidBody.isKinematic = false;
         transform.SetParent(null);
     }
@@ -49,7 +51,6 @@ public class GunGeneric : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        mainGC = GameObject.Find("GameController").GetComponent<GameController>();
         myRigidBody = GetComponent<Rigidbody>();
     }
 
@@ -62,11 +63,8 @@ public class GunGeneric : MonoBehaviour
             fireDelay = reloadDelay;
             return;
         }
-        GameObject newBullet = Instantiate(prefabBullet);
-        newBullet.transform.position = muzzleLocation.position;
-        newBullet.transform.rotation = muzzleLocation.rotation;
+        GameObject newBullet = Instantiate(prefabBullet, muzzleLocation.position, muzzleLocation.rotation);
         newBullet.GetComponent<Rigidbody>().AddForce(newBullet.transform.forward * bulletForce);
-        newBullet.GetComponent<BulletGeneric>().mainGC = mainGC;
         Destroy(newBullet, 5f);
         fireDelay = fireDelayMax;
         Bullets--;
@@ -83,5 +81,9 @@ public class GunGeneric : MonoBehaviour
     {
         fireDelay -= Time.deltaTime;
         if (transform.forward.y < -.75f && Bullets < clipsize) reloadGun();
+
+        if (_DropTime + 10 < Time.time && beingHeld == false && _Touched == true)
+            Destroy(gameObject);
+
     }
 }

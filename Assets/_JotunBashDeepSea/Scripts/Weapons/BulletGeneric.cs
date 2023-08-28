@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class BulletGeneric : MonoBehaviour
 {
-    public GameController mainGC;
     public int _Damage = 1;
 
     private void OnCollisionEnter(Collision collision)
@@ -17,11 +16,9 @@ public class BulletGeneric : MonoBehaviour
             collision.gameObject.GetComponentInParent<Gannet>().OnDeath();
         if (collision.transform.tag == "Water" )
         {
-            GameObject spawn;
-            Quaternion spawnDirection;
-            spawn = GameObject.Find("GameController").GetComponent<GameController>().gcResources.Splashes[0];
-            spawnDirection = Quaternion.identity;
-            GameObject decal = Instantiate(spawn, transform.position, spawnDirection);
+            GameObject spawn = GameController.Instance.gcResources.Splashes[0];
+            Quaternion spawnDirection = Quaternion.identity;
+            GameObject decal = Instantiate(spawn, transform.position, spawnDirection, collision.gameObject.transform);
             Destroy(decal, 4f);
         } else { 
             // old buttelhole thingy
@@ -36,9 +33,9 @@ public class BulletGeneric : MonoBehaviour
         {
             GameObject spawn;
             Quaternion spawnDirection;
-            spawn = mainGC.gcResources.Splashes[0];
+            spawn = GameController.Instance.gcResources.Splashes[0];
             spawnDirection = Quaternion.identity;
-            GameObject decal = Instantiate(spawn, transform.position, spawnDirection);
+            GameObject decal = Instantiate(spawn, transform.position, spawnDirection, other.gameObject.transform);
             Destroy(decal, 4f);
         }
     }
