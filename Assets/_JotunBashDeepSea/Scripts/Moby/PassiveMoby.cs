@@ -193,13 +193,13 @@ public class PassiveMoby : InfBadMath
 
         if (Vector3.Distance(transform.position, _Raft.transform.position) <= 12f)
         {
-            SceneManager.LoadScene(0);
+            SceneManager.LoadScene(1);
         }
     }
 
     public void MobyHit()
     {
-        if (!_Invulnerable)
+        if (!_Invulnerable && _HitPoints > 0)
         {
             _Invulnerable = true;
             MobyDive();
@@ -209,7 +209,7 @@ public class PassiveMoby : InfBadMath
 
     public void MobyHit(float hitNumber)
     {
-        if (!_Invulnerable)
+        if (!_Invulnerable && _HitPoints > 0)
         {
             _Invulnerable = true;
             MobyDive();
@@ -219,7 +219,7 @@ public class PassiveMoby : InfBadMath
 
     public void MobyHit(int hitNumber)
     {
-        if (!_Invulnerable)
+        if (!_Invulnerable && _HitPoints > 0)
         {
             _Invulnerable = true;
             MobyDive();
