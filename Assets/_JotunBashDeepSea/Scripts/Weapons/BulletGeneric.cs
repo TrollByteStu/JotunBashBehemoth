@@ -11,14 +11,15 @@ public class BulletGeneric : MonoBehaviour
         // do not allow it to hit the weapon that fired it..
         if (collision.transform.tag == "Weapon") return;
         if (collision.transform.CompareTag("Boss") && collision.gameObject.GetComponent<PassiveMoby>())
+        {
             collision.gameObject.GetComponent<PassiveMoby>().MobyHit(_Damage);
+            Destroy(gameObject);
+        }
         if (collision.gameObject.GetComponentInParent<Gannet>())
             collision.gameObject.GetComponentInParent<Gannet>().OnDeath();
         if (collision.transform.tag == "Water" )
         {
-            GameObject spawn = GameController.Instance.gcResources.Splashes[0];
-            Quaternion spawnDirection = Quaternion.identity;
-            GameObject decal = Instantiate(spawn, transform.position, spawnDirection, collision.gameObject.transform);
+            GameObject decal = Instantiate(GameController.Instance.gcResources.Splashes[0], transform.position, Quaternion.identity);
             Destroy(decal, 4f);
         } else { 
             // old buttelhole thingy
@@ -31,11 +32,7 @@ public class BulletGeneric : MonoBehaviour
     {
         if (other.transform.tag == "Water")
         {
-            GameObject spawn;
-            Quaternion spawnDirection;
-            spawn = GameController.Instance.gcResources.Splashes[0];
-            spawnDirection = Quaternion.identity;
-            GameObject decal = Instantiate(spawn, transform.position, spawnDirection, other.gameObject.transform);
+            GameObject decal = Instantiate(GameController.Instance.gcResources.Splashes[0], transform.position, Quaternion.identity);
             Destroy(decal, 4f);
         }
     }
