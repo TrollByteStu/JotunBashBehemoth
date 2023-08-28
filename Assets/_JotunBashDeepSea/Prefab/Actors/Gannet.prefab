@@ -2355,6 +2355,7 @@ GameObject:
   - component: {fileID: 5548659547092534762}
   - component: {fileID: 2059481203460603292}
   - component: {fileID: 2450293857599629609}
+  - component: {fileID: 5170768055587315696}
   m_Layer: 0
   m_Name: Gannet
   m_TagString: Untagged
@@ -2391,6 +2392,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _Rigidbodys: []
+  _Armature: {fileID: 9186668743185284700}
   _LandingCurve:
     serializedVersion: 2
     m_Curve:
@@ -2540,6 +2542,20 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &5170768055587315696
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5907204676904888687}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4603d9b90a1ba104fa68b861125cccc4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  WaterVolumeHelper: {fileID: 0}
+  offset: 0
 --- !u!1 &5948350149213445588
 GameObject:
   m_ObjectHideFlags: 0
@@ -2775,6 +2791,7 @@ GameObject:
   - component: {fileID: 9186668743185284700}
   - component: {fileID: 4126650892878852700}
   - component: {fileID: 2880337431323748404}
+  - component: {fileID: 8027376822990795780}
   m_Layer: 0
   m_Name: Armature
   m_TagString: Untagged
@@ -2846,6 +2863,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &8027376822990795780
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7341519257983349782}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2cf3ae432fabcfa40adef5ca0ea5c507, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7558008019854056957
 GameObject:
   m_ObjectHideFlags: 0

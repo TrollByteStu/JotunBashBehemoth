@@ -1,14 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Bitgem.VFX.StylisedWater;
 
 public class Gannet : InfBadMath
 {
     // others
     public List<Rigidbody> _Rigidbodys;
+    private List<Collider> _Colliders = new List<Collider>();
+    public Transform _Armature;
     private GameObject _Player;
     private Animator _Animator;
     private AudioSource _AudioSource;
+    private OurWateverVolumeFloater _Floater;
 
     // landing Curves
     public AnimationCurve _LandingCurve;
@@ -47,6 +51,7 @@ public class Gannet : InfBadMath
 
     // death
     public bool _Dead = false;
+    private bool _InWater = false;
     public bool _Debug = false;
 
     private void Awake()
@@ -57,6 +62,8 @@ public class Gannet : InfBadMath
         _Rigidbodys.AddRange(array);
         foreach (Rigidbody rb in _Rigidbodys)
             rb.isKinematic = true;
+        Collider[] colliders = GetComponentsInChildren<Collider>();
+        _Colliders.AddRange(colliders);
         _Animator = GetComponentInChildren<Animator>();
         if (_Animator == null)
             Debug.LogError("could not find Animator on " + gameObject.name);
@@ -64,6 +71,10 @@ public class Gannet : InfBadMath
         if (_AudioSource == null)
             Debug.LogError("could not find AudioSource on " + gameObject.name);
         _ScreamCountDown = _ScreamingInterval;
+        _Floater = GetComponent<OurWateverVolumeFloater>();
+        if (_Floater == null)
+            Debug.LogError("could not find OurWateverVolumeFloater on " + gameObject.name);
+
     }
 
     // fly in circles around the raft 
@@ -201,9 +212,13 @@ public class Gannet : InfBadMath
         GameController.Instance._GannetHandler.KillGannet(gameObject);
         _AudioSource.clip = GameController.Instance._GannetHandler._PainSounds[Random.Range(0, GameController.Instance._GannetHandler._PainSounds.Count)];
         _AudioSource.Play();
+        _Dead = true;
         _Animator.enabled = false;
         foreach (Rigidbody rb in _Rigidbodys)
+        {
             rb.isKinematic = false;
+            rb.AddForce(transform.forward);
+        }
         transform.SetParent(null);
         Destroy(gameObject, 20);
 
@@ -243,8 +258,20 @@ public class Gannet : InfBadMath
             _Debug = true;
             OnDeath();
         }
+        else if (_Dead && _InWater)
+        {
+            _Armature.rotation = Quaternion.Slerp(_Armature.rotation, Quaternion.LookRotation(_Armature.forward, Vector3.left), Time.deltaTime);
+        }
 
         if (transform.position.y <= -5)
             Destroy(gameObject);
+    }
+
+    public void OnWaterEnter()
+    {
+        _Armature.gameObject.GetComponent<Rigidbody>().isKinematic = true;
+        _Floater.enabled = true;
+        _Armature.localPosition = Vector3.zero;
+        _InWater = true;
     }
 }
