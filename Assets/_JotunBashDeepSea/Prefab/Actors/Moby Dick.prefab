@@ -1187,7 +1187,7 @@ MonoBehaviour:
   _HitPoints: 3
   blowHoleTransform: {fileID: 2015035984492533981}
   blowDisabled: 0
-  MobyDickAttackSound: {fileID: 0}
+  MobyDickAttackSound: {fileID: 8300000, guid: 9835cce8c862bc047a68ca132bcb81f1, type: 3}
 --- !u!82 &4318191926538946623
 AudioSource:
   m_ObjectHideFlags: 0

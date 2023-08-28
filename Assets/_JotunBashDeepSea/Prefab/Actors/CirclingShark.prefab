@@ -51,6 +51,7 @@ MonoBehaviour:
   myOwnPrefab: {fileID: 7359744747742380797}
   distance: 20
   speed: 0.2
+  _UpSpeed: 0.1
 --- !u!114 &2751124058871237914
 MonoBehaviour:
   m_ObjectHideFlags: 0
