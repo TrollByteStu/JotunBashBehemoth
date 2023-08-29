@@ -11,6 +11,8 @@ public class AreaSpawner : MonoBehaviour
     public int spawnAmount = 1;
     public int spawnMinimum = 0;
 
+    public bool spawnStartThenStop = false;
+
     public float afterSpawnDisableTimer = 30f;
     public float randomSpawnInhibitor = 360f;
 
@@ -39,6 +41,7 @@ public class AreaSpawner : MonoBehaviour
                 transform);
             lastSpawn = afterSpawnDisableTimer;
         }
+        if (spawnStartThenStop && transform.childCount == spawnMinimum) gameObject.SetActive(false);
         lastSpawn -= Time.deltaTime;
     }
 }
