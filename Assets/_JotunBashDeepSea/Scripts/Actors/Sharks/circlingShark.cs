@@ -21,6 +21,8 @@ public class circlingShark : MonoBehaviour
 
     private Rigidbody myRigidBody;
 
+    public Bait _Bait = null;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -32,6 +34,7 @@ public class circlingShark : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        _Bait = GameController.Instance.checkForBaits(myOwnPrefab, transform);
         distanceSin = Mathf.Sin(Time.time) *2 + distance;
         _Angle += Time.fixedDeltaTime * speed;
         _Orbit = new Vector3(Mathf.Sin(_Angle) * distanceSin, transform.position.y + _UpSpeed, Mathf.Cos(_Angle) * distanceSin);

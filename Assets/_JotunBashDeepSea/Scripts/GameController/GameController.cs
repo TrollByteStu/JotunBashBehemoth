@@ -30,6 +30,7 @@ public class GameController : MonoBehaviour
                 if (testBait.doesThisBaitWorkOnMe(ownPrefab)) 
                     workingBaits.Add(testBait);
             }
+            Debug.Log(workingBaits.Count);
             if ( workingBaits.Count > 0)
             {
                 workingBaits.Sort((bait1, bait2) =>
