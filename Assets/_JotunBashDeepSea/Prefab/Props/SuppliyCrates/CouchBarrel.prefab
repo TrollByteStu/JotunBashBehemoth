@@ -14,10 +14,10 @@ GameObject:
   - component: {fileID: 3797873358127158895}
   - component: {fileID: 5483807213867506305}
   - component: {fileID: 343907079107379102}
-  - component: {fileID: 7905289161432713106}
+  - component: {fileID: 4756434333376551676}
   m_Layer: 0
   m_Name: CouchBarrel
-  m_TagString: Untagged
+  m_TagString: Hookable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -118,7 +118,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1797784409352257669}
   serializedVersion: 4
-  m_Mass: 5
+  m_Mass: 10
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -133,7 +133,7 @@ Rigidbody:
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 1
-  m_IsKinematic: 1
+  m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
@@ -151,8 +151,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AddInventoryPrefab: {fileID: 8037256815985978319, guid: 2e487e9796d926a49a9f0fe1134b77d7, type: 3}
   AddInventoryAmount: 2
-  floating: 1
---- !u!114 &7905289161432713106
+  floating: 0
+--- !u!114 &4756434333376551676
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -161,8 +161,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1797784409352257669}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4603d9b90a1ba104fa68b861125cccc4, type: 3}
+  m_Script: {fileID: 11500000, guid: 36aa02d38bb10b548bc7b8879596b15c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   WaterVolumeHelper: {fileID: 0}
-  offset: 0

@@ -1411,7 +1411,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnedPrefab: {fileID: 8037256815985978319, guid: 2e487e9796d926a49a9f0fe1134b77d7, type: 3}
-  useInventoryToSpawn: 0
+  useInventoryToSpawn: 1
 --- !u!1 &5034607233664379555
 GameObject:
   m_ObjectHideFlags: 0
