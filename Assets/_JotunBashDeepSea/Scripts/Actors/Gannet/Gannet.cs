@@ -6,6 +6,7 @@ using Bitgem.VFX.StylisedWater;
 public class Gannet : InfBadMath
 {
     // others
+    public GameObject _Prefab;
     public List<Rigidbody> _Rigidbodys;
     private List<Collider> _Colliders = new List<Collider>();
     public Transform _Armature;
@@ -13,6 +14,7 @@ public class Gannet : InfBadMath
     private Animator _Animator;
     private AudioSource _AudioSource;
     private OurWateverVolumeFloater _Floater;
+    private Bait _BaitScript;
 
     // landing Curves
     public AnimationCurve _LandingCurve;
@@ -54,8 +56,13 @@ public class Gannet : InfBadMath
     private bool _InWater = false;
     public bool _Debug = false;
 
+    // bait
+    private float _LastBaitCheck;
+    private Bait _Bait = null;
+
     private void Awake()
     {
+
         _GannetIdlePoints = GameController.Instance._GannetIdlePoints.transform;
         _Player = GameController.Instance.player;
         Rigidbody[] array = GetComponentsInChildren<Rigidbody>();
@@ -72,8 +79,7 @@ public class Gannet : InfBadMath
             Debug.LogError("could not find AudioSource on " + gameObject.name);
         _ScreamCountDown = _ScreamingInterval;
         _Floater = GetComponent<OurWateverVolumeFloater>();
-        if (_Floater == null)
-            Debug.LogError("could not find OurWateverVolumeFloater on " + gameObject.name);
+        _BaitScript = GetComponent<Bait>();
 
     }
 
@@ -115,6 +121,19 @@ public class Gannet : InfBadMath
         _MovePos = new(Mathf.Cos(_Angle) * _Radius, 7, Mathf.Sin(_Angle) * _Radius);
         transform.LookAt(_MovePos , Vector3.up);
         transform.position = Vector3.MoveTowards(transform.position, _MovePos,Time.fixedDeltaTime * 4);
+    }
+
+    void GetBait()
+    {
+        if (_Bait == null)
+            _CurrentState = 1;
+        transform.position = Vector3.Slerp(transform.position, _Bait.transform.position, Time.fixedDeltaTime);
+        transform.LookAt(Vector3.Slerp(transform.position, _Bait.transform.position, Time.fixedDeltaTime));
+        if (Vector3.Distance(transform.position, _Bait.transform.position) <= 0.5f)
+        {
+            _CurrentState = 1;
+            Destroy(_Bait.gameObject);
+        }
     }
 
     void GannetLand()
@@ -244,6 +263,15 @@ public class Gannet : InfBadMath
             {
                 case 1:
                     CircleRaft();
+                    if (_LastBaitCheck + 10 < Time.time)
+                    {
+                        _LastBaitCheck = Time.time;
+                        _Bait = GameController.Instance.checkForBaits(_Prefab, transform);
+                        if (_Bait != null)
+                        {
+                            _CurrentState = 4;
+                        }
+                    }
                     break;
                 case 2:
                     GannetLand();
@@ -251,6 +279,10 @@ public class Gannet : InfBadMath
                 case 3:
                     Idle();
                     break;
+                case 4:
+                    GetBait();
+                    break;
+                    
             }
         }
         else if (_Dead && !_Debug)
@@ -267,11 +299,17 @@ public class Gannet : InfBadMath
             Destroy(gameObject);
     }
 
-    public void OnWaterEnter()
+    public void OnWaterEnter(GannetEnterWater script)
     {
-        _Armature.gameObject.GetComponent<Rigidbody>().isKinematic = true;
-        _Floater.enabled = true;
-        _Armature.localPosition = Vector3.zero;
-        _InWater = true;
+        if (_Dead)
+        {
+            _Armature.gameObject.GetComponent<Rigidbody>().isKinematic = true;
+            _Floater.enabled = true;
+            _BaitScript.floating = true;
+            _BaitScript.ActivateBait();
+            _Armature.localPosition = Vector3.zero;
+            _InWater = true;
+            Destroy(script);
+        }
     }
 }

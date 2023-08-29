@@ -328,6 +328,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baitWorkOnPrefabs:
   - {fileID: 7359744747742380797, guid: 93ae5261e3223fc4ca26f02836a9a9ca, type: 3}
+  - {fileID: 5907204676904888687, guid: 6696bf6ee4edb5a49811ee0f8bdd4a4d, type: 3}
   ActivateBaitOnHittingWater: 1
   ActivateBaitOnThrowing: 0
   DoesThisBaitFloat: 1

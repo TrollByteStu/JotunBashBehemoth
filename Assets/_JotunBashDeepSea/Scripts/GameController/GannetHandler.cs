@@ -37,6 +37,7 @@ public class GannetHandler : MonoBehaviour
         for (int i = 0; i < _StartSpawn; i++)
         {
             var Gannet = Instantiate(_GannetPrefab, RandomSpawnVector(20), Quaternion.identity);
+            Gannet.GetComponent<Gannet>()._Prefab = _GannetPrefab;
             _Gannets.Add(Gannet);
         }
     }
@@ -48,6 +49,7 @@ public class GannetHandler : MonoBehaviour
             if (_LastSpawnTime + _SpawnDelay < Time.time)
             {
                 var Gannet = Instantiate(_GannetPrefab, RandomSpawnVector(20), Quaternion.identity);
+                Gannet.GetComponent<Gannet>()._Prefab = _GannetPrefab;
                 _Gannets.Add(Gannet);
                 _LastSpawnTime = Time.time;
             }

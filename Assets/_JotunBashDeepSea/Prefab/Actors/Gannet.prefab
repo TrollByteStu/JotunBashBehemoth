@@ -2356,6 +2356,7 @@ GameObject:
   - component: {fileID: 2059481203460603292}
   - component: {fileID: 2450293857599629609}
   - component: {fileID: 5170768055587315696}
+  - component: {fileID: 8869939988726020044}
   m_Layer: 0
   m_Name: Gannet
   m_TagString: Untagged
@@ -2391,6 +2392,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54b1ad4d52f601944b58f8ff00603344, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _Prefab: {fileID: 5907204676904888687}
   _Rigidbodys: []
   _Armature: {fileID: 9186668743185284700}
   _LandingCurve:
@@ -2556,6 +2558,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WaterVolumeHelper: {fileID: 0}
   offset: 0
+--- !u!114 &8869939988726020044
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5907204676904888687}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b8b04e248fac7a4bbbf1a9b652439f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baitWorkOnPrefabs:
+  - {fileID: 7359744747742380797, guid: 93ae5261e3223fc4ca26f02836a9a9ca, type: 3}
+  ActivateBaitOnHittingWater: 0
+  ActivateBaitOnThrowing: 0
+  DoesThisBaitFloat: 0
+  TimeToLiveAfterThrow: 30
+  ActiveBaitInWorld: 0
+  beingHeld: 0
+  beenPickedUp: 0
+  floating: 0
 --- !u!1 &5948350149213445588
 GameObject:
   m_ObjectHideFlags: 0

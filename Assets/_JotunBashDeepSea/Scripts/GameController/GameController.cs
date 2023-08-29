@@ -27,7 +27,8 @@ public class GameController : MonoBehaviour
             List<Bait> workingBaits = new List<Bait>();
             foreach( Bait testBait in activeBait)
             {
-                if (testBait.doesThisBaitWorkOnMe(ownPrefab)) workingBaits.Add(testBait);
+                if (testBait.doesThisBaitWorkOnMe(ownPrefab)) 
+                    workingBaits.Add(testBait);
             }
             if ( workingBaits.Count > 0)
             {

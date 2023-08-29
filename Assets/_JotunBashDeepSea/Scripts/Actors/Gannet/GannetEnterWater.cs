@@ -6,7 +6,6 @@ public class GannetEnterWater : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other)
     {
-        GetComponentInParent<Gannet>().OnWaterEnter();
-        Destroy(this);
+        GetComponentInParent<Gannet>().OnWaterEnter(this);
     }
 }

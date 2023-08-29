@@ -30,7 +30,7 @@ public class Bait : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.transform.tag == "Water" && beenPickedUp)
+        if (other.transform.tag == "Water" && beenPickedUp && !floating)
         {
             if (DoesThisBaitFloat)
             {
@@ -40,10 +40,7 @@ public class Bait : MonoBehaviour
                 floating = true;
             }
             if (ActivateBaitOnHittingWater)
-            {
-                mainGC.activeBait.Add(this);
-                ActiveBaitInWorld = true;
-            }
+                ActivateBait();
         }
     }
 
@@ -51,7 +48,7 @@ public class Bait : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        mainGC = GameObject.Find("GameController").GetComponent<GameController>();
+        mainGC = GameController.Instance;
         myRigidBody = GetComponent<Rigidbody>();
     }
 
@@ -74,14 +71,15 @@ public class Bait : MonoBehaviour
         Destroy(gameObject, TimeToLiveAfterThrow);
     }
 
+    public void ActivateBait()
+    {
+        mainGC.activeBait.Add(this);
+        ActiveBaitInWorld = true;
+    }
+
     private void OnDisable()
     {
         if (ActiveBaitInWorld ) mainGC.activeBait.Remove(this);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
