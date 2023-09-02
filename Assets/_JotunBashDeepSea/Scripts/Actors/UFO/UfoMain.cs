@@ -7,15 +7,15 @@ public class UfoMain : MonoBehaviour
     private GameObject BoatRig;
     private Vector3 hoverLocation;
     private Vector3 orbit;
-    private float StageTimeLeft = 15f;
+    public float StageTimeLeft = 15f;
 
     public enum Stages { MoveIn , Action , MoveOut };
     public Stages currentStage = Stages.MoveIn;
 
     private void stageMoveIn()
     {
-        transform.position = Vector3.Lerp(transform.position, hoverLocation + orbit, Time.deltaTime * 0.2f);
-        if (Vector3.Distance(transform.position, hoverLocation+ orbit) < 5f)
+        transform.position = Vector3.Lerp(transform.position, hoverLocation + orbit, Time.deltaTime * 0.3f);
+        if (Vector3.Distance(transform.position, hoverLocation+ orbit) < 10f)
         {
             currentStage = Stages.Action;
         }
@@ -23,7 +23,7 @@ public class UfoMain : MonoBehaviour
     private void stageAction()
     {
         StageTimeLeft -= Time.deltaTime;
-        transform.position = Vector3.Lerp(transform.position, hoverLocation + orbit, Time.deltaTime * 0.2f);
+        transform.position = Vector3.Lerp(transform.position, hoverLocation + orbit, Time.deltaTime * 0.3f);
         if (StageTimeLeft <= 0f)
         {
             hoverLocation = new Vector3(500f, 0, 0);
@@ -58,7 +58,6 @@ public class UfoMain : MonoBehaviour
             case Stages.MoveIn: stageMoveIn(); break;
             case Stages.Action: stageAction(); break;
             case Stages.MoveOut: stageMoveOut(); break;
-        }
-        
+        }  
     }
 }
