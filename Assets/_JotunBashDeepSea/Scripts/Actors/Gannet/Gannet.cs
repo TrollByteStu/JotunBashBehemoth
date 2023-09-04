@@ -11,6 +11,7 @@ public class Gannet : InfBadMath
     private List<Collider> _Colliders = new List<Collider>();
     public Transform _Armature;
     private GameObject _Player;
+    private GameObject _Raft;
     private Animator _Animator;
     private AudioSource _AudioSource;
     private OurWateverVolumeFloater _Floater;
@@ -25,6 +26,7 @@ public class Gannet : InfBadMath
     private int _LandingPointInt;
     private bool _ReadyToLand = false;
     private Vector3 _MovePos;
+
     // current state
     public int _CurrentState = 0;
 
@@ -60,6 +62,9 @@ public class Gannet : InfBadMath
     private float _LastBaitCheck;
     private Bait _Bait = null;
 
+    // swiming
+    private Vector3 _swimPos;
+
     private void Awake()
     {
 
@@ -80,7 +85,7 @@ public class Gannet : InfBadMath
         _ScreamCountDown = _ScreamingInterval;
         _Floater = GetComponent<OurWateverVolumeFloater>();
         _BaitScript = GetComponent<Bait>();
-
+        _Raft = GameController.Instance.BoatRig;
     }
 
     // fly in circles around the raft 
@@ -116,7 +121,14 @@ public class Gannet : InfBadMath
             _Angle = Random.Range(1, 361);
         }
         if (_StartFlightTime + _FlightTime < Time.time)
-            _CurrentState = 2;
+        {
+            _ReadyToLand = false;
+            if (Random.Range(1, 3) == 1)
+                _CurrentState = 2;
+            else
+                _CurrentState = 5;
+
+        }
         _Angle += (Time.fixedDeltaTime /(_Radius / 2)) * _AngleMod;
         _MovePos = new(Mathf.Cos(_Angle) * _Radius, 7, Mathf.Sin(_Angle) * _Radius);
         transform.LookAt(_MovePos , Vector3.up);
@@ -188,6 +200,7 @@ public class Gannet : InfBadMath
                 _LookAtPlayer = true;
                 _LookDirection = _Player.transform.position;
             }
+
             if (_TurnCount++ == _TurnCountLimit)
             {
                 _Animator.SetBool("Idle", false);
@@ -219,6 +232,69 @@ public class Gannet : InfBadMath
             transform.localPosition = Vector3.zero;
         }
 
+    }
+
+    void FindLandingZone()
+    {
+        _swimPos = GenerateRandomVector2(-20,20);
+        _swimPos.z = _swimPos.y;
+        _swimPos.y = _Raft.transform.position.y;
+        if (Vector3.Distance(_swimPos, _Raft.transform.position) <= 6)
+        {
+            FindLandingZone();
+        }
+        else
+        {
+            _ReadyToLand = true;
+            return;
+        }
+    }
+
+    void GannetDive()
+    {
+        _LandingCurveTime += Time.fixedDeltaTime;
+        if (!_ReadyToLand)
+            FindLandingZone();
+        _swimPos.y = _LandingCurve.Evaluate(_LandingCurveTime);
+        transform.position = Vector3.MoveTowards(transform.position, _swimPos, Time.fixedDeltaTime * 3);
+        transform.LookAt(Vector3.MoveTowards(transform.position, _swimPos, Time.fixedDeltaTime * 3));
+
+        if (Vector3.Distance(transform.position, _swimPos) <= 1)
+        {
+            _CurrentState = 6;
+            _Floater.enabled = true;
+            _Animator.SetBool("Swim", true);
+            _TurnCountLimit = Random.Range(2, 10);
+            transform.LookAt(new Vector3(_swimPos.x, transform.position.y, _swimPos.z));
+        }
+
+    }
+
+    void GannetSwim()
+    {
+        if (_AttentionTime + 10 < Time.time)
+        {
+            _LookDirection = GenerateRandomVector2(-10, 10);
+            _LookDirection.z = _LookDirection.y;
+            _LookDirection.y = transform.position.y;
+
+            if (_TurnCount++ == _TurnCountLimit)
+            {
+                _Animator.SetBool("Swim", false);
+                _RadiusPicked = false;
+                _CurrentState = 1;
+                _Floater.enabled = false;
+                return;
+            }
+            _AttentionTime = Time.time;
+        }
+
+        if (LeftOrRightAngle(BadAngle(_LookDirection), 3) != 0)
+        {
+            transform.Rotate(Vector3.up, LeftOrRightAngle(BadAngle(_LookDirection), 3));
+        }
+
+        transform.position += transform.forward * Time.deltaTime;
     }
 
     Vector2 GenerateRandomVector2(float min , float max)
@@ -281,6 +357,12 @@ public class Gannet : InfBadMath
                     break;
                 case 4:
                     GetBait();
+                    break;
+                case 5:
+                    GannetDive();
+                    break;
+                case 6:
+                    GannetSwim();
                     break;
                     
             }
