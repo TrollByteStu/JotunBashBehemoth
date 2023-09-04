@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class GameControllerNarrator : MonoBehaviour
 {
+    public bool doIntro = true;
 
     public AudioClip[] VoiceoverIntro;
     public AudioClip[] VoiceoverGannet;
@@ -34,6 +35,9 @@ public class GameControllerNarrator : MonoBehaviour
             case "Gannet":
                 chooseClip = VoiceoverGannet[Random.Range(1, VoiceoverGannet.Length) - 1];
                 break;
+            case "GreatWhite":
+                chooseClip = VoiceoverGreatWhite[Random.Range(1, VoiceoverGreatWhite.Length) - 1];
+                break;
             default:
                 return;
         }
@@ -47,7 +51,7 @@ public class GameControllerNarrator : MonoBehaviour
     void Start()
     {
         myAS = GetComponent<AudioSource>();
-        Tell("Intro");
+        if (doIntro ) Tell("Intro");
     }
 
     // Update is called once per frame

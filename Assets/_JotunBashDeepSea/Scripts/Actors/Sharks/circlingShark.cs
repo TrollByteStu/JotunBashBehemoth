@@ -95,6 +95,7 @@ public class circlingShark : InfBadMath
                 GetComponent<WateverVolumeFloater>().enabled = true;
                 reachedSurface = true;
                 _UpSpeed = 0;
+                GameController.Instance.gcNarrator.Tell("GreatWhite");
             }
         }
     }
