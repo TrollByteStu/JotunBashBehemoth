@@ -31,6 +31,9 @@ public class GameControllerNarrator : MonoBehaviour
             case "Intro":
                 chooseClip = VoiceoverIntro[Random.Range(1, VoiceoverIntro.Length) - 1];
                 break;
+            case "Gannet":
+                chooseClip = VoiceoverGannet[Random.Range(1, VoiceoverGannet.Length) - 1];
+                break;
             default:
                 return;
         }
