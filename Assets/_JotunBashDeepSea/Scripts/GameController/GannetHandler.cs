@@ -34,6 +34,7 @@ public class GannetHandler : MonoBehaviour
     private void Start()
     {
         _Gannets.Clear();
+        GameController.Instance.gcNarrator.Tell("Gannet");
         for (int i = 0; i < _StartSpawn; i++)
         {
             var Gannet = Instantiate(_GannetPrefab, RandomSpawnVector(20), Quaternion.identity);
