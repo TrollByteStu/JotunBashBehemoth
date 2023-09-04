@@ -5,7 +5,7 @@ using Bitgem.VFX.StylisedWater;
 
 public class Bait : MonoBehaviour
 {
-    public List<GameObject> baitWorkOnPrefabs;
+    public List<string> baitWorkOnPrefabs;
     public bool ActivateBaitOnHittingWater = false;
     public bool ActivateBaitOnThrowing = false;
     public bool DoesThisBaitFloat = false;
@@ -20,9 +20,9 @@ public class Bait : MonoBehaviour
     private GameController mainGC;
     private Rigidbody myRigidBody;
 
-    public bool doesThisBaitWorkOnMe(GameObject myPrefab)
+    public bool doesThisBaitWorkOnMe(string species)
     {
-        if (baitWorkOnPrefabs.Contains(myPrefab))
+        if (baitWorkOnPrefabs.Contains(species))
             return true;
         else 
             return false;

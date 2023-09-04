@@ -2392,7 +2392,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54b1ad4d52f601944b58f8ff00603344, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _Prefab: {fileID: 5907204676904888687}
+  _Species: Gannet
   _Rigidbodys: []
   _Armature: {fileID: 9186668743185284700}
   _LandingCurve:
@@ -2571,7 +2571,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   baitWorkOnPrefabs:
-  - {fileID: 7359744747742380797, guid: 93ae5261e3223fc4ca26f02836a9a9ca, type: 3}
+  - Shark
   ActivateBaitOnHittingWater: 0
   ActivateBaitOnThrowing: 0
   DoesThisBaitFloat: 0
