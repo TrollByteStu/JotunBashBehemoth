@@ -6,7 +6,7 @@ using Bitgem.VFX.StylisedWater;
 public class Gannet : InfBadMath
 {
     // others
-    public GameObject _Prefab;
+    public string _Species = "Gannet";
     public List<Rigidbody> _Rigidbodys;
     private List<Collider> _Colliders = new List<Collider>();
     public Transform _Armature;
@@ -61,6 +61,7 @@ public class Gannet : InfBadMath
     // bait
     private float _LastBaitCheck;
     private Bait _Bait = null;
+
 
     // swiming
     private Vector3 _swimPos;
@@ -137,10 +138,12 @@ public class Gannet : InfBadMath
 
     void GetBait()
     {
+
+
         if (_Bait == null)
             _CurrentState = 1;
-        transform.position = Vector3.Slerp(transform.position, _Bait.transform.position, Time.fixedDeltaTime);
-        transform.LookAt(Vector3.Slerp(transform.position, _Bait.transform.position, Time.fixedDeltaTime));
+        transform.LookAt(Vector3.MoveTowards(transform.position, _Bait.transform.position, Time.deltaTime * 3));
+        transform.position = Vector3.MoveTowards(transform.position, _Bait.transform.position,Time.deltaTime * 3);
         if (Vector3.Distance(transform.position, _Bait.transform.position) <= 0.5f)
         {
             _CurrentState = 1;
@@ -342,9 +345,10 @@ public class Gannet : InfBadMath
                     if (_LastBaitCheck + 10 < Time.time)
                     {
                         _LastBaitCheck = Time.time;
-                        _Bait = GameController.Instance.checkForBaits(_Prefab, transform);
+                        _Bait = GameController.Instance.checkForBaits(_Species, transform);
                         if (_Bait != null)
                         {
+                            
                             _CurrentState = 4;
                         }
                     }

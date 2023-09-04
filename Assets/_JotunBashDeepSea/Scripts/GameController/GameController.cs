@@ -20,14 +20,14 @@ public class GameController : MonoBehaviour
     public GameControllerInventory gcInventory;
     public GameControllerPointsAndDeaths gcPointsAndDeaths;
 
-    public Bait checkForBaits(GameObject ownPrefab, Transform ownTransform)
+    public Bait checkForBaits(string name, Transform ownTransform)
     {
         if (activeBait.Count > 0)
         {
             List<Bait> workingBaits = new List<Bait>();
             foreach( Bait testBait in activeBait)
             {
-                if (testBait.doesThisBaitWorkOnMe(ownPrefab)) 
+                if (testBait.doesThisBaitWorkOnMe(name)) 
                     workingBaits.Add(testBait);
             }
             Debug.Log(workingBaits.Count);
