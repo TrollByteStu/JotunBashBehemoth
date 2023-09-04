@@ -1599,6 +1599,53 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnedPrefab: {fileID: 3384164483772082479, guid: e1d93b8bd43fbf74389c181b76d7231c, type: 3}
   useInventoryToSpawn: 0
+--- !u!1 &5443730159093210191
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5359022895693982097}
+  - component: {fileID: 7956486885572152508}
+  m_Layer: 0
+  m_Name: KatanaSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5359022895693982097
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5443730159093210191}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.9961947, y: 0, z: 0, w: 0.08715588}
+  m_LocalPosition: {x: 2.55, y: 1.15, z: 1.1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 365206179902722195}
+  m_Father: {fileID: 8420354838528476742}
+  m_LocalEulerAnglesHint: {x: 170, y: 0, z: 0}
+--- !u!114 &7956486885572152508
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5443730159093210191}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a03d03e62660b044eb3d5c84fe8357a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnedPrefab: {fileID: 1670805165339805254, guid: 42e3a7e381941db4dbd82fc6de867747, type: 3}
+  useInventoryToSpawn: 0
 --- !u!1 &5477578750147646956
 GameObject:
   m_ObjectHideFlags: 0
@@ -2319,6 +2366,7 @@ Transform:
   - {fileID: 7151152087535590199}
   - {fileID: 3736412646848254516}
   - {fileID: 1621215960912608101}
+  - {fileID: 5359022895693982097}
   - {fileID: 4927195630832762568}
   - {fileID: 7038688208908537011}
   m_Father: {fileID: 6785270045119047173}
@@ -2588,6 +2636,68 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 4923681733188627328, guid: a2fc0c98f21994d4fac0bf8ff481ebd6, type: 3}
   m_PrefabInstance: {fileID: 424576239760222134}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &435102641562938467
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 5359022895693982097}
+    m_Modifications:
+    - target: {fileID: 223124555945770224, guid: 42e3a7e381941db4dbd82fc6de867747, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 223124555945770224, guid: 42e3a7e381941db4dbd82fc6de867747, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 223124555945770224, guid: 42e3a7e381941db4dbd82fc6de867747, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 223124555945770224, guid: 42e3a7e381941db4dbd82fc6de867747, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 223124555945770224, guid: 42e3a7e381941db4dbd82fc6de867747, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 223124555945770224, guid: 42e3a7e381941db4dbd82fc6de867747, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 223124555945770224, guid: 42e3a7e381941db4dbd82fc6de867747, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 223124555945770224, guid: 42e3a7e381941db4dbd82fc6de867747, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 223124555945770224, guid: 42e3a7e381941db4dbd82fc6de867747, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 223124555945770224, guid: 42e3a7e381941db4dbd82fc6de867747, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1670805165339805254, guid: 42e3a7e381941db4dbd82fc6de867747, type: 3}
+      propertyPath: m_Name
+      value: Katana
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 42e3a7e381941db4dbd82fc6de867747, type: 3}
+--- !u!4 &365206179902722195 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 223124555945770224, guid: 42e3a7e381941db4dbd82fc6de867747, type: 3}
+  m_PrefabInstance: {fileID: 435102641562938467}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &584552917476106678
 PrefabInstance:
@@ -3467,6 +3577,22 @@ PrefabInstance:
     - target: {fileID: 1607873005611488183, guid: 694ac3a445740604cbca08053f646899, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4389832760706714255, guid: 694ac3a445740604cbca08053f646899, type: 3}
+      propertyPath: m_UIScrollAction.m_Action.m_Id
+      value: f82faa00-fd58-4fd2-988f-12d1a67c2889
+      objectReference: {fileID: 0}
+    - target: {fileID: 4389832760706714255, guid: 694ac3a445740604cbca08053f646899, type: 3}
+      propertyPath: m_IsTrackedAction.m_Action.m_Id
+      value: 78480056-1273-4fc3-9580-258ab80500ce
+      objectReference: {fileID: 0}
+    - target: {fileID: 4389832760706714255, guid: 694ac3a445740604cbca08053f646899, type: 3}
+      propertyPath: m_UIScrollAction.m_Action.m_Name
+      value: UI Scroll
+      objectReference: {fileID: 0}
+    - target: {fileID: 4389832760706714255, guid: 694ac3a445740604cbca08053f646899, type: 3}
+      propertyPath: m_IsTrackedAction.m_Action.m_Name
+      value: Is Tracked
       objectReference: {fileID: 0}
     - target: {fileID: 5354683835034974761, guid: 694ac3a445740604cbca08053f646899, type: 3}
       propertyPath: m_Name
