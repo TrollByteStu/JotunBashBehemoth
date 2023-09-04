@@ -19,6 +19,7 @@ public class GameController : MonoBehaviour
     public GameControllerWeather gcWeather;
     public GameControllerInventory gcInventory;
     public GameControllerPointsAndDeaths gcPointsAndDeaths;
+    public GameControllerNarrator gcNarrator;
 
     public Bait checkForBaits(string name, Transform ownTransform)
     {
