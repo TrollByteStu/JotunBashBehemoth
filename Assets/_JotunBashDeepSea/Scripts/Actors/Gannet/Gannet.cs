@@ -142,8 +142,8 @@ public class Gannet : InfBadMath
 
         if (_Bait == null)
             _CurrentState = 1;
-        transform.LookAt(Vector3.MoveTowards(transform.position, _Bait.transform.position, Time.deltaTime * 3));
-        transform.position = Vector3.MoveTowards(transform.position, _Bait.transform.position,Time.deltaTime * 3);
+        transform.LookAt(Vector3.MoveTowards(transform.position, _Bait.transform.position, Time.fixedDeltaTime * 3));
+        transform.position = Vector3.MoveTowards(transform.position, _Bait.transform.position,Time.fixedDeltaTime * 3);
         if (Vector3.Distance(transform.position, _Bait.transform.position) <= 0.5f)
         {
             _CurrentState = 1;
@@ -297,7 +297,7 @@ public class Gannet : InfBadMath
             transform.Rotate(Vector3.up, LeftOrRightAngle(BadAngle(_LookDirection), 3));
         }
 
-        transform.position += transform.forward * Time.deltaTime;
+        transform.position += transform.forward * Time.fixedDeltaTime;
     }
 
     Vector2 GenerateRandomVector2(float min , float max)
