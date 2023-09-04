@@ -4975,6 +4975,84 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!1 &2007849462029162811
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2139337134094778729}
+  - component: {fileID: 2101494698062691348}
+  - component: {fileID: 3590683963776761232}
+  m_Layer: 0
+  m_Name: DebrisAreaSpawnerStart
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2139337134094778729
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2007849462029162811}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 65870008282406819}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &2101494698062691348
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2007849462029162811}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 40, y: 1, z: 40}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &3590683963776761232
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2007849462029162811}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64c006ce9ceb9f840ba45f11af9ffdb0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnedPrefabs:
+  - {fileID: 1810827631790322276, guid: cdff67dab0dd8d443a97d93add1ee450, type: 3}
+  - {fileID: 1810827631790322276, guid: 9eba243f318efc54381a3bb1face4c3d, type: 3}
+  - {fileID: 1810827631790322276, guid: 8fb2c1731d70d6146b31498f38bd89ec, type: 3}
+  - {fileID: 1810827631790322276, guid: e437c024581822d43a38cef94685df56, type: 3}
+  - {fileID: 1797784409352257669, guid: 11e119e8090a334419818a99734670fd, type: 3}
+  - {fileID: 5607025635173845985, guid: ce98e44f329204745a7857d5e5986868, type: 3}
+  spawnAmount: 10
+  spawnMinimum: 10
+  spawnStartThenStop: 0
+  afterSpawnDisableTimer: 20
+  randomSpawnInhibitor: 60
 --- !u!1 &2346508224843503281
 GameObject:
   m_ObjectHideFlags: 0
@@ -5124,6 +5202,7 @@ Transform:
   - {fileID: 7226058995532283390}
   - {fileID: 1737259952197871512}
   - {fileID: 620153449231142635}
+  - {fileID: 65870008282406819}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2620437468729636354
@@ -5294,6 +5373,84 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   WaterVolume: {fileID: 8555326418432827827}
+--- !u!1 &2895635334609810098
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8409046543576910107}
+  - component: {fileID: 1421630592034307226}
+  - component: {fileID: 3108462357300151909}
+  m_Layer: 0
+  m_Name: DebrisAreaSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8409046543576910107
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2895635334609810098}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 20, y: 0, z: 10}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 65870008282406819}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1421630592034307226
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2895635334609810098}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 5, y: 1, z: 20}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &3108462357300151909
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2895635334609810098}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64c006ce9ceb9f840ba45f11af9ffdb0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnedPrefabs:
+  - {fileID: 1810827631790322276, guid: cdff67dab0dd8d443a97d93add1ee450, type: 3}
+  - {fileID: 1810827631790322276, guid: 9eba243f318efc54381a3bb1face4c3d, type: 3}
+  - {fileID: 1810827631790322276, guid: 8fb2c1731d70d6146b31498f38bd89ec, type: 3}
+  - {fileID: 1810827631790322276, guid: e437c024581822d43a38cef94685df56, type: 3}
+  - {fileID: 1797784409352257669, guid: 11e119e8090a334419818a99734670fd, type: 3}
+  - {fileID: 5607025635173845985, guid: ce98e44f329204745a7857d5e5986868, type: 3}
+  spawnAmount: 30
+  spawnMinimum: 3
+  spawnStartThenStop: 0
+  afterSpawnDisableTimer: 20
+  randomSpawnInhibitor: 100
 --- !u!1 &2960424492431374346
 GameObject:
   m_ObjectHideFlags: 0
@@ -5325,6 +5482,84 @@ Transform:
   m_Children: []
   m_Father: {fileID: 6179578498412201577}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &3052129674503918265
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1296992401256666179}
+  - component: {fileID: 7592318937995750289}
+  - component: {fileID: 5158877082271165731}
+  m_Layer: 0
+  m_Name: DebrisAreaSpawner2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1296992401256666179
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3052129674503918265}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 10, y: 0, z: 20}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 65870008282406819}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &7592318937995750289
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3052129674503918265}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 20, y: 1, z: 5}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &5158877082271165731
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3052129674503918265}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64c006ce9ceb9f840ba45f11af9ffdb0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnedPrefabs:
+  - {fileID: 1810827631790322276, guid: cdff67dab0dd8d443a97d93add1ee450, type: 3}
+  - {fileID: 1810827631790322276, guid: 9eba243f318efc54381a3bb1face4c3d, type: 3}
+  - {fileID: 1810827631790322276, guid: 8fb2c1731d70d6146b31498f38bd89ec, type: 3}
+  - {fileID: 1810827631790322276, guid: e437c024581822d43a38cef94685df56, type: 3}
+  - {fileID: 1797784409352257669, guid: 11e119e8090a334419818a99734670fd, type: 3}
+  - {fileID: 5607025635173845985, guid: ce98e44f329204745a7857d5e5986868, type: 3}
+  spawnAmount: 30
+  spawnMinimum: 3
+  spawnStartThenStop: 0
+  afterSpawnDisableTimer: 20
+  randomSpawnInhibitor: 100
 --- !u!1 &3419162895891597083
 GameObject:
   m_ObjectHideFlags: 0
@@ -5369,7 +5604,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 176ef5d22ee1dd242926127f7bd64d35, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.5
+  m_Volume: 0.15
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -5714,7 +5949,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 4cfc9f54224bf8845b542452e8095794, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.5
+  m_Volume: 0.25
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -16042,6 +16277,40 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   WaterVolume: {fileID: 2747877310801061859}
+--- !u!1 &6703908264055828550
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 65870008282406819}
+  m_Layer: 0
+  m_Name: DebrisSpawners
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &65870008282406819
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6703908264055828550}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 8409046543576910107}
+  - {fileID: 1296992401256666179}
+  - {fileID: 2139337134094778729}
+  m_Father: {fileID: 3492034558526669725}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6775315365499973064
 GameObject:
   m_ObjectHideFlags: 0
