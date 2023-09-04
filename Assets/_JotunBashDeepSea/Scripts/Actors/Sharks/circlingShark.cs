@@ -12,7 +12,7 @@ public class circlingShark : MonoBehaviour
 
     private bool reachedSurface = false;
 
-    public GameObject myOwnPrefab;
+    public string _Species = "Shark";
 
     public float distance = 20f;
     private float distanceSin;
@@ -34,7 +34,7 @@ public class circlingShark : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        _Bait = GameController.Instance.checkForBaits(myOwnPrefab, transform);
+        _Bait = GameController.Instance.checkForBaits(_Species, transform);
         distanceSin = Mathf.Sin(Time.time) *2 + distance;
         _Angle += Time.fixedDeltaTime * speed;
         _Orbit = new Vector3(Mathf.Sin(_Angle) * distanceSin, transform.position.y + _UpSpeed, Mathf.Cos(_Angle) * distanceSin);
