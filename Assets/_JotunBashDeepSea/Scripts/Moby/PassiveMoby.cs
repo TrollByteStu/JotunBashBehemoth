@@ -58,6 +58,8 @@ public class PassiveMoby : InfBadMath
     {
         if (_myPlayer == null)
             _myPlayer = GameController.Instance.player;
+        if (_Raft == null)
+            _Raft = GameController.Instance.BoatRig;
         GenerateCords(0);
         mainGC = GameController.Instance;
         myAS = GetComponent<AudioSource>();
@@ -123,6 +125,7 @@ public class PassiveMoby : InfBadMath
         blowDisabled = true;
         var blowEffect = Instantiate(mainGC.gcResources.BlowHoleSprays[0], blowHoleTransform.position, blowHoleTransform.rotation, blowHoleTransform);
         Destroy(blowEffect, 10f);
+        GameController.Instance.gcNarrator.Tell("MobyDick");
     }
 
     void MobyEmerge()

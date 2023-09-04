@@ -38,6 +38,9 @@ public class GameControllerNarrator : MonoBehaviour
             case "GreatWhite":
                 chooseClip = VoiceoverGreatWhite[Random.Range(1, VoiceoverGreatWhite.Length) - 1];
                 break;
+            case "MobyDick":
+                chooseClip = VoiceoverMobyDick[Random.Range(1, VoiceoverMobyDick.Length) - 1];
+                break;
             default:
                 return;
         }
