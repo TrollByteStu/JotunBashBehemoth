@@ -24,6 +24,14 @@ public class GameControllerNarrator : MonoBehaviour
         waitingToPlay.Add(story);
     }
 
+    public void TellNow(string story)
+    {
+        if (alreadyPlayed.Contains(story)) return;
+        if (waitingToPlay.Contains(story)) return;
+        if (myAS.isPlaying) return;
+        waitingToPlay.Add(story);
+    }
+
     void playNext()
     {
         AudioClip chooseClip;
@@ -34,6 +42,9 @@ public class GameControllerNarrator : MonoBehaviour
                 break;
             case "Gannet":
                 chooseClip = VoiceoverGannet[Random.Range(1, VoiceoverGannet.Length) - 1];
+                break;
+            case "Plushie":
+                chooseClip = VoiceoverPlushie[Random.Range(1, VoiceoverPlushie.Length) - 1];
                 break;
             case "GreatWhite":
                 chooseClip = VoiceoverGreatWhite[Random.Range(1, VoiceoverGreatWhite.Length) - 1];

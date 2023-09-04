@@ -40,6 +40,7 @@ public class Plushie : MonoBehaviour
     {
         beingHeld = true;
         beenPickedUp = true;
+        GameController.Instance.gcNarrator.TellNow("Plushie");
     }
 
     public void eventUnSelect()
