@@ -11,6 +11,8 @@ public class AreaSpawner : MonoBehaviour
     public int spawnAmount = 1;
     public int spawnMinimum = 0;
 
+    public bool spawnStartThenStop = false;
+
     public float afterSpawnDisableTimer = 30f;
     public float randomSpawnInhibitor = 360f;
 
@@ -33,12 +35,13 @@ public class AreaSpawner : MonoBehaviour
     {
         if (transform.childCount < spawnAmount && lastSpawn <= 0f && Random.Range(0, randomSpawnInhibitor) <= 1 || transform.childCount < spawnMinimum )
         {
-            var spawned = Instantiate(spawnedPrefabs[Random.Range(0,spawnedPrefabs.Length-1)],
+            var spawned = Instantiate(spawnedPrefabs[Random.Range(0,spawnedPrefabs.Length)],
                 new Vector3(Random.Range(spawnMin.x,spawnMax.x), Random.Range(spawnMin.y, spawnMax.y), Random.Range(spawnMin.z, spawnMax.z)), 
                 Quaternion.identity, 
                 transform);
             lastSpawn = afterSpawnDisableTimer;
         }
+        if (spawnStartThenStop && transform.childCount == spawnMinimum) gameObject.SetActive(false);
         lastSpawn -= Time.deltaTime;
     }
 }
