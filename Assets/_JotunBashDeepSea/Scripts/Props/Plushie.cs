@@ -20,6 +20,7 @@ public class Plushie : MonoBehaviour
     }
     public void PlushieTouchReportTouch(int number)
     {
+        Debug.Log("Plushie Touch " + number.ToString());
         if ( number == 1)
         {
             lastTouch = 1;
@@ -28,7 +29,7 @@ public class Plushie : MonoBehaviour
         if ( number == lastTouch +1 )
         {
             lastTouch = number;
-
+            if (lastTouch == MaxTouchZones) ImproveWeather();
         } else {
             lastTouch = 0;
 
