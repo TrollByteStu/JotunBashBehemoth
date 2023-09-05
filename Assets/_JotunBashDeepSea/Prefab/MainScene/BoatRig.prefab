@@ -449,7 +449,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: d6fac6d4c24e4984e9e9eb36cf399003, type: 2}
+  - {fileID: 2100000, guid: e99583ca77870d74fa20e71062dbe144, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1027,7 +1027,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: d6fac6d4c24e4984e9e9eb36cf399003, type: 2}
+  - {fileID: 2100000, guid: e99583ca77870d74fa20e71062dbe144, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1775,7 +1775,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: d6fac6d4c24e4984e9e9eb36cf399003, type: 2}
+  - {fileID: 2100000, guid: e99583ca77870d74fa20e71062dbe144, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3718,7 +3718,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 5cd436900615c75418dba7edd4635b75, type: 3}
       propertyPath: m_Materials.Array.data[1]
       value: 
-      objectReference: {fileID: 2100000, guid: d6fac6d4c24e4984e9e9eb36cf399003, type: 2}
+      objectReference: {fileID: 2100000, guid: e99583ca77870d74fa20e71062dbe144, type: 2}
     - target: {fileID: 919132149155446097, guid: 5cd436900615c75418dba7edd4635b75, type: 3}
       propertyPath: m_Name
       value: Roof
