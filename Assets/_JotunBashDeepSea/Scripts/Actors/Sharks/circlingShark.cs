@@ -64,8 +64,8 @@ public class circlingShark : InfBadMath
 
     void Bait()
     {
-        transform.LookAt(Vector3.MoveTowards(transform.position, _Bait.transform.position, Time.fixedDeltaTime * speed));
-        transform.position = Vector3.MoveTowards(transform.position, _Bait.transform.position, Time.fixedDeltaTime * speed);
+        transform.LookAt(Vector3.MoveTowards(transform.position, _Bait.transform.position, Time.deltaTime * speed));
+        transform.position = Vector3.MoveTowards(transform.position, _Bait.transform.position, Time.deltaTime * speed);
 
         if (Vector3.Distance(transform.position, _Bait.transform.position) <= 5)
         {
@@ -77,13 +77,13 @@ public class circlingShark : InfBadMath
     void NoBait()
     {
         distanceSin = Mathf.Sin(Time.time) * 2 + distance;
-        _Angle += Time.fixedDeltaTime * speed * 0.05f;
+        _Angle += Time.deltaTime * speed * 0.05f;
         _Orbit = new Vector3(Mathf.Sin(_Angle) * distanceSin, transform.position.y + _UpSpeed, Mathf.Cos(_Angle) * distanceSin);
-        transform.LookAt(Vector3.MoveTowards(transform.position, _Orbit, Time.fixedDeltaTime * speed));
-        transform.position = Vector3.MoveTowards(transform.position, _Orbit, Time.fixedDeltaTime * speed);
+        transform.LookAt(Vector3.MoveTowards(transform.position, _Orbit, Time.deltaTime * speed));
+        transform.position = Vector3.MoveTowards(transform.position, _Orbit, Time.deltaTime * speed);
     }
 
-    void FixedUpdate()
+    void Update()
     {
         _Bait = GameController.Instance.checkForBaits(_Species, transform);
         CheckForBait();
