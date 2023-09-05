@@ -3089,6 +3089,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6775682573729575454}
   - component: {fileID: 1923673474200009474}
+  - component: {fileID: 3587800326649966135}
   m_Layer: 0
   m_Name: SailHolder
   m_TagString: Untagged
@@ -3109,9 +3110,9 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 6819331356612464139}
   - {fileID: 7541146506159965968}
   - {fileID: 5845901163690513041}
+  - {fileID: 6819331356612464139}
   m_Father: {fileID: 5662524698879930393}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &1923673474200009474
@@ -3210,6 +3211,21 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &3587800326649966135
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8933445363607872588}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca53b3fb81be0a9408dc20ec2a13d4bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SailWindLow: {fileID: 2687630307840388370}
+  SailWindMedium: {fileID: 3954358598831983395}
+  SailWindHigh: {fileID: 1750592902335387124}
 --- !u!1 &8971376239391637022
 GameObject:
   m_ObjectHideFlags: 0
