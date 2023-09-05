@@ -58,6 +58,8 @@ public class PassiveMoby : InfBadMath
     {
         if (_myPlayer == null)
             _myPlayer = GameController.Instance.player;
+        if (_Raft == null)
+            _Raft = GameController.Instance.BoatRig;
         GenerateCords(0);
         mainGC = GameController.Instance;
         myAS = GetComponent<AudioSource>();
@@ -74,7 +76,7 @@ public class PassiveMoby : InfBadMath
         // moby rushes player and play bite animation
         // trigger level change
 
-    private void FixedUpdate()
+    private void Update()
     {
         if (_HitPoints <= 0 && _TimeSinceDive + _DiveTime + _RandomTimeAdded < Time.time && _Emerging)
             MobySceneChange();
@@ -123,12 +125,13 @@ public class PassiveMoby : InfBadMath
         blowDisabled = true;
         var blowEffect = Instantiate(mainGC.gcResources.BlowHoleSprays[0], blowHoleTransform.position, blowHoleTransform.rotation, blowHoleTransform);
         Destroy(blowEffect, 10f);
+        GameController.Instance.gcNarrator.Tell("MobyDick");
     }
 
     void MobyEmerge()
     {
         _AnimationTimer += Time.deltaTime;
-        _Angle += (Time.fixedDeltaTime * _AngleChangeSpeed * _AngleDirectionMod) / _Radius;
+        _Angle += (Time.deltaTime * _AngleChangeSpeed * _AngleDirectionMod) / _Radius;
         _MobyMovePoint = new Vector3(Mathf.Sin(_Angle) * _Radius, _EmergingCurve.Evaluate(_AnimationTimer), Mathf.Cos(_Angle) * _Radius);
         transform.LookAt(_MobyMovePoint);
         transform.position = _MobyMovePoint;
@@ -151,7 +154,7 @@ public class PassiveMoby : InfBadMath
     {
         blowDisabled = false;
         _AnimationTimer -= Time.deltaTime;
-        _Angle += (Time.fixedDeltaTime * _AngleChangeSpeed * _AngleDirectionMod) / _Radius;
+        _Angle += (Time.deltaTime * _AngleChangeSpeed * _AngleDirectionMod) / _Radius;
         _MobyMovePoint = new Vector3(Mathf.Sin(_Angle) * _Radius, _EmergingCurve.Evaluate(_AnimationTimer), Mathf.Cos(_Angle) * _Radius);
         transform.LookAt(_MobyMovePoint);
         transform.position = _MobyMovePoint;

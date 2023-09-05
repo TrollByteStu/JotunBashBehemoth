@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour
 {
+    public float secondsLeft = 360f;
+
     private static GameController _instance;
     public GameObject player;
     public GameObject BoatRig;
@@ -31,7 +33,7 @@ public class GameController : MonoBehaviour
                 if (testBait.doesThisBaitWorkOnMe(name)) 
                     workingBaits.Add(testBait);
             }
-            Debug.Log(workingBaits.Count);
+            //Debug.Log(workingBaits.Count);
             if ( workingBaits.Count > 0)
             {
                 workingBaits.Sort((bait1, bait2) =>
@@ -49,11 +51,11 @@ public class GameController : MonoBehaviour
     private void Awake()
     {
         _instance = this;
-        _GannetHandler = GetComponent<GannetHandler>();
         gcResources = GetComponent<GameControllerResources>();
         gcWeather = GetComponent<GameControllerWeather>();
         gcInventory = GetComponent<GameControllerInventory>();
         gcPointsAndDeaths = GetComponent<GameControllerPointsAndDeaths>();
+        gcNarrator = GetComponent<GameControllerNarrator>();
     }
 
     public static GameController Instance
@@ -64,6 +66,11 @@ public class GameController : MonoBehaviour
                 Debug.LogError("Game manager is NULL");
             return _instance;
         }
+    }
+
+    private void Update()
+    {
+        secondsLeft -= Time.deltaTime;
     }
 
 }

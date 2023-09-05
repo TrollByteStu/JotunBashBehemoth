@@ -4,16 +4,8 @@ using UnityEngine;
 
 public class InfBadMath : MonoBehaviour
 {
-
-    float _BadRadius;
-    float _BadRadian;
     float _BadAngle;
 
-    float _MyBadRadius;
-    float _MyBadRadian;
-    float _MyBadAngle;
-
-    BadAngleStruct badStruct = new BadAngleStruct();
     protected struct BadAngleStruct
     {
         public float _BadAngle;
@@ -22,20 +14,16 @@ public class InfBadMath : MonoBehaviour
 
     protected BadAngleStruct BadAngle(Vector3 vector3)
     {
-        _BadRadius = Vector3.Distance(new Vector3(vector3.x , transform.position.y , vector3.z), transform.position);
-        _BadRadian = Mathf.Atan2(vector3.x / _BadRadius, vector3.z / _BadRadius);
-        _BadAngle = _BadRadian * (180 / Mathf.PI);
-        if (_BadAngle < 0)
-            _BadAngle += 360f;
+        float radius1 = Vector3.Distance(new Vector3(vector3.x , transform.position.y , vector3.z), transform.position);
+        float angle1 = AngleOnCircle(vector3.x, vector3.z, radius1);
 
-        _MyBadRadius = Vector3.Distance(new Vector3(transform.forward.x, transform.position.y, transform.forward.z), transform.position);
-        _MyBadRadian = Mathf.Atan2(transform.forward.x / _MyBadRadius, transform.forward.z / _MyBadRadius);
-        _MyBadAngle = _MyBadRadian * (180 / Mathf.PI);
-        if (_MyBadAngle < 0)
-            _MyBadAngle += 360f;
+        float radius2 = Vector3.Distance(new Vector3(transform.forward.x, transform.position.y, transform.forward.z), transform.position);
+        float angle2 = AngleOnCircle(transform.forward.x, transform.forward.z, radius2);
 
-        badStruct._BadAngle = _BadAngle;
-        badStruct._MyBadAngle = _MyBadAngle;
+        BadAngleStruct badStruct = new BadAngleStruct();
+
+        badStruct._BadAngle = angle1;
+        badStruct._MyBadAngle = angle2;
 
         return badStruct;
     }
@@ -64,6 +52,15 @@ public class InfBadMath : MonoBehaviour
         }
         return 0;
 
+    }
+
+    protected float AngleOnCircle(float x ,float y,float radius)
+    {
+        float radian = Mathf.Atan2(x / radius, y / radius);
+        float angle = radian * (180 / Mathf.PI);
+        if (angle< 0)
+            angle += 360f;
+        return angle;
     }
 
     protected float PlusOrMinus()

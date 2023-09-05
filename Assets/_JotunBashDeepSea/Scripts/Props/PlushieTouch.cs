@@ -7,8 +7,9 @@ public class PlushieTouch : MonoBehaviour
     public Plushie myPlushie;
     public int touchNumber;
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        if (collision.transform.tag == "Player") myPlushie.PlushieTouchReportTouch(touchNumber);
+        if (other.transform.tag == "Player") myPlushie.PlushieTouchReportTouch(touchNumber);
     }
+
 }

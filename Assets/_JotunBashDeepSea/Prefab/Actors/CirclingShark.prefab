@@ -50,8 +50,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _Species: Shark
   distance: 20
-  speed: 0.2
-  _UpSpeed: 0.1
+  speed: 3
+  _UpSpeed: 1
   _Bait: {fileID: 0}
 --- !u!114 &2751124058871237914
 MonoBehaviour:
