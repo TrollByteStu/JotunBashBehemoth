@@ -3408,6 +3408,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerRig
       objectReference: {fileID: 0}
+    - target: {fileID: 5899106325090988996, guid: 694ac3a445740604cbca08053f646899, type: 3}
+      propertyPath: m_AllowAnchorControl
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5938988422759837519, guid: 694ac3a445740604cbca08053f646899, type: 3}
+      propertyPath: m_AllowAnchorControl
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7960157058691258238, guid: 694ac3a445740604cbca08053f646899, type: 3}
       propertyPath: m_SizeDelta.x
       value: 0

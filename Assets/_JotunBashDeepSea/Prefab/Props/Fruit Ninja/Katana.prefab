@@ -99,6 +99,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _BeingHeld: 0
   _Touched: 0
+  _CurrentTimeScale: 1
   _MinTimeScale: 0.5
   _SlowTime: 0
 --- !u!114 &7987396150904009078
