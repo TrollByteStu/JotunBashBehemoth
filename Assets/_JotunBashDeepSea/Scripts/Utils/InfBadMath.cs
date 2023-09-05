@@ -63,6 +63,15 @@ public class InfBadMath : MonoBehaviour
         return angle;
     }
 
+    protected Vector3 RandomVetor3(float min , float max)
+    {
+        return new Vector3(Random.Range(min, max), Random.Range(min, max), Random.Range(min, max));
+    }
+    protected Vector2 RandomVetor2(float min , float max)
+    {
+        return new Vector2(Random.Range(min, max), Random.Range(min, max));
+    }
+
     protected float PlusOrMinus()
     {
         if (Random.Range(1, 3) == 1)
