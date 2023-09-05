@@ -503,7 +503,7 @@ Cloth:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1750592902335387124}
   m_Enabled: 1
-  m_StretchingStiffness: 0.25
+  m_StretchingStiffness: 1
   m_BendingStiffness: 0
   m_UseTethers: 1
   m_UseGravity: 1
@@ -956,7 +956,7 @@ GameObject:
   - component: {fileID: 6079079865722926666}
   - component: {fileID: 6335435055492690290}
   m_Layer: 0
-  m_Name: sailintact
+  m_Name: sailIntact
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3110,9 +3110,9 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 6819331356612464139}
   - {fileID: 7541146506159965968}
   - {fileID: 5845901163690513041}
-  - {fileID: 6819331356612464139}
   m_Father: {fileID: 5662524698879930393}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &1923673474200009474
