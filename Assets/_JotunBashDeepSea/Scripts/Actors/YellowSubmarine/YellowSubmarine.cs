@@ -56,7 +56,7 @@ public class YellowSubmarine : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        orbit = new Vector3(Mathf.Cos(Time.unscaledTime * .05f) * -35f, 0, Mathf.Sin(Time.unscaledTime * .05f) * -35f);
+        orbit = new Vector3(Mathf.Cos(Time.unscaledTime * .05f) * -35f, 0, Mathf.Sin(Time.unscaledTime * .05f) * -70f);
         transform.LookAt(orbit+ new Vector3(0,transform.position.y,0), Vector3.up);
         myAS.volume = 1 + (transform.position.y*0.1f);
         switch (currentStage)
