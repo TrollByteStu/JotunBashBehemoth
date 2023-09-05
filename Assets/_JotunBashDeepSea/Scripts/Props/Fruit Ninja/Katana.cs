@@ -6,6 +6,10 @@ public class Katana : MonoBehaviour
 {
     public bool _BeingHeld = false;
     public bool _Touched = false;
+
+    float _CurrentTimeScale;
+    public float _MinTimeScale;
+    public bool _SlowTime;
     private Rigidbody _Rigidbody;
 
     private void Start()
@@ -13,13 +17,14 @@ public class Katana : MonoBehaviour
         _Rigidbody = GetComponent<Rigidbody>();
     }
 
+
     public void eventSelect()
     {
         _BeingHeld = true;
         _Touched = true;
     }
 
-    public void eventUnSelect()
+    public void eventDeselect()
     {
         _BeingHeld = false;
         _Rigidbody.isKinematic = false;
@@ -30,5 +35,11 @@ public class Katana : MonoBehaviour
     public void eventActivate()
     {
         // time scale stuff
+        Time.timeScale = _MinTimeScale;
+    }
+
+    public void eventDeactivate()
+    {
+        Time.timeScale = 1;
     }
 }

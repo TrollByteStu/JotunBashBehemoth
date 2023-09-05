@@ -130,10 +130,10 @@ public class Gannet : InfBadMath
                 _CurrentState = 5;
 
         }
-        _Angle += (Time.fixedDeltaTime /(_Radius / 2)) * _AngleMod;
+        _Angle += (Time.deltaTime /(_Radius / 2)) * _AngleMod;
         _MovePos = new(Mathf.Cos(_Angle) * _Radius, 7, Mathf.Sin(_Angle) * _Radius);
         transform.LookAt(_MovePos , Vector3.up);
-        transform.position = Vector3.MoveTowards(transform.position, _MovePos,Time.fixedDeltaTime * 4);
+        transform.position = Vector3.MoveTowards(transform.position, _MovePos,Time.deltaTime * 4);
     }
 
     void GetBait()
@@ -142,8 +142,8 @@ public class Gannet : InfBadMath
 
         if (_Bait == null)
             _CurrentState = 1;
-        transform.LookAt(Vector3.MoveTowards(transform.position, _Bait.transform.position, Time.fixedDeltaTime * 3));
-        transform.position = Vector3.MoveTowards(transform.position, _Bait.transform.position,Time.fixedDeltaTime * 3);
+        transform.LookAt(Vector3.MoveTowards(transform.position, _Bait.transform.position, Time.deltaTime * 3));
+        transform.position = Vector3.MoveTowards(transform.position, _Bait.transform.position,Time.deltaTime * 3);
         if (Vector3.Distance(transform.position, _Bait.transform.position) <= 0.5f)
         {
             _CurrentState = 1;
@@ -153,13 +153,13 @@ public class Gannet : InfBadMath
 
     void GannetLand()
     {
-        _LandingCurveTime += Time.fixedDeltaTime;
+        _LandingCurveTime += Time.deltaTime;
         if (!_ReadyToLand)
             FindLandingPoint();
         _MovePos = _GannetIdlePoints.GetChild(_LandingPointInt).transform.position;
         _MovePos.y = _GannetIdlePoints.GetChild(_LandingPointInt).transform.position.y + _LandingCurve.Evaluate(_LandingCurveTime);
-        transform.position = Vector3.MoveTowards(transform.position, _MovePos, Time.fixedDeltaTime * 3);
-        transform.LookAt(Vector3.MoveTowards(transform.position, _MovePos, Time.fixedDeltaTime * 3));
+        transform.position = Vector3.MoveTowards(transform.position, _MovePos, Time.deltaTime * 3);
+        transform.LookAt(Vector3.MoveTowards(transform.position, _MovePos, Time.deltaTime * 3));
         if (_GannetIdlePoints.GetChild(_LandingPointInt).childCount != 0)
         {
             _CurrentState = 1;
@@ -217,7 +217,7 @@ public class Gannet : InfBadMath
 
         if (LeftOrRightAngle(BadAngle(_LookDirection), 3) != 0 && !_DontRotate)
         {
-            _JumpTime += Time.fixedDeltaTime;
+            _JumpTime += Time.deltaTime;
             transform.Rotate(Vector3.up, LeftOrRightAngle(BadAngle(_LookDirection), 3));
             _MovePos.y = _JumpCurve.Evaluate(_JumpTime);
             transform.localPosition = _MovePos;
@@ -255,12 +255,12 @@ public class Gannet : InfBadMath
 
     void GannetDive()
     {
-        _LandingCurveTime += Time.fixedDeltaTime;
+        _LandingCurveTime += Time.deltaTime;
         if (!_ReadyToLand)
             FindLandingZone();
         _swimPos.y = _LandingCurve.Evaluate(_LandingCurveTime);
-        transform.position = Vector3.MoveTowards(transform.position, _swimPos, Time.fixedDeltaTime * 3);
-        transform.LookAt(Vector3.MoveTowards(transform.position, _swimPos, Time.fixedDeltaTime * 3));
+        transform.position = Vector3.MoveTowards(transform.position, _swimPos, Time.deltaTime * 3);
+        transform.LookAt(Vector3.MoveTowards(transform.position, _swimPos, Time.deltaTime * 3));
 
         if (Vector3.Distance(transform.position, _swimPos) <= 1)
         {
@@ -297,7 +297,7 @@ public class Gannet : InfBadMath
             transform.Rotate(Vector3.up, LeftOrRightAngle(BadAngle(_LookDirection), 3));
         }
 
-        transform.position += transform.forward * Time.fixedDeltaTime;
+        transform.position += transform.forward * Time.deltaTime;
     }
 
     Vector2 GenerateRandomVector2(float min , float max)
@@ -328,7 +328,7 @@ public class Gannet : InfBadMath
         Destroy(gameObject);
     }
 
-    void FixedUpdate()
+    void Update()
     {
         if (!_Dead)
         {
