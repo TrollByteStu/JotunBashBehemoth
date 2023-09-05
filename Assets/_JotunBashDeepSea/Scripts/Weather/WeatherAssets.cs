@@ -12,6 +12,21 @@ public class WeatherAssets : MonoBehaviour
     public float WindMin = 0.5f;
     public float WindMax = 2f;
 
+    public AudioSource LowWind1;
+    public float LowWind1Max = 0.25f;
+    public AudioSource LowWind2;
+    public float LowWind2Max = 0.25f;
+    public AudioSource LowWind3;
+    public float LowWind3Max = 0.15f;
+    public AudioSource HighWind1;
+    public float HighWind1Max = 0.45f;
+    public AudioSource HighWind2;
+    public float HighWind2Max = 0.35f;
+    public AudioSource HighWind3;
+    public float HighWind3Max = 0.25f;
+
+    private float getWind;
+
     public void UpdateWind(float wind)
     {
         WaveMaterial.SetFloat("_WaveScale", Mathf.Lerp(WaveMin,WaveMax,wind));
@@ -32,6 +47,12 @@ public class WeatherAssets : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        getWind = GameController.Instance.gcWeather.sliderWind;
+        LowWind1.volume = Mathf.Clamp(Mathf.Sin(Time.timeSinceLevelLoad * 0.1f) * (0.75f - getWind) * LowWind1Max, 0, 1);
+        LowWind2.volume = Mathf.Clamp(Mathf.Cos(Time.timeSinceLevelLoad * 0.15f) * (0.85f - getWind) * LowWind2Max, 0, 1);
+        LowWind3.volume = Mathf.Clamp(Mathf.Sin(Time.timeSinceLevelLoad * 0.3f) * (0.65f - getWind) * LowWind3Max, 0, 1);
+        HighWind1.volume = Mathf.Clamp(Mathf.Sin(Time.timeSinceLevelLoad * 0.11f) * (0.05f + getWind) * HighWind1Max, 0, 1);
+        HighWind2.volume = Mathf.Clamp(Mathf.Cos(Time.timeSinceLevelLoad * 0.16f) * (0.15f + getWind) * HighWind2Max, 0, 1);
+        HighWind3.volume = Mathf.Clamp(Mathf.Sin(Time.timeSinceLevelLoad * 0.33f) * (0.25f + getWind) * HighWind3Max, 0, 1);
     }
 }
