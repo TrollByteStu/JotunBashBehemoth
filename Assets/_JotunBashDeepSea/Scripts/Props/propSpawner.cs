@@ -7,28 +7,43 @@ public class propSpawner : MonoBehaviour
     public GameObject spawnedPrefab;
 
     public bool useInventoryToSpawn = false;
+    public bool onSpawnInScene = false;
 
     private GameController mainGC;
 
+    public GameObject lastSpawn;
+
+
+
     void Start()
     {
-        mainGC = GameObject.Find("GameController").GetComponent<GameController>();
+        mainGC = GameController.Instance;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if ( useInventoryToSpawn )
+        if (onSpawnInScene)
         {
-            if ( mainGC.gcInventory.ItemHowMany(spawnedPrefab) >= 1 && transform.childCount < 1)
+            if (lastSpawn == null)
             {
-                mainGC.gcInventory.inventory[spawnedPrefab]--;
-                var spawned = Instantiate(spawnedPrefab, transform.position, transform.rotation, transform);
+                lastSpawn = Instantiate(spawnedPrefab, transform.position, transform.rotation, transform);
             }
-        } else {
-            if (transform.childCount < 1)
+        }
+        else
+        {
+            if ( useInventoryToSpawn )
             {
-                var spawned = Instantiate(spawnedPrefab, transform.position, transform.rotation, transform);
+                if ( mainGC.gcInventory.ItemHowMany(spawnedPrefab) >= 1 && transform.childCount < 1)
+                {
+                    mainGC.gcInventory.inventory[spawnedPrefab]--;
+                    var spawned = Instantiate(spawnedPrefab, transform.position, transform.rotation, transform);
+                }
+            } else {
+                if (transform.childCount < 1)
+                {
+                    var spawned = Instantiate(spawnedPrefab, transform.position, transform.rotation, transform);
+                }
             }
         }
     }

@@ -271,6 +271,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnedPrefab: {fileID: 5009567003914403142, guid: 45ea52c0a4e0edd4781ebc96489b869a, type: 3}
   useInventoryToSpawn: 0
+  onSpawnInScene: 0
+  lastSpawn: {fileID: 0}
 --- !u!1 &1176921215339044350
 GameObject:
   m_ObjectHideFlags: 0
@@ -317,6 +319,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnedPrefab: {fileID: 5192282367127467434, guid: c32452edeeb0c904498354849a6d831b, type: 3}
   useInventoryToSpawn: 1
+  onSpawnInScene: 0
+  lastSpawn: {fileID: 0}
 --- !u!1 &1234655356677013153
 GameObject:
   m_ObjectHideFlags: 0
@@ -363,6 +367,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnedPrefab: {fileID: 8008627263368629634, guid: 0054adc4d025b8044a5e3374a23f84ee, type: 3}
   useInventoryToSpawn: 1
+  onSpawnInScene: 0
+  lastSpawn: {fileID: 0}
 --- !u!1 &1750592902335387124
 GameObject:
   m_ObjectHideFlags: 0
@@ -849,6 +855,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnedPrefab: {fileID: 1641759431359060803, guid: a2fc0c98f21994d4fac0bf8ff481ebd6, type: 3}
   useInventoryToSpawn: 0
+  onSpawnInScene: 0
+  lastSpawn: {fileID: 0}
 --- !u!1 &2377526823117393004
 GameObject:
   m_ObjectHideFlags: 0
@@ -941,6 +949,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnedPrefab: {fileID: 5009567003914403142, guid: 45ea52c0a4e0edd4781ebc96489b869a, type: 3}
   useInventoryToSpawn: 0
+  onSpawnInScene: 0
+  lastSpawn: {fileID: 0}
 --- !u!1 &2687630307840388370
 GameObject:
   m_ObjectHideFlags: 0
@@ -1472,6 +1482,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnedPrefab: {fileID: 6916742277770698165, guid: c876082e2e5df914f9ed78cb07f132d0, type: 3}
   useInventoryToSpawn: 1
+  onSpawnInScene: 0
+  lastSpawn: {fileID: 0}
 --- !u!1 &2936046245155332260
 GameObject:
   m_ObjectHideFlags: 0
@@ -2226,6 +2238,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnedPrefab: {fileID: 8037256815985978319, guid: 2e487e9796d926a49a9f0fe1134b77d7, type: 3}
   useInventoryToSpawn: 1
+  onSpawnInScene: 0
+  lastSpawn: {fileID: 0}
 --- !u!1 &5034607233664379555
 GameObject:
   m_ObjectHideFlags: 0
@@ -2413,6 +2427,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnedPrefab: {fileID: 3384164483772082479, guid: e1d93b8bd43fbf74389c181b76d7231c, type: 3}
   useInventoryToSpawn: 0
+  onSpawnInScene: 0
+  lastSpawn: {fileID: 0}
 --- !u!1 &5443730159093210191
 GameObject:
   m_ObjectHideFlags: 0
@@ -2460,6 +2476,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnedPrefab: {fileID: 1670805165339805254, guid: 42e3a7e381941db4dbd82fc6de867747, type: 3}
   useInventoryToSpawn: 0
+  onSpawnInScene: 0
+  lastSpawn: {fileID: 0}
 --- !u!1 &5477578750147646956
 GameObject:
   m_ObjectHideFlags: 0
@@ -2507,6 +2525,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnedPrefab: {fileID: 8704128702192408593, guid: ec372ebeb10e6fd47b9ed37b5818e1d0, type: 3}
   useInventoryToSpawn: 0
+  onSpawnInScene: 0
+  lastSpawn: {fileID: 0}
 --- !u!1 &5709399321906260619
 GameObject:
   m_ObjectHideFlags: 0
@@ -2554,6 +2574,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnedPrefab: {fileID: 8742251009410473172, guid: e235795d17387ed4ab339aa51c8fec32, type: 3}
   useInventoryToSpawn: 0
+  onSpawnInScene: 0
+  lastSpawn: {fileID: 0}
 --- !u!1 &5852165589605041046
 GameObject:
   m_ObjectHideFlags: 0
@@ -2601,6 +2623,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnedPrefab: {fileID: 8587313004712364318, guid: b6730cae083c5ca4ea3e50ffb8abddb0, type: 3}
   useInventoryToSpawn: 0
+  onSpawnInScene: 0
+  lastSpawn: {fileID: 0}
 --- !u!1 &6018653718492500267
 GameObject:
   m_ObjectHideFlags: 0
@@ -2647,6 +2671,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnedPrefab: {fileID: 5009567003914403142, guid: 45ea52c0a4e0edd4781ebc96489b869a, type: 3}
   useInventoryToSpawn: 0
+  onSpawnInScene: 0
+  lastSpawn: {fileID: 0}
 --- !u!1 &6983835208552861789
 GameObject:
   m_ObjectHideFlags: 0
@@ -3002,6 +3028,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnedPrefab: {fileID: 5009567003914403142, guid: 45ea52c0a4e0edd4781ebc96489b869a, type: 3}
   useInventoryToSpawn: 0
+  onSpawnInScene: 0
+  lastSpawn: {fileID: 0}
 --- !u!1 &8254174019250969405
 GameObject:
   m_ObjectHideFlags: 0
@@ -3048,6 +3076,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnedPrefab: {fileID: 153048187217653294, guid: 83ad57564d1929241a31e429f44bbd22, type: 3}
   useInventoryToSpawn: 1
+  onSpawnInScene: 0
+  lastSpawn: {fileID: 0}
 --- !u!1 &8280798319388381787
 GameObject:
   m_ObjectHideFlags: 0
@@ -3159,6 +3189,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnedPrefab: {fileID: 2077820710191546775, guid: 192177d62d884524d9a56df6f3dbb547, type: 3}
   useInventoryToSpawn: 1
+  onSpawnInScene: 0
+  lastSpawn: {fileID: 0}
 --- !u!1 &9192071896882683132
 GameObject:
   m_ObjectHideFlags: 0

@@ -10,6 +10,8 @@ public class Katana : MonoBehaviour
     public float _CurrentTimeScale = 1;
     public float _MinTimeScale;
     public bool _SlowTime;
+
+    private float _DeleteTime;
     private Rigidbody _Rigidbody;
 
     private void Start()
@@ -19,20 +21,27 @@ public class Katana : MonoBehaviour
 
     private void Update()
     {
-        if (_SlowTime  && _BeingHeld)
+        if (_SlowTime)
         {
             _CurrentTimeScale -= Time.unscaledDeltaTime / 2;
             _CurrentTimeScale = Mathf.Clamp(_CurrentTimeScale, _MinTimeScale, 1);
             Time.timeScale = _CurrentTimeScale;
         }
-        else if (_BeingHeld)
+        else
         {
             _CurrentTimeScale += Time.unscaledDeltaTime / 2;
             _CurrentTimeScale = Mathf.Clamp(_CurrentTimeScale, _MinTimeScale, 1);
             Time.timeScale = _CurrentTimeScale;
         }
-    }
 
+        if (_DeleteTime + 10 < Time.time && !_BeingHeld && _Touched)
+            Destroy(gameObject);
+
+        if (transform.position.y <= -10)
+            Destroy(gameObject);
+
+    }
+     
     public void eventSelect()
     {
         _BeingHeld = true;
@@ -43,6 +52,7 @@ public class Katana : MonoBehaviour
 
     public void eventDeselect()
     {
+        _DeleteTime = Time.time;
         _BeingHeld = false;
         _Rigidbody.isKinematic = false;
         transform.SetParent(null);
