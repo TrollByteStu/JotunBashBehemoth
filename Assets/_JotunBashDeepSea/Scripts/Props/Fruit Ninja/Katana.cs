@@ -17,6 +17,7 @@ public class Katana : MonoBehaviour
     private void Start()
     {
         _Rigidbody = GetComponent<Rigidbody>();
+        GameController.Instance.gcFruitNinja._Katana = gameObject;
     }
 
     private void Update()

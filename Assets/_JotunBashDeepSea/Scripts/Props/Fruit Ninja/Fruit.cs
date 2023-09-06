@@ -22,7 +22,7 @@ public class Fruit : MonoBehaviour
 
     void Update()
     {
-        
+        transform.LookAt(GameController.Instance.gcFruitNinja._Katana.transform,Vector3.up);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -35,6 +35,7 @@ public class Fruit : MonoBehaviour
                 rb.velocity = _Rigidbody.velocity;
             }
             _Rigidbody.isKinematic = true;
+            GameController.Instance.gcFruitNinja._Score += 1;
             Destroy(_SphereCollider);
             foreach (MeshCollider mc in _CutsMC)
                 mc.isTrigger = false;
