@@ -10,10 +10,11 @@ public class FruitCannon : InfBadMath
 
     // cannon movement
 
-    public Transform _YawTransform;
-    public Transform _PitchTransform;
+    public Transform _YawTransform; // body transfrom
+    public Transform _PitchTransform; // barrel transform
     public Transform _YawLookat;
     public Transform _pitchLookat;
+    private float _Distance; // distance from target
 
     // firing 
     public Transform _CannonHole;
@@ -21,8 +22,8 @@ public class FruitCannon : InfBadMath
     public float _FireRate = 1;
     private float _LastShot;
     public float _FruitSpeed;
-    public Vector2 _RandomOffset;
-    private Vector3 _RandomOffset1;
+    public Vector2 _RandomOffset; // for min and max of randomOffset vector3
+    private Vector3 _RandomOffset1; // actual offset
     
 
     void Update()
@@ -34,6 +35,7 @@ public class FruitCannon : InfBadMath
             _LastShot = Time.time;
             FireFruit();
             _RandomOffset1 = RandomVetor3(_RandomOffset.x,_RandomOffset.y);
+            _Distance = Vector3.Distance(_PitchTransform.position, Target.transform.position);
             
         }
     }
@@ -46,6 +48,39 @@ public class FruitCannon : InfBadMath
 
         _PitchTransform.rotation = Quaternion.Lerp(_PitchTransform.rotation, _pitchLookat.rotation,Time.deltaTime * 2);
         _YawTransform.rotation = Quaternion.Lerp(_YawTransform.rotation, _YawLookat.rotation,Time.deltaTime * 2);
+    }
+
+    bool _Alined1 = false;
+    bool _Alined2 = false;
+
+    void ArcShot(Vector3 vector3)
+    {
+        // pick a vector3 and lookat it
+        // get distace from vector3
+        // calculate angle of fire based on speed and distance
+        // rotate cannon x axis
+        // fire
+        if (!_Alined1)
+        {
+            _YawLookat.LookAt(new Vector3(vector3.x, _YawTransform.position.y, vector3.z));
+            _pitchLookat.LookAt(vector3);
+
+
+            _PitchTransform.rotation = Quaternion.Lerp(_PitchTransform.rotation, _pitchLookat.rotation, Time.deltaTime * 2);
+            _YawTransform.rotation = Quaternion.Lerp(_YawTransform.rotation, _YawLookat.rotation, Time.deltaTime * 2);
+            //if alinged
+            // _Alined1 = true;
+        }
+        else if (_Alined2)
+        {
+
+        }
+
+
+
+
+
+
     }
 
     void FireFruit()
