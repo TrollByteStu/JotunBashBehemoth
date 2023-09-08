@@ -5397,6 +5397,8 @@ MonoBehaviour:
   HighWind2Max: 0.55
   HighWind3: {fileID: 6862723594399931740}
   HighWind3Max: 0.45
+  cloudMedium: {fileID: 5130085053986919029}
+  CloudHeavy: {fileID: 4635285251002782672}
 --- !u!1 &2656277017636534543
 GameObject:
   m_ObjectHideFlags: 0
@@ -6758,7 +6760,7 @@ GameObject:
   - component: {fileID: 4635285251002782672}
   - component: {fileID: 8684944435493650167}
   m_Layer: 0
-  m_Name: ParticleCloud04
+  m_Name: ParticleCloud04 Heavy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6969,7 +6971,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 1, g: 1, b: 1, a: 1}
+      maxColor: {r: 0.2830189, g: 0.2830189, b: 0.2830189, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -17147,7 +17149,7 @@ GameObject:
   - component: {fileID: 5130085053986919029}
   - component: {fileID: 3192464475596345418}
   m_Layer: 0
-  m_Name: ParticleCloud02
+  m_Name: ParticleCloud02 Medium
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -17358,7 +17360,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 1, g: 1, b: 1, a: 1}
+      maxColor: {r: 0.5283019, g: 0.5283019, b: 0.5283019, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
