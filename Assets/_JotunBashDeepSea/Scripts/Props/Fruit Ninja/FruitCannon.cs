@@ -41,22 +41,23 @@ public class FruitCannon : InfBadMath
         _G = -Physics.gravity.y; // should be -9.81 so conveted to 9.81
         _RandomOffset1 = RandomVetor3(_RandomOffset.x, _RandomOffset.y);
         _DistanceXZ = Vector3.Distance(_PitchTransform.position, new Vector3(Target.position.x, _PitchTransform.position.y, Target.position.z));
-        _DistanceY = Vector3.Distance(_PitchTransform.position, new Vector3(_PitchTransform.position.x, Target.position.y + _PlayerYOffset, _PitchTransform.position.z));
+        _DistanceY = Vector3.Distance(_PitchTransform.position, new Vector3(_PitchTransform.position.x, Target.position.y, _PitchTransform.position.z));
+        _DistanceY += _PlayerYOffset;
         FireAngle();
     }
 
     void Update()
     {
-        //LookAtVector(Target.position + _RandomOffset1);
         ArcShot(Target.position + _RandomOffset1);
-
+        
         if (_LastShot + _FireRate < Time.time)
         {
             _LastShot = Time.time;
             FireFruit();
             _RandomOffset1 = RandomVetor3(_RandomOffset.x,_RandomOffset.y);
             _DistanceXZ = Vector3.Distance(_PitchTransform.position, new Vector3(Target.position.x,_PitchTransform.position.y,Target.position.z));
-            _DistanceY = Vector3.Distance(_PitchTransform.position, new Vector3(_PitchTransform.position.x,Target.position.y + _PlayerYOffset,_PitchTransform.position.z));
+            _DistanceY = Vector3.Distance(_PitchTransform.position, new Vector3(_PitchTransform.position.x,Target.position.y,_PitchTransform.position.z));
+            _DistanceY += _PlayerYOffset; 
             FireAngle();
             
         }
@@ -81,7 +82,7 @@ public class FruitCannon : InfBadMath
         // fire
         _YawLookat.LookAt(new Vector3(vector3.x, _YawTransform.position.y, vector3.z));
         _pitchLookat.LookAt(new Vector3(vector3.x, _pitchLookat.position.y, vector3.z));
-        _pitchLookat.Rotate(transform.right, -_Degrees);
+        _pitchLookat.Rotate(transform.right, _Degrees);
         
         _PitchTransform.rotation = Quaternion.Lerp(_PitchTransform.rotation, _pitchLookat.rotation, Time.deltaTime * 2);
         _YawTransform.rotation = Quaternion.Lerp(_YawTransform.rotation, _YawLookat.rotation, Time.deltaTime * 2);

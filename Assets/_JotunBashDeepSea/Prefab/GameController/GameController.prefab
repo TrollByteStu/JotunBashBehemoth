@@ -511,8 +511,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73cd870544b428349818c302d2a78e05, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _On: 0
   _Score: 0
+  _Stage: 0
   _Katana: {fileID: 0}
+  _FruitCannon1: {fileID: 0}
+  _FruitCannon2: {fileID: 0}
+  _FruitCannon3: {fileID: 0}
+  _SlowTime: 0
+  _MinTimeScale: 0.5
 --- !u!1 &3857580847507135039
 GameObject:
   m_ObjectHideFlags: 0

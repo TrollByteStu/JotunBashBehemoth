@@ -7,48 +7,42 @@ public class Katana : MonoBehaviour
     public bool _BeingHeld = false;
     public bool _Touched = false;
 
-    public float _CurrentTimeScale = 1;
-    public float _MinTimeScale;
-    public bool _SlowTime;
-
     private float _DeleteTime;
     private Rigidbody _Rigidbody;
+    private GameControllerFruitNinja _GcFruitNinja;
 
     private void Start()
     {
         _Rigidbody = GetComponent<Rigidbody>();
-        GameController.Instance.gcFruitNinja._Katana = gameObject;
+        _GcFruitNinja = GameController.Instance.gcFruitNinja;
+        _GcFruitNinja._Katana = gameObject;
     }
 
     private void Update()
     {
-        if (_SlowTime)
-        {
-            _CurrentTimeScale -= Time.unscaledDeltaTime / 2;
-            _CurrentTimeScale = Mathf.Clamp(_CurrentTimeScale, _MinTimeScale, 1);
-            Time.timeScale = _CurrentTimeScale;
-        }
-        else
-        {
-            _CurrentTimeScale += Time.unscaledDeltaTime / 2;
-            _CurrentTimeScale = Mathf.Clamp(_CurrentTimeScale, _MinTimeScale, 1);
-            Time.timeScale = _CurrentTimeScale;
-        }
-
         if (_DeleteTime + 10 < Time.time && !_BeingHeld && _Touched)
+        {
+            _GcFruitNinja._On = false;
+            _GcFruitNinja._Stage = 0;
             Destroy(gameObject);
+        }
 
         if (transform.position.y <= -10)
+        {
+            _GcFruitNinja._On = false;
+            _GcFruitNinja._Stage = 0;
             Destroy(gameObject);
-
+        }
     }
      
     public void eventSelect()
     {
+        _GcFruitNinja._On = true;
+        _GcFruitNinja._Stage = 0;
         _BeingHeld = true;
         _Touched = true;
-        if (_SlowTime)   
-            _SlowTime = false;
+        if (_GcFruitNinja._SlowTime)
+            _GcFruitNinja._SlowTime = false;
     }
 
     public void eventDeselect()
@@ -57,17 +51,17 @@ public class Katana : MonoBehaviour
         _BeingHeld = false;
         _Rigidbody.isKinematic = false;
         transform.SetParent(null);
-        if (_SlowTime)
-            _SlowTime = false;
+        if (_GcFruitNinja._SlowTime)
+            _GcFruitNinja._SlowTime = false;
     }
 
     public void eventActivate()
     {
-        _SlowTime = true;
+        _GcFruitNinja._SlowTime = true;
     }
 
     public void eventDeactivate()
     {
-        _SlowTime = false;
+        _GcFruitNinja._SlowTime = false;
     }
 }

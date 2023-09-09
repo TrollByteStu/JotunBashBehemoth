@@ -237,7 +237,7 @@ MonoBehaviour:
   - {fileID: 1670805165339805254, guid: b3dfa6facf4673f409ec94b25af3a0ca, type: 3}
   - {fileID: 1670805165339805254, guid: a478754d5e4cef845855dd26a7fdd231, type: 3}
   _FireRate: 1
-  _FruitSpeed: 230
+  _FruitSpeed: 250
   _RandomOffset: {x: -1, y: 1}
   _PlayerYOffset: -3
 --- !u!1 &9103035967516020050
