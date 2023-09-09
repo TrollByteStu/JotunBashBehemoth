@@ -31,7 +31,6 @@ public class Fruit : MonoBehaviour
     {
         _Lookat.LookAt(GameController.Instance.gcFruitNinja._Katana.transform, GameController.Instance.gcFruitNinja._Katana.transform.up);
         transform.rotation = Quaternion.Lerp(transform.rotation, _Lookat.rotation, Time.deltaTime * 3);
-
     }
 
     private void OnTriggerEnter(Collider other)
