@@ -29,6 +29,7 @@ public class spear : MonoBehaviour
     {
         beingHeld = true;
         _Touched = true;
+        GameController.Instance.gcNarrator.TellNow("HarpoonPickup");
     }
 
     public void eventUnSelect()

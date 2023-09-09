@@ -12,6 +12,12 @@ public class GameControllerNarrator : MonoBehaviour
     public AudioClip[] VoiceoverGreatWhite;
     public AudioClip[] VoiceoverMobyDick;
 
+    public AudioClip[] ReactionShotGunPickup;
+    public AudioClip[] ReactionHarpoonPickup;
+    public AudioClip[] ReactionBrineDrink;
+    public AudioClip[] ReactionForgetfulDrink;
+
+
     public List<string> alreadyPlayed;
     public List<string> waitingToPlay;
 
@@ -51,6 +57,18 @@ public class GameControllerNarrator : MonoBehaviour
                 break;
             case "MobyDick":
                 chooseClip = VoiceoverMobyDick[Random.Range(1, VoiceoverMobyDick.Length) - 1];
+                break;
+            case "ShotGunPickup":
+                chooseClip = ReactionShotGunPickup[Random.Range(1, ReactionShotGunPickup.Length) - 1];
+                break;
+            case "HarpoonPickup":
+                chooseClip = ReactionHarpoonPickup[Random.Range(1, ReactionHarpoonPickup.Length) - 1];
+                break;
+            case "BrineDrink":
+                chooseClip = ReactionBrineDrink[Random.Range(1, ReactionBrineDrink.Length) - 1];
+                break;
+            case "ForgetfulDrink":
+                chooseClip = ReactionForgetfulDrink[Random.Range(1, ReactionForgetfulDrink.Length) - 1];
                 break;
             default:
                 return;
