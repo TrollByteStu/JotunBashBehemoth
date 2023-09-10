@@ -24,7 +24,6 @@ public class RopeHandler : MonoBehaviour
     {
         myLine.SetPosition(0, transform.position);
         myLine.SetPosition(1, TheWinch.transform.position);
-        TheWinch.PlaySound = 0.5f;
     }
 
     // Start is called before the first frame update

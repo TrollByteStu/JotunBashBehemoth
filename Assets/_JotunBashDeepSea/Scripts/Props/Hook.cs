@@ -71,7 +71,8 @@ public class Hook : MonoBehaviour
         { 
             myRope.simpleLineToWinch();
         } else {
-            hookedRigidbody.AddForce(myRope.TheWinch.position - hookedRigidbody.transform.position );
+            hookedRigidbody.AddForce(myRope.TheWinch.transform.position - hookedRigidbody.transform.position );
+            myRope.TheWinch.PlaySound = 0.5f;
         }
         if (beenPickedUp && !beingHeld) transform.LookAt(transform.position + myRigidBody.velocity*10f);
         if (transform.position.y < -100) Destroy(gameObject);
