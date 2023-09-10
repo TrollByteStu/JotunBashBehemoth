@@ -56,8 +56,7 @@ public class FruitCannon : InfBadMath
             FireFruit();
             _RandomOffset1 = RandomVetor3(_RandomOffset.x,_RandomOffset.y);
             _DistanceXZ = Vector3.Distance(_PitchTransform.position, new Vector3(Target.position.x,_PitchTransform.position.y,Target.position.z));
-            _DistanceY = Vector3.Distance(_PitchTransform.position, new Vector3(_PitchTransform.position.x,Target.position.y,_PitchTransform.position.z));
-            _DistanceY += _PlayerYOffset; 
+            _DistanceY = Target.position.y - _PitchTransform.position.y +_PlayerYOffset;
             FireAngle();
             
         }
