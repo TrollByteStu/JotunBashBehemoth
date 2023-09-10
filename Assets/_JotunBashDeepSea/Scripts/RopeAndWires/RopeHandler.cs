@@ -18,19 +18,20 @@ public class RopeHandler : MonoBehaviour
     bool reset, spawn, snapFirst, snapLast;
 
     private LineRenderer myLine;
-    public Transform TheWinch;
+    public Winch TheWinch;
 
     public void simpleLineToWinch()
     {
         myLine.SetPosition(0, transform.position);
-        myLine.SetPosition(1, TheWinch.position);
+        myLine.SetPosition(1, TheWinch.transform.position);
+        TheWinch.PlaySound = 0.5f;
     }
 
     // Start is called before the first frame update
     void Start()
     {
         myLine = GetComponent<LineRenderer>();
-        TheWinch = GameObject.Find("RaftWinch").transform;
+        TheWinch = GameObject.Find("RaftWinch").GetComponent<Winch>();
         myLine.positionCount = 2;
         myLine.SetWidth(.005f, .005f);
     }
@@ -65,7 +66,7 @@ public class RopeHandler : MonoBehaviour
 
     public void spawnFromPointToPoint()
     {
-        int count = (int)(Vector3.Distance(transform.position, TheWinch.position) / segmentDistance);
+        int count = (int)(Vector3.Distance(transform.position, TheWinch.transform.position) / segmentDistance);
 
         GameObject tmp;
         GameObject lastTmp = gameObject;
@@ -74,7 +75,7 @@ public class RopeHandler : MonoBehaviour
 
         for (int i = 0; i < count; i++)
         {
-            tmpPos = Vector3.Lerp( TheWinch.position, transform.position, steps * i);
+            tmpPos = Vector3.Lerp( TheWinch.transform.position, transform.position, steps * i);
             tmp = Instantiate(SegmentPrefab, tmpPos, Quaternion.identity, transform);
             tmp.name = "Rope Segment " + i.ToString();
 
