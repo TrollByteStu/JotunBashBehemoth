@@ -20,5 +20,6 @@ public class Winch : MonoBehaviour
     {
         if (PlaySound > 0 && !myAS.isPlaying) myAS.Play();
         if (PlaySound <= 0 && myAS.isPlaying) myAS.Stop();
+        PlaySound -= Time.deltaTime;
     }
 }
