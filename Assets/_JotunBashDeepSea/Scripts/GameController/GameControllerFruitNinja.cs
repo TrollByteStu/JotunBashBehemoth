@@ -7,6 +7,7 @@ public class GameControllerFruitNinja : MonoBehaviour
     public bool _On;
     public int _Score = 0;
     public int _Stage = 0;
+    public Transform _Target;
     public GameObject _Katana;
     public GameObject _FruitCannons;
     private GameObject _FruitCannon1;
@@ -19,18 +20,23 @@ public class GameControllerFruitNinja : MonoBehaviour
 
     public bool _SlowTime;
     public float _MinTimeScale = 0.5f;
-    private float _CurrentTimeScale;
+    public float _CurrentTimeScale;
 
     private void Start()
     {
-            _FruitCannon1 = _FruitCannons.transform.GetChild(0).gameObject;
-            _FruitCannonScript1 = _FruitCannon1.GetComponent<FruitCannon>();
+        _Target = Camera.main.transform;
 
-            _FruitCannon2 = _FruitCannons.transform.GetChild(1).gameObject;
-            _FruitCannonScript2 = _FruitCannon2.GetComponent<FruitCannon>();
-
-            _FruitCannon3 = _FruitCannons.transform.GetChild(2).gameObject;
-            _FruitCannonScript3 = _FruitCannon3.GetComponent<FruitCannon>();
+        _FruitCannon1 = _FruitCannons.transform.GetChild(0).gameObject;
+        _FruitCannonScript1 = _FruitCannon1.GetComponent<FruitCannon>();
+        _FruitCannonScript1.Target = _Target;
+        
+        _FruitCannon2 = _FruitCannons.transform.GetChild(1).gameObject;
+        _FruitCannonScript2 = _FruitCannon2.GetComponent<FruitCannon>();
+        _FruitCannonScript2.Target = _Target;
+        
+        _FruitCannon3 = _FruitCannons.transform.GetChild(2).gameObject;
+        _FruitCannonScript3 = _FruitCannon3.GetComponent<FruitCannon>();
+        _FruitCannonScript3.Target = _Target;
     }
 
     private void Update()

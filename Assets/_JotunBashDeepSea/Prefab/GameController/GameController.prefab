@@ -514,12 +514,12 @@ MonoBehaviour:
   _On: 0
   _Score: 0
   _Stage: 0
+  _Target: {fileID: 0}
   _Katana: {fileID: 0}
-  _FruitCannon1: {fileID: 0}
-  _FruitCannon2: {fileID: 0}
-  _FruitCannon3: {fileID: 0}
+  _FruitCannons: {fileID: 0}
   _SlowTime: 0
   _MinTimeScale: 0.5
+  _CurrentTimeScale: 0
 --- !u!1 &3857580847507135039
 GameObject:
   m_ObjectHideFlags: 0

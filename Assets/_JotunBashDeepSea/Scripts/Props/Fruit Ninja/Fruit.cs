@@ -18,22 +18,24 @@ public class Fruit : MonoBehaviour
         {
             rb.isKinematic = true;
             rb.mass = _CutMass;
+            rb.interpolation = RigidbodyInterpolation.None;
         }
         _CutsMC = GetComponentsInChildren<MeshCollider>();
         foreach (MeshCollider mc in _CutsMC)
             mc.isTrigger = true;
+        _SphereCollider = GetComponent<SphereCollider>();
         _Rigidbody = GetComponent<Rigidbody>();
         _Rigidbody.mass = _Mass;
-        _SphereCollider = GetComponent<SphereCollider>();
+        _Rigidbody.interpolation = RigidbodyInterpolation.Interpolate;
     }
 
     void Update()
     {
-        if (GameController.Instance.gcFruitNinja._Katana != null)
-        {
-            _Lookat.LookAt(GameController.Instance.gcFruitNinja._Katana.transform, GameController.Instance.gcFruitNinja._Katana.transform.up);
-            transform.rotation = Quaternion.Lerp(transform.rotation, _Lookat.rotation, Time.deltaTime * 6);
-        }
+        //if (GameController.Instance.gcFruitNinja._Katana != null)
+        //{
+        //    _Lookat.LookAt(GameController.Instance.gcFruitNinja._Katana.transform, GameController.Instance.gcFruitNinja._Katana.transform.up);
+        //    transform.rotation = Quaternion.Lerp(transform.rotation, _Lookat.rotation, Time.deltaTime * 6);
+        //}
     }
 
     private void OnTriggerEnter(Collider other) 
@@ -47,11 +49,14 @@ public class Fruit : MonoBehaviour
         foreach (Rigidbody rb in _CutsRB)
         {
             rb.isKinematic = false;
-            rb.velocity = _Rigidbody.velocity;
+            rb.interpolation = RigidbodyInterpolation.Interpolate;
+            //rb.velocity = _Rigidbody.velocity;
             rb.AddForce(rb.transform.right * 40);
         }
+        _Rigidbody.interpolation = RigidbodyInterpolation.None;
         _Rigidbody.isKinematic = true;
         GameController.Instance.gcFruitNinja._Score += 1;
+        GameController.Instance.gcFruitNinja._CurrentTimeScale -= 0.3f;
         Destroy(_SphereCollider);
         foreach (MeshCollider mc in _CutsMC)
             mc.isTrigger = false;
