@@ -12247,13 +12247,15 @@ GameObject:
   m_Component:
   - component: {fileID: 1006315495602148486}
   - component: {fileID: 1789757224655565664}
+  - component: {fileID: 96927008949777106}
+  - component: {fileID: 3943360754142928985}
   m_Layer: 5
   m_Name: SharkDinner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1006315495602148486
 RectTransform:
   m_ObjectHideFlags: 0
@@ -12286,7 +12288,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 6cc4e1281b218de46ad144f639371874, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -12370,6 +12372,30 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &96927008949777106
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8198041314611622184}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 144e8c9b9f5bcdc499ccba93e8b9c273, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!225 &3943360754142928985
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8198041314611622184}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &8232950169770285227
 GameObject:
   m_ObjectHideFlags: 0
