@@ -29,13 +29,13 @@ public class Fruit : MonoBehaviour
         _Rigidbody.interpolation = RigidbodyInterpolation.Interpolate;
     }
 
-    void Update()
+    void FixedUpdate()
     {
-        //if (GameController.Instance.gcFruitNinja._Katana != null)
-        //{
-        //    _Lookat.LookAt(GameController.Instance.gcFruitNinja._Katana.transform, GameController.Instance.gcFruitNinja._Katana.transform.up);
-        //    transform.rotation = Quaternion.Lerp(transform.rotation, _Lookat.rotation, Time.deltaTime * 6);
-        //}
+        if (GameController.Instance.gcFruitNinja._Katana != null)
+        {
+            _Lookat.LookAt(GameController.Instance.gcFruitNinja._Katana.transform, GameController.Instance.gcFruitNinja._Katana.transform.up);
+            transform.rotation = Quaternion.Lerp(transform.rotation, _Lookat.rotation, Time.fixedDeltaTime * 6);
+        }
     }
 
     private void OnTriggerEnter(Collider other) 
