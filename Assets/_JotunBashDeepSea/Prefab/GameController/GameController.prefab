@@ -377,6 +377,11 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 901c27dc3806a2f4daa3eb54f78a99b9, type: 3}
   - {fileID: 8300000, guid: 8b17451590e3d5c48890b6016ee8fdd6, type: 3}
   - {fileID: 8300000, guid: 40e7848fe852d4b4fa974efb20a44a3c, type: 3}
+  - {fileID: 8300000, guid: bc67d8f57cdda754782d978247a543a3, type: 3}
+  - {fileID: 8300000, guid: b7529f5f699cb484e9c322101ad086b4, type: 3}
+  - {fileID: 8300000, guid: 3630d61cfd3dc574484116360869b9b3, type: 3}
+  - {fileID: 8300000, guid: 0b1b78e6d946ad44fa72b72f1cfaad25, type: 3}
+  - {fileID: 8300000, guid: 8a3782e115735214ab18b26f983275f8, type: 3}
   VoiceoverGannet:
   - {fileID: 8300000, guid: 008d6e080266a6947b4b6b5b6db322c6, type: 3}
   - {fileID: 8300000, guid: 79147aec87ba23c4c8b95cb833cf692d, type: 3}
@@ -401,6 +406,36 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 17cbd0ac1241a0c42b45057787599bf1, type: 3}
   - {fileID: 8300000, guid: 878d98ef53146dd43831a5e6168b822e, type: 3}
   - {fileID: 8300000, guid: ff6859ed1e6dbd34fb6fcb03b46f608a, type: 3}
+  ReactionShotGunPickup:
+  - {fileID: 8300000, guid: 210b64419a066cf4a9386318cd184cf5, type: 3}
+  - {fileID: 8300000, guid: 3ca3b29855187ba4787c314d9f90ebb8, type: 3}
+  - {fileID: 8300000, guid: 1380f185f6e25e94cb18b69eebde7ba0, type: 3}
+  - {fileID: 8300000, guid: 76fd98ea44ea32f46b619ffdccb8673e, type: 3}
+  - {fileID: 8300000, guid: 4d14317a3a2fc424ea7bb702bdc67af0, type: 3}
+  ReactionHarpoonPickup:
+  - {fileID: 8300000, guid: d7fa18d8d673ae8449d3a7c668604f2c, type: 3}
+  - {fileID: 8300000, guid: 4b0e8e73cb90a8d43806c1d7bed7ddbf, type: 3}
+  - {fileID: 8300000, guid: e32a153e7748d484d808d5134dcfad07, type: 3}
+  - {fileID: 8300000, guid: 929b76af65084444ea15cce6dd2296d1, type: 3}
+  - {fileID: 8300000, guid: c18ac4d2e3b2de44c9e86f19f45ca972, type: 3}
+  ReactionBrineDrink:
+  - {fileID: 8300000, guid: 6e6f5965023a885449c989e61aa51325, type: 3}
+  - {fileID: 8300000, guid: eba8da862e718084a88d96eec2e87e2c, type: 3}
+  - {fileID: 8300000, guid: 09416bf03f75a5e40828d5518e8b28a3, type: 3}
+  - {fileID: 8300000, guid: 1cf25c1d934f22542bf850d39febbe6b, type: 3}
+  - {fileID: 8300000, guid: c5003ea89f77edf42ad0d6cb1457f3fe, type: 3}
+  ReactionForgetfulDrink:
+  - {fileID: 8300000, guid: 5a623992f2d5f75458633edab3f00a09, type: 3}
+  - {fileID: 8300000, guid: 87506231ef16e13469001ba73ada31bc, type: 3}
+  - {fileID: 8300000, guid: f3909a1f73d9615438cd95dc3b897b8f, type: 3}
+  - {fileID: 8300000, guid: a1cf41f424eda00449db6aff63742bb5, type: 3}
+  - {fileID: 8300000, guid: 726dfb16c80b87748ae99972bdd5358c, type: 3}
+  ReactionFruitNinja:
+  - {fileID: 8300000, guid: cd304248b39ebf1468e73935848deaaa, type: 3}
+  - {fileID: 8300000, guid: f38f3d2f37b8d854581e9c24586b9682, type: 3}
+  - {fileID: 8300000, guid: 205db019099af6446bbac183a03bfd98, type: 3}
+  - {fileID: 8300000, guid: 70b994c7e509e0f4cb97766e4e10fbd8, type: 3}
+  - {fileID: 8300000, guid: cfd8610fcb14cc94e9b95f98c40a42de, type: 3}
   alreadyPlayed: []
   waitingToPlay: []
 --- !u!82 &5640301610279763734
@@ -511,15 +546,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73cd870544b428349818c302d2a78e05, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _On: 0
   _Score: 0
-  _Stage: 0
-  _Target: {fileID: 0}
   _Katana: {fileID: 0}
-  _FruitCannons: {fileID: 0}
-  _SlowTime: 0
-  _MinTimeScale: 0.5
-  _CurrentTimeScale: 0
+  _FruitCannon: {fileID: 0}
 --- !u!1 &3857580847507135039
 GameObject:
   m_ObjectHideFlags: 0

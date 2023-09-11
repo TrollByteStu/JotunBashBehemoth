@@ -11,6 +11,9 @@ public class sodaCan : MonoBehaviour
     public AudioSource SoundOpening;
     public AudioSource SoundDrinking;
 
+    public bool narratorBrine = false;
+    public bool narratorForgetful = false;
+
     private Rigidbody myRigidBody;
 
     public void eventSelect()
@@ -50,6 +53,8 @@ public class sodaCan : MonoBehaviour
         {
             drinksLeft--;
             SoundDrinking.Play();
+            if (narratorBrine) GameController.Instance.gcNarrator.TellNow("BrineDrink");
+            if (narratorForgetful) GameController.Instance.gcNarrator.TellNow("ForgetfulDrink");
         }
     }
 

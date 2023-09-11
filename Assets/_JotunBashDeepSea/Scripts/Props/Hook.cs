@@ -15,6 +15,7 @@ public class Hook : MonoBehaviour
 
     private Rigidbody myRigidBody;
     private Rigidbody hookedRigidbody;
+    private AudioSource myAS;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -39,6 +40,7 @@ public class Hook : MonoBehaviour
             myRope.spawnFromPointToPoint();
             hookedRigidbody = collision.gameObject.GetComponent<Rigidbody>();
             Destroy( GetComponent<XRGrabInteractable>() );
+            myAS.Play();
         }
     }
 
@@ -61,7 +63,7 @@ public class Hook : MonoBehaviour
     void Start()
     {
         myRigidBody = GetComponent<Rigidbody>();
-
+        myAS = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -71,7 +73,8 @@ public class Hook : MonoBehaviour
         { 
             myRope.simpleLineToWinch();
         } else {
-            hookedRigidbody.AddForce(myRope.TheWinch.position - hookedRigidbody.transform.position );
+            hookedRigidbody.AddForce(myRope.TheWinch.transform.position - hookedRigidbody.transform.position );
+            myRope.TheWinch.PlaySound = 0.5f;
         }
         if (beenPickedUp && !beingHeld) transform.LookAt(transform.position + myRigidBody.velocity*10f);
         if (transform.position.y < -100) Destroy(gameObject);
