@@ -8,9 +8,14 @@ public class GameControllerFruitNinja : MonoBehaviour
     public int _Score = 0;
     public int _Stage = 0;
     public GameObject _Katana;
-    public GameObject _FruitCannon1;
-    public GameObject _FruitCannon2;
-    public GameObject _FruitCannon3;
+    public GameObject _FruitCannons;
+    private GameObject _FruitCannon1;
+    private GameObject _FruitCannon2;
+    private GameObject _FruitCannon3;
+    private FruitCannon _FruitCannonScript1;
+    private FruitCannon _FruitCannonScript2;
+    private FruitCannon _FruitCannonScript3;
+
 
     public bool _SlowTime;
     public float _MinTimeScale = 0.5f;
@@ -18,12 +23,14 @@ public class GameControllerFruitNinja : MonoBehaviour
 
     private void Start()
     {
-        if (_FruitCannon1 == null)
-            Debug.Log("Fruit ninja does not work without asinged cannon " + this);
-        if (_FruitCannon2 == null)
-            Debug.Log("Fruit ninja does not work without asinged cannon " + this);
-        if (_FruitCannon3 == null)
-            Debug.Log("Fruit ninja does not work without asinged cannon " + this);
+            _FruitCannon1 = _FruitCannons.transform.GetChild(0).gameObject;
+            _FruitCannonScript1 = _FruitCannon1.GetComponent<FruitCannon>();
+
+            _FruitCannon2 = _FruitCannons.transform.GetChild(1).gameObject;
+            _FruitCannonScript2 = _FruitCannon2.GetComponent<FruitCannon>();
+
+            _FruitCannon3 = _FruitCannons.transform.GetChild(2).gameObject;
+            _FruitCannonScript3 = _FruitCannon3.GetComponent<FruitCannon>();
     }
 
     private void Update()
@@ -34,7 +41,7 @@ public class GameControllerFruitNinja : MonoBehaviour
             {
                 case 0:
                     _FruitCannon1.SetActive(true);
-                    _FruitCannon1.GetComponent<FruitCannon>()._FireRate = 1;
+                    _FruitCannonScript1._FireRate = 1;
                     _Score = 0;
                     _Stage = 1;
                     break;
@@ -42,7 +49,8 @@ public class GameControllerFruitNinja : MonoBehaviour
                     if (_Score >= 20)
                     {
                         _FruitCannon2.SetActive(true);
-                        _FruitCannon2.GetComponent<FruitCannon>()._FireRate = 1f;
+                        _FruitCannonScript2._FireRate = 1f;
+                        _FruitCannonScript2._LastShot = _FruitCannonScript1._LastShot + _FruitCannonScript2._FireRate / 3;
                         _Stage = 2;
                     }
                     break;
@@ -50,16 +58,17 @@ public class GameControllerFruitNinja : MonoBehaviour
                     if (_Score >= 40)
                     {
                         _FruitCannon3.SetActive(true);
-                        _FruitCannon3.GetComponent<FruitCannon>()._FireRate = 1f;
+                        _FruitCannonScript3._FireRate = 1f;
+                        _FruitCannonScript3._LastShot = _FruitCannonScript2._LastShot + _FruitCannonScript3._FireRate / 3;
                         _Stage = 3;
                     }
                     break;
                 case 3:
                     if (_Score >= 60)
                     {
-                        _FruitCannon1.GetComponent<FruitCannon>()._FireRate = 0.5f;
-                        _FruitCannon2.GetComponent<FruitCannon>()._FireRate = 0.5f;
-                        _FruitCannon3.GetComponent<FruitCannon>()._FireRate = 0.5f;
+                        _FruitCannonScript1._FireRate = 0.5f;
+                        _FruitCannonScript2._FireRate = 0.5f;
+                        _FruitCannonScript3._FireRate = 0.5f;
                         _Stage = 4;
                     }
                     break;

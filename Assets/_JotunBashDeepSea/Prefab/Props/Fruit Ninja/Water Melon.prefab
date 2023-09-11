@@ -78,6 +78,8 @@ MonoBehaviour:
   _Lookat: {fileID: 5243701937923002135}
   _CutsRB: []
   _CutsMC: []
+  _Mass: 0.5
+  _CutMass: 0.2
 --- !u!135 &1409658975155980121
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -125,7 +127,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
+  m_LocalScale: {x: -0.7, y: -0.7, z: -0.7}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 2421951079978550643}

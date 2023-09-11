@@ -19,7 +19,7 @@ public class FruitCannon : InfBadMath
     public Transform _CannonHole;
     public GameObject[] _Fruits;
     public float _FireRate = 1;
-    private float _LastShot;
+    public float _LastShot;
     [Range(0,1000)]
     public float _FruitSpeed;
     public Vector2 _RandomOffset; // for min and max of randomOffset vector3

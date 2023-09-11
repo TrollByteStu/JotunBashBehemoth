@@ -78,6 +78,8 @@ MonoBehaviour:
   _Lookat: {fileID: 8090897384168127268}
   _CutsRB: []
   _CutsMC: []
+  _Mass: 0.5
+  _CutMass: 0.2
 --- !u!135 &6634672328349853917
 SphereCollider:
   m_ObjectHideFlags: 0

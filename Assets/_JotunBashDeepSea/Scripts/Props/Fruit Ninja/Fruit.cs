@@ -29,26 +29,32 @@ public class Fruit : MonoBehaviour
 
     void Update()
     {
-        _Lookat.LookAt(GameController.Instance.gcFruitNinja._Katana.transform, GameController.Instance.gcFruitNinja._Katana.transform.up);
-        transform.rotation = Quaternion.Lerp(transform.rotation, _Lookat.rotation, Time.deltaTime * 3);
+        if (GameController.Instance.gcFruitNinja._Katana != null)
+        {
+            _Lookat.LookAt(GameController.Instance.gcFruitNinja._Katana.transform, GameController.Instance.gcFruitNinja._Katana.transform.up);
+            transform.rotation = Quaternion.Lerp(transform.rotation, _Lookat.rotation, Time.deltaTime * 6);
+        }
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider other) 
     {
-        if (other.tag == "Weapons")
+        if (other.GetComponent<KatanaBlade>())
+            ChopFruit();
+    }
+
+    public void ChopFruit()
+    {
+        foreach (Rigidbody rb in _CutsRB)
         {
-            foreach (Rigidbody rb in _CutsRB)
-            {
-                rb.isKinematic = false;
-                rb.velocity = _Rigidbody.velocity;
-                rb.AddForce(-transform.right * 40);
-            }
-            _Rigidbody.isKinematic = true;
-            GameController.Instance.gcFruitNinja._Score += 1;
-            Destroy(_SphereCollider);
-            foreach (MeshCollider mc in _CutsMC)
-                mc.isTrigger = false;
-            Destroy(this);
+            rb.isKinematic = false;
+            rb.velocity = _Rigidbody.velocity;
+            rb.AddForce(rb.transform.right * 40);
         }
+        _Rigidbody.isKinematic = true;
+        GameController.Instance.gcFruitNinja._Score += 1;
+        Destroy(_SphereCollider);
+        foreach (MeshCollider mc in _CutsMC)
+            mc.isTrigger = false;
+        Destroy(this);
     }
 }
