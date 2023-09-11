@@ -6,11 +6,11 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/_JotunBashDeepSea/Scenes/ErikTestScene.unity
-    guid: 29dbd966619d8a540aaa508bb83ac59d
+    path: Assets/_JotunBashDeepSea/Scenes/_StartEndInsideWhale.unity
+    guid: 6ed6d5b3a250068428a78c888e669a68
   - enabled: 1
-    path: Assets/_JotunBashDeepSea/Scenes/InsideTheWhale.unity
-    guid: 31e7de52a7d02be408e8270c277e4d06
+    path: Assets/_JotunBashDeepSea/Scenes/_OnTheRaft.unity
+    guid: 05a573ab76f74da41bc7417fd434d2e7
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: bfa1182bd221b4ca89619141f66f1260, type: 2}
     Unity.XR.WindowsMR.Settings: {fileID: 11400000, guid: dc5a169419fa04987b057f65238cf3ba, type: 2}

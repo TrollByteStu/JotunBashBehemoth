@@ -18,6 +18,7 @@ public class lifeJacket : MonoBehaviour
             myRigidBody.angularDrag = 1f;
             myRigidBody.isKinematic = false;
             myBait.enabled = true;
+            myBait.ActivateBait();
         }
     }
 

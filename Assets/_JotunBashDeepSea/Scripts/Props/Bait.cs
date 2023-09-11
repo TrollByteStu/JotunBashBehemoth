@@ -50,8 +50,6 @@ public class Bait : MonoBehaviour
     {
         mainGC = GameController.Instance;
         myRigidBody = GetComponent<Rigidbody>();
-        if (transform.tag == "Player")
-            ActivateBait();
     }
 
     public void eventSelect()
