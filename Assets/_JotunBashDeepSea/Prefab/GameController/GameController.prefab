@@ -430,6 +430,12 @@ MonoBehaviour:
   - {fileID: 8300000, guid: f3909a1f73d9615438cd95dc3b897b8f, type: 3}
   - {fileID: 8300000, guid: a1cf41f424eda00449db6aff63742bb5, type: 3}
   - {fileID: 8300000, guid: 726dfb16c80b87748ae99972bdd5358c, type: 3}
+  ReactionFruitNinja:
+  - {fileID: 8300000, guid: cd304248b39ebf1468e73935848deaaa, type: 3}
+  - {fileID: 8300000, guid: f38f3d2f37b8d854581e9c24586b9682, type: 3}
+  - {fileID: 8300000, guid: 205db019099af6446bbac183a03bfd98, type: 3}
+  - {fileID: 8300000, guid: 70b994c7e509e0f4cb97766e4e10fbd8, type: 3}
+  - {fileID: 8300000, guid: cfd8610fcb14cc94e9b95f98c40a42de, type: 3}
   alreadyPlayed: []
   waitingToPlay: []
 --- !u!82 &5640301610279763734

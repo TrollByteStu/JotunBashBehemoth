@@ -16,7 +16,7 @@ public class GameControllerNarrator : MonoBehaviour
     public AudioClip[] ReactionHarpoonPickup;
     public AudioClip[] ReactionBrineDrink;
     public AudioClip[] ReactionForgetfulDrink;
-
+    public AudioClip[] ReactionFruitNinja;
 
     public List<string> alreadyPlayed;
     public List<string> waitingToPlay;
@@ -69,6 +69,9 @@ public class GameControllerNarrator : MonoBehaviour
                 break;
             case "ForgetfulDrink":
                 chooseClip = ReactionForgetfulDrink[Random.Range(1, ReactionForgetfulDrink.Length) - 1];
+                break;
+            case "FruitNinja":
+                chooseClip = ReactionFruitNinja[Random.Range(1, ReactionFruitNinja.Length) - 1];
                 break;
             default:
                 return;
