@@ -78,7 +78,8 @@ public class PassiveMoby : InfBadMath
 
     private void Update()
     {
-        if (_HitPoints <= 0 && _TimeSinceDive + _DiveTime + _RandomTimeAdded < Time.time && _Emerging)
+        //if (_HitPoints <= 0 && _TimeSinceDive + _DiveTime + _RandomTimeAdded < Time.time && _Emerging)
+        if ( GameController.Instance.secondsLeft < 0f && _TimeSinceDive + _DiveTime < Time.time && _Emerging)
             MobySceneChange();
         else if (_Emerging)
             MobyEmerge();
@@ -196,7 +197,7 @@ public class PassiveMoby : InfBadMath
 
         if (Vector3.Distance(transform.position, _Raft.transform.position) <= 12f)
         {
-            SceneManager.LoadScene(1);
+            SceneManager.LoadScene(0);
         }
     }
 
