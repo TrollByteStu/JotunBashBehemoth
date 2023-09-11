@@ -69,8 +69,14 @@ public class circlingShark : InfBadMath
 
         if (Vector3.Distance(transform.position, _Bait.transform.position) <= 5)
         {
-            Destroy(_Bait.gameObject);
-            _Angle = AngleOnCircle(transform.position.x,transform.position.z,Vector3.Distance(_BoatRig.transform.position,transform.position));
+            if (_Bait.transform.tag == "Player")
+            {
+                _Bait.transform.position = _Bait.transform.parent.position;
+                _Bait.transform.rotation = _Bait.transform.parent.rotation;
+            } else {
+                Destroy(_Bait.gameObject);
+                _Angle = AngleOnCircle(transform.position.x, transform.position.z, Vector3.Distance(_BoatRig.transform.position, transform.position));
+            }
         }
     }
 

@@ -46,10 +46,12 @@ public class Bait : MonoBehaviour
 
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         mainGC = GameController.Instance;
         myRigidBody = GetComponent<Rigidbody>();
+        if (transform.tag == "Player")
+            ActivateBait();
     }
 
     public void eventSelect()
