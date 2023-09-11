@@ -73,6 +73,7 @@ public class circlingShark : InfBadMath
             {
                 _Bait.transform.position = _Bait.transform.parent.position;
                 _Bait.transform.rotation = _Bait.transform.parent.rotation;
+                GameObject.Find("SharkDinner").SetActive(true);
             } else {
                 Destroy(_Bait.gameObject);
                 _Angle = AngleOnCircle(transform.position.x, transform.position.z, Vector3.Distance(_BoatRig.transform.position, transform.position));
