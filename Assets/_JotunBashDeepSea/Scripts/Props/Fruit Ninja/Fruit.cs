@@ -53,6 +53,7 @@ public class Fruit : MonoBehaviour
             //rb.velocity = _Rigidbody.velocity;
             rb.AddForce(rb.transform.right * 40);
         }
+        GameController.Instance.gcNarrator.TellNow("FruitNinja");
         _Rigidbody.interpolation = RigidbodyInterpolation.None;
         _Rigidbody.isKinematic = true;
         GameController.Instance.gcFruitNinja._Score += 1;
