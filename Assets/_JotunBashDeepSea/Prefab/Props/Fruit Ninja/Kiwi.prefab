@@ -60,7 +60,7 @@ Rigidbody:
   m_ImplicitTensor: 1
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_Constraints: 0
   m_CollisionDetection: 0
 --- !u!114 &881699128635826979
@@ -127,7 +127,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: -1, y: -1, z: -1}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 8590643767839327346}
@@ -317,13 +317,13 @@ PrefabInstance:
       addedObject: {fileID: 3993340313173218328}
     - targetCorrespondingSourceObject: {fileID: -1018664272722485354, guid: 577280ed6674d284899e8a80220b2531, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 859890260001223618}
+      addedObject: {fileID: 4737689265070434533}
     - targetCorrespondingSourceObject: {fileID: -8116613859084990610, guid: 577280ed6674d284899e8a80220b2531, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2062271700078305722}
     - targetCorrespondingSourceObject: {fileID: -8116613859084990610, guid: 577280ed6674d284899e8a80220b2531, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 4717533605092714806}
+      addedObject: {fileID: 7546016706742832018}
   m_SourcePrefab: {fileID: 100100000, guid: 577280ed6674d284899e8a80220b2531, type: 3}
 --- !u!1 &103120709147917327 stripped
 GameObject:
@@ -352,7 +352,7 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 4711208715938537054, guid: 577280ed6674d284899e8a80220b2531, type: 3}
---- !u!54 &859890260001223618
+--- !u!54 &4737689265070434533
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -375,7 +375,7 @@ Rigidbody:
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 1
-  m_IsKinematic: 1
+  m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
@@ -411,7 +411,7 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -606419294924500904, guid: 577280ed6674d284899e8a80220b2531, type: 3}
---- !u!54 &4717533605092714806
+--- !u!54 &7546016706742832018
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -434,7 +434,7 @@ Rigidbody:
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 1
-  m_IsKinematic: 1
+  m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
