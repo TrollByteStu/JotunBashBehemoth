@@ -5,7 +5,6 @@ using TMPro;
 
 public class GameControllerFruitNinja : MonoBehaviour
 {
-    public bool _On;
     public int _Score = 0;
     public int _Stage = 0;
     public Transform _Target;
@@ -43,7 +42,7 @@ public class GameControllerFruitNinja : MonoBehaviour
 
     private void Update()
     {
-        if (_On)
+        if (_Katana.Count > 0)
         {
             _ScoreText.text = _Score.ToString();
             switch (_Stage)
@@ -87,6 +86,8 @@ public class GameControllerFruitNinja : MonoBehaviour
         }
         else
         {
+            _Stage = 0;
+            _Score = 0;
             _FruitCannon1.SetActive(false);
             _FruitCannon2.SetActive(false);
             _FruitCannon3.SetActive(false);

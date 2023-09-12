@@ -41,8 +41,6 @@ public class Katana : MonoBehaviour
         {
             _GcFruitNinja._Katana.Add(gameObject);
             _AudioSource.Play();
-            _GcFruitNinja._On = true;
-            _GcFruitNinja._Stage = 0;
         }
         _BeingHeld = true;
         _Touched = true;

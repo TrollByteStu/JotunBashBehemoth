@@ -31,7 +31,7 @@ public class Fruit : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (GameController.Instance.gcFruitNinja._Katana != null)
+        if (GameController.Instance.gcFruitNinja._Katana[0] != null)
         {
             _Lookat.LookAt(GameController.Instance.gcFruitNinja._Katana[0].transform, GameController.Instance.gcFruitNinja._Katana[0].transform.up);
             transform.rotation = Quaternion.Lerp(transform.rotation, _Lookat.rotation, Time.fixedDeltaTime * 6);
