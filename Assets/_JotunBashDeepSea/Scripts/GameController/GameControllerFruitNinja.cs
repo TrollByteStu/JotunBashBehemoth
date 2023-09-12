@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class GameControllerFruitNinja : MonoBehaviour
 {
@@ -8,8 +9,9 @@ public class GameControllerFruitNinja : MonoBehaviour
     public int _Score = 0;
     public int _Stage = 0;
     public Transform _Target;
-    public GameObject _Katana;
+    public List<GameObject> _Katana;
     public GameObject _FruitCannons;
+    public TMP_Text _ScoreText;
     private GameObject _FruitCannon1;
     private GameObject _FruitCannon2;
     private GameObject _FruitCannon3;
@@ -18,7 +20,7 @@ public class GameControllerFruitNinja : MonoBehaviour
     private FruitCannon _FruitCannonScript3;
 
 
-    public bool _SlowTime;
+    public int _SlowTimeBool;
     public float _MinTimeScale = 0.5f;
     public float _CurrentTimeScale;
 
@@ -43,9 +45,11 @@ public class GameControllerFruitNinja : MonoBehaviour
     {
         if (_On)
         {
+            _ScoreText.text = _Score.ToString();
             switch (_Stage)
             {
                 case 0:
+                    _ScoreText.gameObject.SetActive(true);
                     _FruitCannon1.SetActive(true);
                     _FruitCannonScript1._FireRate = 1;
                     _Score = 0;
@@ -86,20 +90,21 @@ public class GameControllerFruitNinja : MonoBehaviour
             _FruitCannon1.SetActive(false);
             _FruitCannon2.SetActive(false);
             _FruitCannon3.SetActive(false);
+            _ScoreText.gameObject.SetActive(false);
         }
     }
 
     void TimeScale()
     {
-        if (_SlowTime)
+        if (_SlowTimeBool > 0)
         {
-            _CurrentTimeScale -= Time.unscaledDeltaTime / 2;
+            _CurrentTimeScale -= Time.unscaledDeltaTime / 4;
             _CurrentTimeScale = Mathf.Clamp(_CurrentTimeScale, _MinTimeScale, 1);
             Time.timeScale = _CurrentTimeScale;
         }
         else
         {
-            _CurrentTimeScale += Time.unscaledDeltaTime / 2;
+            _CurrentTimeScale += Time.unscaledDeltaTime / 4;
             _CurrentTimeScale = Mathf.Clamp(_CurrentTimeScale, _MinTimeScale, 1);
             Time.timeScale = _CurrentTimeScale;
         }

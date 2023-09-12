@@ -5,6 +5,7 @@ using UnityEngine;
 public class GameController : MonoBehaviour
 {
     public float secondsLeft = 360f;
+    public float timeLimit = 360f;
 
     private static GameController _instance;
     public GameObject player;
@@ -51,6 +52,7 @@ public class GameController : MonoBehaviour
 
     private void Awake()
     {
+        timeLimit = secondsLeft;
         _instance = this;
         gcResources = GetComponent<GameControllerResources>();
         gcWeather = GetComponent<GameControllerWeather>();

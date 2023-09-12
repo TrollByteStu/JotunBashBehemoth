@@ -315,6 +315,7 @@ public class Gannet : InfBadMath
         foreach (Rigidbody rb in _Rigidbodys)
         {
             rb.isKinematic = false;
+            rb.interpolation = RigidbodyInterpolation.Interpolate;
             rb.AddForce(transform.forward);
         }
         transform.SetParent(null);
