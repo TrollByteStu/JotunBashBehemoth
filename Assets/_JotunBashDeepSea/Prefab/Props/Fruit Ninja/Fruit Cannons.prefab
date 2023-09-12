@@ -99,7 +99,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'not  assined
+  m_text: 'not  assigned
 
 '
   m_isRightToLeft: 0

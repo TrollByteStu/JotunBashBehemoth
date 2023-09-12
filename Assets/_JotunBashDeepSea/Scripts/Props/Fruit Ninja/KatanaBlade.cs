@@ -18,7 +18,8 @@ public class KatanaBlade : MonoBehaviour
     {
         _BoxCollider = GetComponent<BoxCollider>();
         _LastPos = transform.position;
-        _AudioSource = GetComponent<AudioSource>();
+        if (GetComponent<AudioSource>())
+            _AudioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -33,7 +34,7 @@ public class KatanaBlade : MonoBehaviour
 
         if (_ForwardDistance < _BackwardDistance && _Magnitude >= 0.2f)
         {
-            if (!_AudioSource.isPlaying)
+            if (!_AudioSource.isPlaying && _AudioSource != null)
                 _AudioSource.Play();
             _BoxCollider.isTrigger = true;
         }

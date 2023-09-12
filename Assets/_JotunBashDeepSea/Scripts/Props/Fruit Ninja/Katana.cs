@@ -16,7 +16,8 @@ public class Katana : MonoBehaviour
     private void Start()
     {
         _Rigidbody = GetComponent<Rigidbody>();
-        _AudioSource = GetComponent<AudioSource>();
+        if (GetComponent<AudioSource>())
+            _AudioSource = GetComponent<AudioSource>();
         _GcFruitNinja = GameController.Instance.gcFruitNinja;
     }
 
@@ -40,6 +41,7 @@ public class Katana : MonoBehaviour
         if (!_Touched)
         {
             _GcFruitNinja._Katana.Add(gameObject);
+            if (_AudioSource != null)
             _AudioSource.Play();
         }
         _BeingHeld = true;
