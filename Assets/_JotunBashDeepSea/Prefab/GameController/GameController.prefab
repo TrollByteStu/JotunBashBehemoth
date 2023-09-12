@@ -283,6 +283,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   secondsLeft: 360
+  timeLimit: 360
   player: {fileID: 0}
   BoatRig: {fileID: 0}
   _GannetIdlePoints: {fileID: 0}
@@ -546,9 +547,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73cd870544b428349818c302d2a78e05, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _On: 0
   _Score: 0
-  _Katana: {fileID: 0}
-  _FruitCannon: {fileID: 0}
+  _Stage: 0
+  _Target: {fileID: 0}
+  _Katana: []
+  _FruitCannons: {fileID: 0}
+  _ScoreText: {fileID: 0}
+  _SlowTimeBool: 0
+  _MinTimeScale: 0.5
+  _CurrentTimeScale: 0
 --- !u!1 &3857580847507135039
 GameObject:
   m_ObjectHideFlags: 0

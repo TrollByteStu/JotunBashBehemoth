@@ -31,9 +31,9 @@ public class Fruit : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (GameController.Instance.gcFruitNinja._Katana != null)
+        if (GameController.Instance.gcFruitNinja._Katana.Count > 0)
         {
-            _Lookat.LookAt(GameController.Instance.gcFruitNinja._Katana.transform, GameController.Instance.gcFruitNinja._Katana.transform.up);
+            _Lookat.LookAt(GameController.Instance.gcFruitNinja._Katana[0].transform, GameController.Instance.gcFruitNinja._Katana[0].transform.up);
             transform.rotation = Quaternion.Lerp(transform.rotation, _Lookat.rotation, Time.fixedDeltaTime * 6);
         }
     }
@@ -56,7 +56,6 @@ public class Fruit : MonoBehaviour
         _Rigidbody.interpolation = RigidbodyInterpolation.None;
         _Rigidbody.isKinematic = true;
         GameController.Instance.gcFruitNinja._Score += 1;
-        GameController.Instance.gcFruitNinja._CurrentTimeScale -= 0.3f;
         Destroy(_SphereCollider);
         foreach (MeshCollider mc in _CutsMC)
             mc.isTrigger = false;
