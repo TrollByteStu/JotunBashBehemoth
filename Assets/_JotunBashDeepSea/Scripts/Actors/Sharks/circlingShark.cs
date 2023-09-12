@@ -20,7 +20,7 @@ public class circlingShark : InfBadMath
     public float speed = .1f;
     public float _UpSpeed;
 
-    private Rigidbody myRigidBody;
+    private AudioSource _AudioSource;
     private float _choice;
 
     public Bait _Bait = null;
@@ -28,10 +28,11 @@ public class circlingShark : InfBadMath
     // Start is called before the first frame update
     void Start()
     {
-        myRigidBody = GetComponent<Rigidbody>();
+        _AudioSource = GetComponent<AudioSource>();
         _BoatRig = GameController.Instance.BoatRig;
 
     }
+
     Transform TopParent(Transform transform)
     {
         while (transform.parent == true)
@@ -67,6 +68,15 @@ public class circlingShark : InfBadMath
         transform.LookAt(Vector3.MoveTowards(transform.position, _Bait.transform.position, Time.deltaTime * speed));
         transform.position = Vector3.MoveTowards(transform.position, _Bait.transform.position, Time.deltaTime * speed);
 
+        if (_Bait.tag == "Player" && _AudioSource.isPlaying == false)
+        {
+            _AudioSource.Play();
+        }
+        else if (_Bait.tag != "Player" && _AudioSource.isPlaying == true)
+        {
+            _AudioSource.Stop();
+        }
+
         if (Vector3.Distance(transform.position, _Bait.transform.position) <= 5)
         {
             if (_Bait.transform.tag == "Player")
@@ -83,6 +93,7 @@ public class circlingShark : InfBadMath
 
     void NoBait()
     {
+        _AudioSource.Stop();
         distanceSin = Mathf.Sin(Time.time) * 2 + distance;
         _Angle += Time.deltaTime * speed * 0.05f;
         _Orbit = new Vector3(Mathf.Sin(_Angle) * distanceSin, transform.position.y + _UpSpeed, Mathf.Cos(_Angle) * distanceSin);
