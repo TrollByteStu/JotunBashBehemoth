@@ -44,34 +44,34 @@ public class GameControllerNarrator : MonoBehaviour
         switch (waitingToPlay[0])
         {
             case "Intro":
-                chooseClip = VoiceoverIntro[Random.Range(1, VoiceoverIntro.Length) - 1];
+                chooseClip = VoiceoverIntro[Random.Range(1, VoiceoverIntro.Length)];
                 break;
             case "Gannet":
-                chooseClip = VoiceoverGannet[Random.Range(1, VoiceoverGannet.Length) - 1];
+                chooseClip = VoiceoverGannet[Random.Range(1, VoiceoverGannet.Length)];
                 break;
             case "Plushie":
-                chooseClip = VoiceoverPlushie[Random.Range(1, VoiceoverPlushie.Length) - 1];
+                chooseClip = VoiceoverPlushie[Random.Range(1, VoiceoverPlushie.Length)];
                 break;
             case "GreatWhite":
-                chooseClip = VoiceoverGreatWhite[Random.Range(1, VoiceoverGreatWhite.Length) - 1];
+                chooseClip = VoiceoverGreatWhite[Random.Range(1, VoiceoverGreatWhite.Length)];
                 break;
             case "MobyDick":
-                chooseClip = VoiceoverMobyDick[Random.Range(1, VoiceoverMobyDick.Length) - 1];
+                chooseClip = VoiceoverMobyDick[Random.Range(1, VoiceoverMobyDick.Length)];
                 break;
             case "ShotGunPickup":
-                chooseClip = ReactionShotGunPickup[Random.Range(1, ReactionShotGunPickup.Length) - 1];
+                chooseClip = ReactionShotGunPickup[Random.Range(1, ReactionShotGunPickup.Length)];
                 break;
             case "HarpoonPickup":
-                chooseClip = ReactionHarpoonPickup[Random.Range(1, ReactionHarpoonPickup.Length) - 1];
+                chooseClip = ReactionHarpoonPickup[Random.Range(1, ReactionHarpoonPickup.Length)];
                 break;
             case "BrineDrink":
-                chooseClip = ReactionBrineDrink[Random.Range(1, ReactionBrineDrink.Length) - 1];
+                chooseClip = ReactionBrineDrink[Random.Range(1, ReactionBrineDrink.Length)];
                 break;
             case "ForgetfulDrink":
-                chooseClip = ReactionForgetfulDrink[Random.Range(1, ReactionForgetfulDrink.Length) - 1];
+                chooseClip = ReactionForgetfulDrink[Random.Range(1, ReactionForgetfulDrink.Length)];
                 break;
             case "FruitNinja":
-                chooseClip = ReactionFruitNinja[Random.Range(1, ReactionFruitNinja.Length) - 1];
+                chooseClip = ReactionFruitNinja[Random.Range(1, ReactionFruitNinja.Length)];
                 break;
             default:
                 return;
