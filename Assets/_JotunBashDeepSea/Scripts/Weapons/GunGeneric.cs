@@ -32,6 +32,7 @@ public class GunGeneric : MonoBehaviour
         Debug.Log("Select");
         _Touched = true;
         beingHeld = true;
+        GameController.Instance.gcNarrator.TellNow("ShotGunPickup");
     }
     public void eventUnSelect()
     {

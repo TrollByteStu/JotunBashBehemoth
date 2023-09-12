@@ -12,9 +12,12 @@ public class spear : MonoBehaviour
     public bool _Stuck = false;
     private float _DestroyTime;
 
+    private AudioSource _MyAS;
+
     private void Start()
     {
         myRB = GetComponent<Rigidbody>();
+        _MyAS = GetComponent<AudioSource>();
     }
 
     private void FixedUpdate()
@@ -29,6 +32,7 @@ public class spear : MonoBehaviour
     {
         beingHeld = true;
         _Touched = true;
+        GameController.Instance.gcNarrator.TellNow("HarpoonPickup");
     }
 
     public void eventUnSelect()
@@ -54,6 +58,7 @@ public class spear : MonoBehaviour
                 _StuckInEnemy = true;
                 transform.SetParent(collision.transform);
                 myRB.isKinematic = true;
+                _MyAS.Play();
             }
             else if (collision.gameObject.GetComponentInParent<Gannet>())
             {

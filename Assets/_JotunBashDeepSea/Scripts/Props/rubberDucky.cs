@@ -56,7 +56,7 @@ public class rubberDucky : MonoBehaviour
     void Start()
     {
         myRigidBody = GetComponent<Rigidbody>();
-        if (Random.Range(1, 10) == 1) isDud = false;
+        if (Random.Range(1, 4) == 1) isDud = false;
     }
 
     // Update is called once per frame

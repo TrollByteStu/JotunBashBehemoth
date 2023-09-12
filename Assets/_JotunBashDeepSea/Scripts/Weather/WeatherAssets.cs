@@ -26,6 +26,10 @@ public class WeatherAssets : MonoBehaviour
     public float HighWind3Max = 0.25f;
 
     private float getWind;
+    private ParticleSystem.EmissionModule getEmmision;
+
+    public ParticleSystem cloudMedium;
+    public ParticleSystem CloudHeavy;
 
     public void UpdateWind(float wind)
     {
@@ -54,5 +58,10 @@ public class WeatherAssets : MonoBehaviour
         HighWind1.volume = Mathf.Clamp(Mathf.Sin(Time.timeSinceLevelLoad * 0.11f) * (0.05f + getWind) * HighWind1Max, 0, 1);
         HighWind2.volume = Mathf.Clamp(Mathf.Cos(Time.timeSinceLevelLoad * 0.16f) * (0.15f + getWind) * HighWind2Max, 0, 1);
         HighWind3.volume = Mathf.Clamp(Mathf.Sin(Time.timeSinceLevelLoad * 0.33f) * (0.25f + getWind) * HighWind3Max, 0, 1);
+
+        getEmmision = cloudMedium.emission;
+        getEmmision.rateOverTime = getWind * 50f;
+        getEmmision = CloudHeavy.emission;
+        getEmmision.rateOverTime = getWind * 200f;
     }
 }

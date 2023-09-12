@@ -22,6 +22,7 @@ public class GameController : MonoBehaviour
     public GameControllerInventory gcInventory;
     public GameControllerPointsAndDeaths gcPointsAndDeaths;
     public GameControllerNarrator gcNarrator;
+    public GameControllerFruitNinja gcFruitNinja;
 
     public Bait checkForBaits(string name, Transform ownTransform)
     {

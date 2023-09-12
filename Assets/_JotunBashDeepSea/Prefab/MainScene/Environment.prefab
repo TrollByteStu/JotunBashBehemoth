@@ -5397,6 +5397,8 @@ MonoBehaviour:
   HighWind2Max: 0.55
   HighWind3: {fileID: 6862723594399931740}
   HighWind3Max: 0.45
+  cloudMedium: {fileID: 5130085053986919029}
+  CloudHeavy: {fileID: 4635285251002782672}
 --- !u!1 &2656277017636534543
 GameObject:
   m_ObjectHideFlags: 0
@@ -6758,7 +6760,7 @@ GameObject:
   - component: {fileID: 4635285251002782672}
   - component: {fileID: 8684944435493650167}
   m_Layer: 0
-  m_Name: ParticleCloud04
+  m_Name: ParticleCloud04 Heavy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6969,7 +6971,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 1, g: 1, b: 1, a: 1}
+      maxColor: {r: 0.2830189, g: 0.2830189, b: 0.2830189, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -16882,7 +16884,7 @@ GameObject:
   - component: {fileID: 6696934606858356988}
   - component: {fileID: 5813687653741062579}
   m_Layer: 0
-  m_Name: Directional Light
+  m_Name: TheSun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -16896,13 +16898,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6778694709870383919}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.40821788, y: -0.23456968, z: 0.10938163, w: 0.8754261}
-  m_LocalPosition: {x: 7.3976917, y: 4.1680193, z: -0.7135841}
+  m_LocalRotation: {x: 0.14136967, y: -0.5718808, z: 0.100838006, w: 0.8017473}
+  m_LocalPosition: {x: 0, y: 10, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3492034558526669725}
-  m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+  m_LocalEulerAnglesHint: {x: 20, y: -71, z: 0}
 --- !u!108 &6696934606858356988
 Light:
   m_ObjectHideFlags: 0
@@ -17147,7 +17149,7 @@ GameObject:
   - component: {fileID: 5130085053986919029}
   - component: {fileID: 3192464475596345418}
   m_Layer: 0
-  m_Name: ParticleCloud02
+  m_Name: ParticleCloud02 Medium
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -17358,7 +17360,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 1, g: 1, b: 1, a: 1}
+      maxColor: {r: 0.5283019, g: 0.5283019, b: 0.5283019, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
