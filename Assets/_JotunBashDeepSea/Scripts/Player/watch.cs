@@ -24,4 +24,9 @@ public class watch : MonoBehaviour
         watchText.text = minutes.ToString("D2") + ":" + seconds.ToString("D2");
         watchGUI.SetFloat("Vector1_4", ((GameController.secondsLeft / GameController.timeLimit) - 0.5f));
     }
+
+    private void OnDisable()
+    { // after testing reset material, so we dont get that damn spam in github.. lol
+        watchGUI.SetFloat("Vector1_4", 0);
+    }
 }
