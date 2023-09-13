@@ -88,6 +88,7 @@ public class GameControllerFruitNinja : MonoBehaviour
         {
             _Stage = 0;
             _Score = 0;
+            if (_FruitCannon1 == null) return;
             _FruitCannon1.SetActive(false);
             _FruitCannon2.SetActive(false);
             _FruitCannon3.SetActive(false);
