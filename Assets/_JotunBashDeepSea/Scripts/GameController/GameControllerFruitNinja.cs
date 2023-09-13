@@ -27,6 +27,7 @@ public class GameControllerFruitNinja : MonoBehaviour
     {
         _Target = Camera.main.transform;
 
+        if (_FruitCannon1 == null) return;
         _FruitCannon1 = _FruitCannons.transform.GetChild(0).gameObject;
         _FruitCannonScript1 = _FruitCannon1.GetComponent<FruitCannon>();
         _FruitCannonScript1.Target = _Target;
