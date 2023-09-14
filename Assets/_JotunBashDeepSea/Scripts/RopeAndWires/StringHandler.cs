@@ -21,7 +21,8 @@ public class StringHandler : MonoBehaviour
     {
         myLine = GetComponent<LineRenderer>();
         myLine.positionCount = 2;
-        myLine.SetWidth(.005f, .005f);
+        myLine.startWidth = 0.005f;
+        myLine.endWidth = 0.005f;
     }
 
     // Update is called once per frame
