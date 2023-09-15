@@ -289,7 +289,7 @@ GameObject:
   - component: {fileID: 8185808358969389044}
   m_Layer: 0
   m_Name: RaftModuleTemplate
-  m_TagString: Untagged
+  m_TagString: Raft
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2408,7 +2408,7 @@ Cloth:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8804715115035171217}
   m_Enabled: 1
-  m_StretchingStiffness: 0.25
+  m_StretchingStiffness: 0.1
   m_BendingStiffness: 0
   m_UseTethers: 1
   m_UseGravity: 1
@@ -2688,4 +2688,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b21c98823da20bd4c804d407ec7ea794, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  windScale: 2
+  windScale: 20
