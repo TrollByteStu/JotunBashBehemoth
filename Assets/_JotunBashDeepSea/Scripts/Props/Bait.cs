@@ -80,7 +80,8 @@ public class Bait : MonoBehaviour
 
     private void OnDisable()
     {
-        if (ActiveBaitInWorld ) mainGC.activeBait.Remove(this);
+        if (ActiveBaitInWorld ) GameController.Instance.activeBait.Remove(this);
+        ActiveBaitInWorld = false;
     }
 
 }

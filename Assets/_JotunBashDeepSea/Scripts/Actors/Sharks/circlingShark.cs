@@ -59,6 +59,14 @@ public class circlingShark : InfBadMath
                             return;
                         }
                     }
+                    if (_Bait.transform.GetComponent<Bait>())
+                    {
+                        if (_Bait.transform.GetComponent<Bait>() == _Bait)
+                        {
+                            Bait();
+                            return;
+                        }
+                    }
                 }
             }
             _choice = Time.time;
@@ -71,11 +79,11 @@ public class circlingShark : InfBadMath
         transform.LookAt(Vector3.MoveTowards(transform.position, _Bait.transform.position, Time.deltaTime * speed));
         transform.position = Vector3.MoveTowards(transform.position, _Bait.transform.position, Time.deltaTime * speed);
 
-        if (_Bait.tag == "Player" && _AudioSource.isPlaying == false)
+        if (_Bait.transform.tag == "Player" && _AudioSource.isPlaying == false)
         {
             _AudioSource.Play();
         }
-        else if (_Bait.tag != "Player" && _AudioSource.isPlaying == true)
+        else if (_Bait.transform.tag != "Player" && _AudioSource.isPlaying == true)
         {
             _AudioSource.Stop();
         }
@@ -84,9 +92,7 @@ public class circlingShark : InfBadMath
         {
             if (_Bait.transform.tag == "Player")
             {
-                _Bait.transform.position = _Bait.transform.parent.position;
-                _Bait.transform.rotation = _Bait.transform.parent.rotation;
-                GameObject.Find("SharkDinner").SetActive(true);
+                _Bait.GetComponent<lifeJacket>().eatenByShark();
             } else {
                 Destroy(_Bait.gameObject);
                 _Angle = AngleOnCircle(transform.position.x, transform.position.z, Vector3.Distance(_BoatRig.transform.position, transform.position));

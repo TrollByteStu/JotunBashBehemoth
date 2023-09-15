@@ -5,9 +5,20 @@ using Bitgem.VFX.StylisedWater;
 
 public class lifeJacket : MonoBehaviour
 {
+    public SharkDinner SharkDinnerUI;
 
     private Bait myBait;
     private Rigidbody myRigidBody;
+
+    public void eatenByShark()
+    {
+        SharkDinnerUI.gameObject.SetActive(true);
+        GetComponent<OurWateverVolumeFloater>().enabled = false;
+        myBait.enabled = false;
+        myRigidBody.isKinematic = true;
+        transform.localPosition = Vector3.zero;
+        transform.localRotation = Quaternion.identity;
+    }
 
     private void OnTriggerEnter(Collider other)
     {
