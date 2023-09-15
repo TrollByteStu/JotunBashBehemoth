@@ -46,17 +46,20 @@ public class circlingShark : InfBadMath
         if (_Bait != null && _choice + 4 <= Time.time)
         {
             Physics.Raycast(transform.position, _Bait.transform.position - transform.position, out _Raycast);
-            if (_Raycast.transform.parent)
+            if (_Raycast.transform != null)
             {
-                Transform transform = TopParent(_Raycast.transform);
+                if (_Raycast.transform.parent)
+                {
+                    Transform transform = TopParent(_Raycast.transform);
                     if (transform.GetComponent<Bait>())
                     {
                         if (transform.GetComponent<Bait>() == _Bait)
                         {
-                           Bait();
+                            Bait();
                             return;
                         }
                     }
+                }
             }
             _choice = Time.time;
         }

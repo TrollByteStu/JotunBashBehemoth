@@ -73,7 +73,8 @@ public class Bait : MonoBehaviour
 
     public void ActivateBait()
     {
-        mainGC.activeBait.Add(this);
+        if (ActiveBaitInWorld) return;
+        GameController.Instance.activeBait.Add(this);
         ActiveBaitInWorld = true;
     }
 
