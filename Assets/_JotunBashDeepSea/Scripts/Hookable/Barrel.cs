@@ -24,8 +24,16 @@ public class Barrel : MonoBehaviour
         { // this has been picked up, add to inventory
             if ( AddInventoryPrefab != null ) GameController.Instance.gcInventory.itemAdd(AddInventoryPrefab, AddInventoryAmount);
             if (AddBarrels > 0) GameController.Instance.gcInventory.Barrels += AddBarrels;
-            if (AddPlanks > 0) GameController.Instance.gcInventory.Planks += AddPlanks;
-            if (AddLogs > 0) GameController.Instance.gcInventory.Logs += AddLogs;
+            if (AddPlanks > 0)
+            {
+                GameController.Instance.gcInventory.Planks += AddPlanks;
+                GameController.Instance.gcNarrator.TellNow("Lumber");
+            }
+            if (AddLogs > 0)
+            {
+                GameController.Instance.gcInventory.Logs += AddLogs;
+                GameController.Instance.gcNarrator.TellNow("Lumber");
+            }
             Destroy(gameObject);
         }
     }

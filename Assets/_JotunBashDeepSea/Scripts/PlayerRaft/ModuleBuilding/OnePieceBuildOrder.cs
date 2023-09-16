@@ -13,6 +13,7 @@ public class OnePieceBuildOrder : MonoBehaviour
         if (GameController.Instance.gcInventory.Planks < buildOrder[0].neededPlanks) return;
         buildOrder[0].gameObject.SetActive(true);
         buildOrder.RemoveAt(0);
+        GameController.Instance.gcNarrator.Tell("FruitNinjaRaft");
     }
 
     // Start is called before the first frame update
