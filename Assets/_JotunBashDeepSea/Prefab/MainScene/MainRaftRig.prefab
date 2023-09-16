@@ -1032,6 +1032,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1268436143049520025}
   - component: {fileID: 4116715158504504825}
+  - component: {fileID: 8040963362364103401}
   m_Layer: 0
   m_Name: AllRaftModules
   m_TagString: Untagged
@@ -1074,6 +1075,20 @@ MonoBehaviour:
   tilfLeft: {fileID: 9156043756211768904}
   tilfRight: {fileID: 5308340913064060257}
   tiltScale: 10
+--- !u!114 &8040963362364103401
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3158060162518874131}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 544946c5776168e4988ac9145e9223aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buildOrder:
+  - {fileID: 1767672124951237661}
 --- !u!1 &3384593109484325538
 GameObject:
   m_ObjectHideFlags: 0
@@ -2655,6 +2670,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8782763ebbe67554d9594bdb3ba64a15, type: 3}
+--- !u!114 &1767672124951237661 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3698475546634371670, guid: 8782763ebbe67554d9594bdb3ba64a15, type: 3}
+  m_PrefabInstance: {fileID: 3160286159146866251}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9be3bc999d1b02d4dba774d3274d3c92, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &6852674227931071156 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8413288581510337791, guid: 8782763ebbe67554d9594bdb3ba64a15, type: 3}
