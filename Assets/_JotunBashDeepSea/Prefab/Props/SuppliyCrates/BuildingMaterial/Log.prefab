@@ -183,7 +183,7 @@ GameObject:
   - component: {fileID: 7341266078504259122}
   m_Layer: 0
   m_Name: Log
-  m_TagString: Untagged
+  m_TagString: Hookable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -282,5 +282,5 @@ MonoBehaviour:
   AddInventoryAmount: 0
   AddBarrels: 0
   AddPlanks: 0
-  AddLogs: 1
+  AddLogs: 3
   floating: 0

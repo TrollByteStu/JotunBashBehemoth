@@ -85,7 +85,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AddInventoryPrefab: {fileID: 6916742277770698165, guid: c876082e2e5df914f9ed78cb07f132d0, type: 3}
   AddInventoryAmount: 5
-  AddBarrels: 1
+  AddBarrels: 2
   AddPlanks: 0
   AddLogs: 0
   floating: 0
