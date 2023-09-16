@@ -6,6 +6,10 @@ public class GameControllerInventory : MonoBehaviour
 {
     public Dictionary<GameObject,int> inventory = new System.Collections.Generic.Dictionary<GameObject,int>();
 
+    public int Barrels = 0;
+    public int Planks = 0;
+    public int Logs = 0;
+
     public GameObject[] debugPrefabs;
     public int[] debugAmounts;
 

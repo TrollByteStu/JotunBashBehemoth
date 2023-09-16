@@ -17,7 +17,6 @@ public class Bait : MonoBehaviour
     public bool beenPickedUp = false;
     public bool floating = false;
 
-    private GameController mainGC;
     private Rigidbody myRigidBody;
 
     public bool doesThisBaitWorkOnMe(string species)
@@ -48,7 +47,6 @@ public class Bait : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        mainGC = GameController.Instance;
         myRigidBody = GetComponent<Rigidbody>();
     }
 
@@ -65,7 +63,7 @@ public class Bait : MonoBehaviour
         transform.SetParent(null);
         if (ActivateBaitOnThrowing)
         {
-            mainGC.activeBait.Add(this);
+            GameController.Instance.activeBait.Add(this);
             ActiveBaitInWorld = true;
         }
         Destroy(gameObject, TimeToLiveAfterThrow);
