@@ -40,8 +40,16 @@ public class AreaSpawner : MonoBehaviour
                 Quaternion.identity, 
                 transform);
             lastSpawn = afterSpawnDisableTimer;
+            
         }
-        if (spawnStartThenStop && transform.childCount == spawnMinimum) gameObject.SetActive(false);
+        if (spawnStartThenStop && transform.childCount == spawnMinimum)
+        {
+            while ( transform.childCount > 0)
+            {
+                transform.GetChild(0).SetParent(null);
+            }
+            gameObject.SetActive(false);
+        }
         lastSpawn -= Time.deltaTime;
     }
 }
