@@ -25,7 +25,6 @@ namespace Bitgem.VFX.StylisedWater
             {
                 return;
             }
-
             transform.position = new Vector3(transform.position.x, instance.GetHeight(transform.position) ?? transform.position.y, transform.position.z);
         }
 
