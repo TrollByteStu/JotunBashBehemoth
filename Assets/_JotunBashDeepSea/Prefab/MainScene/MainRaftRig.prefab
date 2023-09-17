@@ -2625,6 +2625,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: 02_FruitNinjaRaftModule
       objectReference: {fileID: 0}
+    - target: {fileID: 2761997344090394026, guid: 8782763ebbe67554d9594bdb3ba64a15, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8413288581510337791, guid: 8782763ebbe67554d9594bdb3ba64a15, type: 3}
       propertyPath: m_LocalPosition.x
       value: 3.508
