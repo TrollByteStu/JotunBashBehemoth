@@ -111,15 +111,15 @@ namespace Bitgem.VFX.StylisedWater
             // TODO : could be reworked to cater for gaps
             for (var y = MAX_TILES_Y - 1; y >= 0; y--)
             {
-                try
-                {
+               try
+               {
                     if (tiles[x, y, z])
                     {
                         return transform.position.y + y * TileSize;
                     }
                 }
                 catch {
-                    // Debug.Log("water called too soon");
+                    Debug.Log("water called too soon");
                     // outcommented to not spam. floates cause thiscrash first time they are called, next time they are fine
                     // will not spend more time bugfixing other peoples work, this catch is enough to make it run
                 }

@@ -6,9 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/_JotunBashDeepSea/Scenes/_StartEndInsideWhale.unity
-    guid: 6ed6d5b3a250068428a78c888e669a68
-  - enabled: 1
     path: Assets/_JotunBashDeepSea/Scenes/_OnTheRaft.unity
     guid: 05a573ab76f74da41bc7417fd434d2e7
   m_configObjects:
