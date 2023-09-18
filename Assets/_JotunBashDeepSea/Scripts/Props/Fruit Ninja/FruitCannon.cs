@@ -38,6 +38,7 @@ public class FruitCannon : InfBadMath
 
     private void Start()
     {
+        Target = GameController.Instance.gcFruitNinja._Target;
         _G = -Physics.gravity.y; // should be -9.81 so conveted to 9.81
         _RandomOffset1 = RandomVetor3(_RandomOffset.x, _RandomOffset.y);
         _DistanceXZ = Vector3.Distance(_PitchTransform.position, new Vector3(Target.position.x, _PitchTransform.position.y, Target.position.z));

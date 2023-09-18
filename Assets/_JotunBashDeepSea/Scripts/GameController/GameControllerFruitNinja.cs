@@ -27,18 +27,25 @@ public class GameControllerFruitNinja : MonoBehaviour
     {
         _Target = Camera.main.transform;
 
-        if (_FruitCannon1 == null) return;
-        _FruitCannon1 = _FruitCannons.transform.GetChild(0).gameObject;
-        _FruitCannonScript1 = _FruitCannon1.GetComponent<FruitCannon>();
-        _FruitCannonScript1.Target = _Target;
-        
-        _FruitCannon2 = _FruitCannons.transform.GetChild(1).gameObject;
-        _FruitCannonScript2 = _FruitCannon2.GetComponent<FruitCannon>();
-        _FruitCannonScript2.Target = _Target;
-        
-        _FruitCannon3 = _FruitCannons.transform.GetChild(2).gameObject;
-        _FruitCannonScript3 = _FruitCannon3.GetComponent<FruitCannon>();
-        _FruitCannonScript3.Target = _Target;
+        if (_FruitCannons != null)
+        {
+            if (_ScoreText == null)
+                _ScoreText = _FruitCannons.GetComponentInChildren<TMP_Text>();
+
+            _FruitCannon1 = _FruitCannons.transform.GetChild(0).gameObject;
+            _FruitCannonScript1 = _FruitCannon1.GetComponent<FruitCannon>();
+            _FruitCannonScript1.Target = _Target;
+
+            _FruitCannon2 = _FruitCannons.transform.GetChild(1).gameObject;
+            _FruitCannonScript2 = _FruitCannon2.GetComponent<FruitCannon>();
+            _FruitCannonScript2.Target = _Target;
+
+            _FruitCannon3 = _FruitCannons.transform.GetChild(2).gameObject;
+            _FruitCannonScript3 = _FruitCannon3.GetComponent<FruitCannon>();
+            _FruitCannonScript3.Target = _Target;
+        }
+        else
+            Debug.LogError("cannons need to be assinged to script");
     }
 
     private void Update()
@@ -89,7 +96,6 @@ public class GameControllerFruitNinja : MonoBehaviour
         {
             _Stage = 0;
             _Score = 0;
-            if (_FruitCannon1 == null) return;
             _FruitCannon1.SetActive(false);
             _FruitCannon2.SetActive(false);
             _FruitCannon3.SetActive(false);
