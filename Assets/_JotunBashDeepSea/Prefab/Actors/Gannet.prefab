@@ -2355,8 +2355,8 @@ GameObject:
   - component: {fileID: 5548659547092534762}
   - component: {fileID: 2059481203460603292}
   - component: {fileID: 2450293857599629609}
-  - component: {fileID: 5170768055587315696}
   - component: {fileID: 8869939988726020044}
+  - component: {fileID: 699722036703102047}
   m_Layer: 0
   m_Name: Gannet
   m_TagString: Untagged
@@ -2544,20 +2544,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &5170768055587315696
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5907204676904888687}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4603d9b90a1ba104fa68b861125cccc4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  WaterVolumeHelper: {fileID: 0}
-  offset: 0
 --- !u!114 &8869939988726020044
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2580,6 +2566,19 @@ MonoBehaviour:
   beingHeld: 0
   beenPickedUp: 0
   floating: 0
+--- !u!114 &699722036703102047
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5907204676904888687}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36aa02d38bb10b548bc7b8879596b15c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  WaterVolumeHelper: {fileID: 0}
 --- !u!1 &5948350149213445588
 GameObject:
   m_ObjectHideFlags: 0
