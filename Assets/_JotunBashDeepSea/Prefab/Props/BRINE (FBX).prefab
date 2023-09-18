@@ -129,6 +129,8 @@ MonoBehaviour:
   beingHeld: 0
   SoundOpening: {fileID: 5453156897363006502}
   SoundDrinking: {fileID: 803430642634000390}
+  narratorBrine: 1
+  narratorForgetful: 0
 --- !u!54 &6526125293062054736
 Rigidbody:
   m_ObjectHideFlags: 0
