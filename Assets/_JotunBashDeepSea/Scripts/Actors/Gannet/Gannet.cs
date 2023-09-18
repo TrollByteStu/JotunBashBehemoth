@@ -14,7 +14,7 @@ public class Gannet : InfBadMath
     private GameObject _Raft;
     private Animator _Animator;
     private AudioSource _AudioSource;
-    private OurWateverVolumeFloater _Floater;
+    private WateverVolumeFloater _Floater;
     private Bait _BaitScript;
 
     // landing Curves
@@ -84,7 +84,7 @@ public class Gannet : InfBadMath
         if (_AudioSource == null)
             Debug.LogError("could not find AudioSource on " + gameObject.name);
         _ScreamCountDown = _ScreamingInterval;
-        _Floater = GetComponent<OurWateverVolumeFloater>();
+        _Floater = GetComponent<WateverVolumeFloater>();
         _BaitScript = GetComponent<Bait>();
         _Raft = GameController.Instance.BoatRig;
     }
