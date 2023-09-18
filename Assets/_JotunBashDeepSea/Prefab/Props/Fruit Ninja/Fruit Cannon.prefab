@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 1556529960880838616}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.64553, z: 0}
+  m_LocalPosition: {x: 0, y: 1.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -79,7 +79,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8553455233864211681
 Transform:
   m_ObjectHideFlags: 0
@@ -147,6 +147,37 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &5577578826801508356
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6719158559788736475}
+  m_Layer: 0
+  m_Name: CannonHole
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6719158559788736475
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5577578826801508356}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 1.1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2843517784416038899}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6370230762369615137
 GameObject:
   m_ObjectHideFlags: 0
@@ -299,6 +330,7 @@ Transform:
   - {fileID: 8553455233864211681}
   - {fileID: 300478392088528938}
   - {fileID: 4847574157563753672}
+  - {fileID: 2655545136798557434}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &8413842358396787521
@@ -314,11 +346,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Target: {fileID: 0}
-  _YawTransform: {fileID: 8439651517888583656}
-  _PitchTransform: {fileID: 8553455233864211681}
+  _YawTransform: {fileID: 6793747418872544592}
+  _PitchTransform: {fileID: 2843517784416038899}
   _YawLookat: {fileID: 300478392088528938}
   _pitchLookat: {fileID: 4847574157563753672}
-  _CannonHole: {fileID: 3391032784144815415}
+  _CannonHole: {fileID: 6719158559788736475}
   _Fruits:
   - {fileID: 1670805165339805254, guid: fd797e1eee0890e4a9c85a7b199f37c0, type: 3}
   - {fileID: 1670805165339805254, guid: b3dfa6facf4673f409ec94b25af3a0ca, type: 3}
@@ -328,6 +360,7 @@ MonoBehaviour:
   _FruitSpeed: 250
   _RandomOffset: {x: -1, y: 1}
   _PlayerYOffset: 0
+  _Degrees: 0
 --- !u!114 &8219293980788298114
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -455,7 +488,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8439651517888583656
 Transform:
   m_ObjectHideFlags: 0
@@ -522,3 +555,78 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1001 &2544777082405749521
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 3118335160729394829}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: ad742763c8e949a4b8a87e88e1e84ba4, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: ad742763c8e949a4b8a87e88e1e84ba4, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: ad742763c8e949a4b8a87e88e1e84ba4, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: ad742763c8e949a4b8a87e88e1e84ba4, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: ad742763c8e949a4b8a87e88e1e84ba4, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: ad742763c8e949a4b8a87e88e1e84ba4, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: ad742763c8e949a4b8a87e88e1e84ba4, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: ad742763c8e949a4b8a87e88e1e84ba4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: ad742763c8e949a4b8a87e88e1e84ba4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: ad742763c8e949a4b8a87e88e1e84ba4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ad742763c8e949a4b8a87e88e1e84ba4, type: 3}
+      propertyPath: m_Name
+      value: Longboi Harpoon
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: -8924189296768439070, guid: ad742763c8e949a4b8a87e88e1e84ba4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6719158559788736475}
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ad742763c8e949a4b8a87e88e1e84ba4, type: 3}
+--- !u!4 &2655545136798557434 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: ad742763c8e949a4b8a87e88e1e84ba4, type: 3}
+  m_PrefabInstance: {fileID: 2544777082405749521}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &2843517784416038899 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8924189296768439070, guid: ad742763c8e949a4b8a87e88e1e84ba4, type: 3}
+  m_PrefabInstance: {fileID: 2544777082405749521}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &6793747418872544592 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 9014201006372060737, guid: ad742763c8e949a4b8a87e88e1e84ba4, type: 3}
+  m_PrefabInstance: {fileID: 2544777082405749521}
+  m_PrefabAsset: {fileID: 0}

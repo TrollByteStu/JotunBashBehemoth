@@ -67,7 +67,7 @@ public class FruitCannon : InfBadMath
 
     void LookAtVector(Vector3 vector3)
     {   
-        _YawLookat.LookAt(new Vector3(vector3.x, _YawTransform.position.y, vector3.z));
+        _YawLookat.LookAt(new Vector3(vector3.x, _YawLookat.position.y, vector3.z));
         _pitchLookat.LookAt(vector3);
 
 
@@ -82,9 +82,9 @@ public class FruitCannon : InfBadMath
         // calculate angle of fire based on speed and distance
         // rotate cannon x axis
         // fire
-        _YawLookat.LookAt(new Vector3(vector3.x, _YawTransform.position.y, vector3.z));
-        _pitchLookat.LookAt(new Vector3(vector3.x, _pitchLookat.position.y, vector3.z));
-        _pitchLookat.Rotate(_pitchLookat.transform.forward, _Degrees);
+        _YawLookat.LookAt(new Vector3(vector3.x, _YawLookat.position.y, vector3.z), Vector3.up);
+        _pitchLookat.LookAt(new Vector3(vector3.x, _pitchLookat.position.y, vector3.z),Vector3.up);
+        _pitchLookat.Rotate(Vector3.right, -_Degrees);
         
         _PitchTransform.rotation = Quaternion.Lerp(_PitchTransform.rotation, _pitchLookat.rotation, Time.deltaTime * 2);
         _YawTransform.rotation = Quaternion.Lerp(_YawTransform.rotation, _YawLookat.rotation, Time.deltaTime * 2);
@@ -96,7 +96,7 @@ public class FruitCannon : InfBadMath
     void FireAngle()
     {   // force / weight(mass * gravity) i dont know why it works when i add a X 5 but it does
         _V = _FruitSpeed / (0.5f * _G * 5);
-        _InsideSqrt = Mathf.Sqrt(Mathf.Pow(_V, 4) - _G * (_G * Mathf.Pow(_DistanceXZ, 2) + 2 * (_DistanceY * Mathf.Pow(_DistanceY,2))));
+        _InsideSqrt = Mathf.Sqrt(Mathf.Pow(_V, 4) - _G * ((_G * Mathf.Pow(_DistanceXZ, 2) + 2 * (_DistanceY * Mathf.Pow(_V,2)))));
         _Theta = Mathf.Atan((Mathf.Pow(_V, 2) - _InsideSqrt) / (_G * _DistanceXZ));
         _Degrees = _Theta * (180 / Mathf.PI);
     }
