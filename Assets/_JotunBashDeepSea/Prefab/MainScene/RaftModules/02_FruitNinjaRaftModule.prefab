@@ -90,6 +90,54 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   WaterVolumeHelper: {fileID: 0}
+--- !u!1 &746967867574032695
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4964787259956579749}
+  - component: {fileID: 205177960557241781}
+  m_Layer: 0
+  m_Name: ClaymoreSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4964787259956579749
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 746967867574032695}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.353553, y: -0.35355312, z: -0.61237276, w: 0.61237264}
+  m_LocalPosition: {x: -0.25, y: 1.22, z: -1.7}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6591255470326033271}
+  m_LocalEulerAnglesHint: {x: 0, y: -60, z: -90}
+--- !u!114 &205177960557241781
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 746967867574032695}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a03d03e62660b044eb3d5c84fe8357a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnedPrefab: {fileID: 8553009370826874409, guid: d48d60b053dccef43a99876fe63a30e1, type: 3}
+  useInventoryToSpawn: 0
+  onSpawnInScene: 0
+  lastSpawn: {fileID: 0}
 --- !u!1 &1942204685823784464
 GameObject:
   m_ObjectHideFlags: 0
@@ -121,6 +169,7 @@ Transform:
   m_Children:
   - {fileID: 1041433593014689165}
   - {fileID: 2297342465227068879}
+  - {fileID: 4964787259956579749}
   - {fileID: 51840121984559128}
   m_Father: {fileID: 8413288581510337791}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
