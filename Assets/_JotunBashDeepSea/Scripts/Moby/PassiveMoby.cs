@@ -8,6 +8,7 @@ public class PassiveMoby : InfBadMath
     public GameObject _myPlayer;
     public GameObject _Raft;
     public Animator _Animator;
+    public GameObject _Lookat;
 
     // time stuff
     private float _TimeSinceSurface;
@@ -134,7 +135,8 @@ public class PassiveMoby : InfBadMath
         _AnimationTimer += Time.deltaTime;
         _Angle += (Time.deltaTime * _AngleChangeSpeed * _AngleDirectionMod) / _Radius;
         _MobyMovePoint = new Vector3(Mathf.Sin(_Angle) * _Radius, _EmergingCurve.Evaluate(_AnimationTimer), Mathf.Cos(_Angle) * _Radius);
-        transform.LookAt(_MobyMovePoint);
+        _Lookat.transform.LookAt(_MobyMovePoint);
+        transform.rotation = Quaternion.Lerp(transform.rotation, _Lookat.transform.rotation, Time.deltaTime);
         transform.position = _MobyMovePoint;
         if (!blowDisabled && transform.position.y > -2.5f) MobyBlow();
         if (_TimeSinceSurface + _SurfaceTime < Time.time)
@@ -157,7 +159,8 @@ public class PassiveMoby : InfBadMath
         _AnimationTimer -= Time.deltaTime;
         _Angle += (Time.deltaTime * _AngleChangeSpeed * _AngleDirectionMod) / _Radius;
         _MobyMovePoint = new Vector3(Mathf.Sin(_Angle) * _Radius, _EmergingCurve.Evaluate(_AnimationTimer), Mathf.Cos(_Angle) * _Radius);
-        transform.LookAt(_MobyMovePoint);
+        _Lookat.transform.LookAt(_MobyMovePoint);
+        transform.rotation = Quaternion.Lerp(transform.rotation, _Lookat.transform.rotation,Time.deltaTime);
         transform.position = _MobyMovePoint;
         if (_TimeSinceDive + _DiveTime + _RandomTimeAdded < Time.time)
         {

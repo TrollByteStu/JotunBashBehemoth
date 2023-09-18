@@ -633,7 +633,7 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 104
@@ -749,6 +749,7 @@ MonoBehaviour:
   _myPlayer: {fileID: 0}
   _Raft: {fileID: 0}
   _Animator: {fileID: 9162229001776802308}
+  _Lookat: {fileID: 0}
   _SurfaceTime: 20
   _DiveTime: 20
   _RandomTimeAddedMax: 20
