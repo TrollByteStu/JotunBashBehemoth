@@ -84,7 +84,7 @@ public class FruitCannon : InfBadMath
         // fire
         _YawLookat.LookAt(new Vector3(vector3.x, _YawTransform.position.y, vector3.z));
         _pitchLookat.LookAt(new Vector3(vector3.x, _pitchLookat.position.y, vector3.z));
-        _pitchLookat.Rotate(transform.right, _Degrees);
+        _pitchLookat.Rotate(_pitchLookat.transform.forward, _Degrees);
         
         _PitchTransform.rotation = Quaternion.Lerp(_PitchTransform.rotation, _pitchLookat.rotation, Time.deltaTime * 2);
         _YawTransform.rotation = Quaternion.Lerp(_YawTransform.rotation, _YawLookat.rotation, Time.deltaTime * 2);

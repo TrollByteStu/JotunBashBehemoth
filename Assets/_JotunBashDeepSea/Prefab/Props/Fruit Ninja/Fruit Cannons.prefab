@@ -276,18 +276,6 @@ PrefabInstance:
       propertyPath: cube
       value: 
       objectReference: {fileID: 0}
-    - target: {fileID: 8413842358396787521, guid: 9335e6bee7887e5438264b2b1e4f357e, type: 3}
-      propertyPath: _FruitSpeed
-      value: 240
-      objectReference: {fileID: 0}
-    - target: {fileID: 8413842358396787521, guid: 9335e6bee7887e5438264b2b1e4f357e, type: 3}
-      propertyPath: _PlayerYOffset
-      value: -3.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8413842358396787521, guid: 9335e6bee7887e5438264b2b1e4f357e, type: 3}
-      propertyPath: _RandomOffset.y
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -366,18 +354,6 @@ PrefabInstance:
       propertyPath: cube
       value: 
       objectReference: {fileID: 0}
-    - target: {fileID: 8413842358396787521, guid: 9335e6bee7887e5438264b2b1e4f357e, type: 3}
-      propertyPath: _FruitSpeed
-      value: 240
-      objectReference: {fileID: 0}
-    - target: {fileID: 8413842358396787521, guid: 9335e6bee7887e5438264b2b1e4f357e, type: 3}
-      propertyPath: _PlayerYOffset
-      value: -3.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8413842358396787521, guid: 9335e6bee7887e5438264b2b1e4f357e, type: 3}
-      propertyPath: _RandomOffset.y
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -455,18 +431,6 @@ PrefabInstance:
     - target: {fileID: 8413842358396787521, guid: 9335e6bee7887e5438264b2b1e4f357e, type: 3}
       propertyPath: cube
       value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 8413842358396787521, guid: 9335e6bee7887e5438264b2b1e4f357e, type: 3}
-      propertyPath: _FruitSpeed
-      value: 240
-      objectReference: {fileID: 0}
-    - target: {fileID: 8413842358396787521, guid: 9335e6bee7887e5438264b2b1e4f357e, type: 3}
-      propertyPath: _PlayerYOffset
-      value: -3.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8413842358396787521, guid: 9335e6bee7887e5438264b2b1e4f357e, type: 3}
-      propertyPath: _RandomOffset.y
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
