@@ -80,8 +80,11 @@ public class PassiveMoby : InfBadMath
     private void Update()
     {
         //if (_HitPoints <= 0 && _TimeSinceDive + _DiveTime + _RandomTimeAdded < Time.time && _Emerging)
-        if ( GameController.Instance.secondsLeft < 0f && _TimeSinceDive + _DiveTime < Time.time && _Emerging)
+        if (GameController.Instance.secondsLeft < 0f && _TimeSinceDive + _DiveTime < Time.time && _Emerging)
+        {
+            _HitPoints = -1;
             MobySceneChange();
+        }
         else if (_Emerging)
             MobyEmerge();
         else
@@ -191,7 +194,8 @@ public class PassiveMoby : InfBadMath
             PlaceMobyEnding();
         _AnimationTimer += Time.deltaTime;
         _MobyMovePoint = new Vector3(Vector3.MoveTowards(transform.position,_Raft.transform.position, Time.deltaTime * 3).x, _EmergingCurve.Evaluate(_AnimationTimer), Vector3.MoveTowards(transform.position, _Raft.transform.position, Time.deltaTime * 3).z);
-        transform.LookAt(_MobyMovePoint);
+        _Lookat.transform.LookAt(_MobyMovePoint);
+        transform.rotation = Quaternion.Lerp(transform.rotation, _Lookat.transform.rotation, Time.deltaTime);
         transform.position = _MobyMovePoint;
         if (Vector3.Distance(transform.position, _Raft.transform.position) <= 23f)
         {
