@@ -16,6 +16,7 @@ public class FruitCannon : InfBadMath
     public Transform _pitchLookat;
 
     // firing 
+    private AudioSource _AudioSource;
     public Transform _CannonHole;
     public GameObject[] _Fruits;
     public float _FireRate = 1;
@@ -38,6 +39,7 @@ public class FruitCannon : InfBadMath
 
     private void Start()
     {
+        _AudioSource = GetComponent<AudioSource>();
         Target = GameController.Instance.gcFruitNinja._Target;
         _G = -Physics.gravity.y; // should be -9.81 so conveted to 9.81
         _RandomOffset1 = RandomVetor3(_RandomOffset.x, _RandomOffset.y);
@@ -101,6 +103,7 @@ public class FruitCannon : InfBadMath
 
     void FireFruit()
     {
+        _AudioSource.Play();
         var fruit = Instantiate(_Fruits[Random.Range(0,_Fruits.Length)],_CannonHole.position,_CannonHole.rotation);
         fruit.GetComponent<Rigidbody>().AddForce(fruit.transform.forward * _FruitSpeed);
         Destroy(fruit, 5);

@@ -52,6 +52,8 @@ public class GameControllerFruitNinja : MonoBehaviour
     {
         if (_Katana.Count > 0)
         {
+            if (_FruitCannons.active == false)
+                _FruitCannons.SetActive(true);
             _ScoreText.text = _Score.ToString();
             switch (_Stage)
             {
