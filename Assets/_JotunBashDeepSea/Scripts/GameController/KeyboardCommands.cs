@@ -5,6 +5,14 @@ using UnityEngine.InputSystem;
 
 public class KeyboardCommands : MonoBehaviour
 {
+    void OnResetPlayerPos(InputValue value)
+    {
+        if (value.isPressed)
+        {
+            GameController.Instance.player.GetComponent<lifeJacket>().resetPlayer();
+        }
+    }
+
     void OnAddTime(InputValue value)
     {
         if (value.isPressed)

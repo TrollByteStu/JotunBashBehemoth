@@ -40,6 +40,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "ResetPlayerPos",
+                    "type": "Button",
+                    "id": "88f3b632-cea6-4f27-8597-bcc08b61a535",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -84,6 +93,17 @@
                     "processors": "",
                     "groups": "Keyboard&Mouse",
                     "action": "ZeroTime",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "99367264-300a-4af9-a376-467e9981bbe3",
+                    "path": "<Keyboard>/j",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "ResetPlayerPos",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

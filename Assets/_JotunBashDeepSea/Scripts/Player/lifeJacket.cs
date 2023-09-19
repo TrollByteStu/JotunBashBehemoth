@@ -10,14 +10,20 @@ public class lifeJacket : MonoBehaviour
     private Bait myBait;
     private Rigidbody myRigidBody;
 
-    public void eatenByShark()
+
+    public void resetPlayer()
     {
-        SharkDinnerUI.gameObject.SetActive(true);
         GetComponent<OurWateverVolumeFloater>().enabled = false;
         myBait.enabled = false;
         myRigidBody.isKinematic = true;
         transform.localPosition = Vector3.zero;
         transform.localRotation = Quaternion.identity;
+    }
+
+    public void eatenByShark()
+    {
+        SharkDinnerUI.gameObject.SetActive(true);
+        resetPlayer();
     }
 
     private void OnTriggerEnter(Collider other)
