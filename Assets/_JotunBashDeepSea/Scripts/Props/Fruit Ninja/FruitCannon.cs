@@ -96,7 +96,7 @@ public class FruitCannon : InfBadMath
     void FireAngle()
     {   // force / weight(mass * gravity) i dont know why it works when i add a X 5 but it does
         _V = _FruitSpeed / (0.5f * _G * 5);
-        _InsideSqrt = Mathf.Sqrt(Mathf.Pow(_V, 4) - _G * ((_G * Mathf.Pow(_DistanceXZ, 2) + 2 * (_DistanceY * Mathf.Pow(_V,2)))));
+        _InsideSqrt = Mathf.Sqrt(Mathf.Pow(_V, 4) - _G * ((_G * Mathf.Pow(_DistanceXZ, 2) + 2 * (_DistanceY * Mathf.Pow(_DistanceY,2)))));
         _Theta = Mathf.Atan((Mathf.Pow(_V, 2) - _InsideSqrt) / (_G * _DistanceXZ));
         _Degrees = _Theta * (180 / Mathf.PI);
     }

@@ -359,8 +359,7 @@ MonoBehaviour:
   _LastShot: 0
   _FruitSpeed: 250
   _RandomOffset: {x: -1, y: 1}
-  _PlayerYOffset: 0
-  _Degrees: 0
+  _PlayerYOffset: -1.5
 --- !u!114 &8219293980788298114
 MonoBehaviour:
   m_ObjectHideFlags: 0
