@@ -282,5 +282,5 @@ MonoBehaviour:
   AddInventoryAmount: 0
   AddBarrels: 0
   AddPlanks: 0
-  AddLogs: 3
+  AddLogs: 15
   floating: 0

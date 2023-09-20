@@ -113,7 +113,7 @@ MonoBehaviour:
   AddInventoryPrefab: {fileID: 0}
   AddInventoryAmount: 0
   AddBarrels: 0
-  AddPlanks: 10
+  AddPlanks: 20
   AddLogs: 0
   floating: 0
 --- !u!1 &7313488069670710503

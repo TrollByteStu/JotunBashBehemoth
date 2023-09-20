@@ -65,6 +65,10 @@ public class spear : MonoBehaviour
                 collision.gameObject.GetComponentInParent<Gannet>().OnExplosion();
 
             }
+            else if ( collision.transform.tag == "Player")
+            {
+                return;
+            }
             else
             {
                 Debug.Log(collision.gameObject);
