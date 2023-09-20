@@ -25,7 +25,12 @@ public class circlingShark : InfBadMath
 
     public Bait _Bait = null;
 
-    // Start is called before the first frame update
+    //death
+    private int _HitPoints = 2;
+    private bool _Dead = false;
+    private float _TimeSinceDied = 0;
+
+    
     void Start()
     {
         _AudioSource = GetComponent<AudioSource>();
@@ -112,6 +117,11 @@ public class circlingShark : InfBadMath
 
     void Update()
     {
+        if (_Dead)
+        {
+                
+        }
+
         _Bait = GameController.Instance.checkForBaits(_Species, transform);
         CheckForBait();
 
@@ -125,5 +135,12 @@ public class circlingShark : InfBadMath
                 GameController.Instance.gcNarrator.Tell("GreatWhite");
             }
         }
+    }
+
+    public void Damage()
+    {
+        _HitPoints--;
+        if (_HitPoints < 1)
+            _Dead = true;
     }
 }
