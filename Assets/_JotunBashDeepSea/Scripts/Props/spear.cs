@@ -32,6 +32,7 @@ public class spear : MonoBehaviour
     {
         beingHeld = true;
         _Touched = true;
+        _Stuck = false;
         GameController.Instance.gcNarrator.TellNow("HarpoonPickup");
     }
 
@@ -55,7 +56,7 @@ public class spear : MonoBehaviour
             collision.gameObject.GetComponentInParent<Gannet>().OnExplosion();
             return;
         }
-        if (_Touched && !beingHeld)
+        if (_Touched && !beingHeld && !_Stuck)
         {
             if (collision.transform.CompareTag("Boss") && collision.gameObject.GetComponent<PassiveMoby>() && !_StuckInEnemy)
             {
@@ -65,9 +66,17 @@ public class spear : MonoBehaviour
                 myRB.isKinematic = true;
                 _MyAS.Play();
             }
-            else if ( collision.transform.tag == "Player")
+            else if (collision.transform.tag == "Player")
             {
                 return;
+            }
+            else if (collision.gameObject.GetComponent<circlingShark>())
+            {
+                collision.gameObject.GetComponent<circlingShark>().Damage();
+                _StuckInEnemy = true;
+                transform.SetParent(collision.transform);
+                myRB.isKinematic = true;
+                _MyAS.Play();
             }
             else
             {

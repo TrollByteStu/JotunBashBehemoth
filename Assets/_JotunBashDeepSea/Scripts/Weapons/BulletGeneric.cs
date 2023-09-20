@@ -10,18 +10,21 @@ public class BulletGeneric : MonoBehaviour
     {
         // do not allow it to hit the weapon that fired it..
         if (collision.transform.tag == "Weapon") return;
-        if (collision.transform.CompareTag("Boss") && collision.gameObject.GetComponent<PassiveMoby>())
+        else if (collision.transform.CompareTag("Boss") && collision.gameObject.GetComponent<PassiveMoby>())
         {
             collision.gameObject.GetComponent<PassiveMoby>().MobyHit(_Damage);
             Destroy(gameObject);
         }
-        if (collision.gameObject.GetComponentInParent<Gannet>())
+        else if (collision.gameObject.GetComponentInParent<Gannet>())
             collision.gameObject.GetComponentInParent<Gannet>().OnDeath();
-        if (collision.transform.tag == "Water" )
+        else if (collision.gameObject.GetComponent<circlingShark>())
+            collision.gameObject.GetComponent<circlingShark>().Damage();
+        else if (collision.transform.tag == "Water" )
         {
             GameObject decal = Instantiate(GameController.Instance.gcResources.Splashes[0], transform.position, Quaternion.identity);
             Destroy(decal, 4f);
-        } else { 
+        } 
+        else { 
             // old buttelhole thingy
         }
         //decal.GetComponent<AudioSource>().Play();

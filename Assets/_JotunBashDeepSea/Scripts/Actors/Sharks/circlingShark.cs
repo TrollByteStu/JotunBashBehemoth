@@ -27,8 +27,7 @@ public class circlingShark : InfBadMath
 
     //death
     private int _HitPoints = 2;
-    private bool _Dead = false;
-    private float _TimeSinceDied = 0;
+    public bool _Dead = false;
 
     
     void Start()
@@ -119,7 +118,11 @@ public class circlingShark : InfBadMath
     {
         if (_Dead)
         {
-                
+            transform.position += Vector3.down * Time.deltaTime;
+            transform.Rotate(Vector3.forward, 90 * Time.deltaTime);
+            Destroy(gameObject, 2);
+            GetComponent<WateverVolumeFloater>().enabled = false;
+            return;
         }
 
         _Bait = GameController.Instance.checkForBaits(_Species, transform);
