@@ -50,6 +50,11 @@ public class spear : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        if (_Touched && collision.gameObject.GetComponentInParent<Gannet>())
+        {
+            collision.gameObject.GetComponentInParent<Gannet>().OnExplosion();
+            return;
+        }
         if (_Touched && !beingHeld)
         {
             if (collision.transform.CompareTag("Boss") && collision.gameObject.GetComponent<PassiveMoby>() && !_StuckInEnemy)
@@ -59,11 +64,6 @@ public class spear : MonoBehaviour
                 transform.SetParent(collision.transform);
                 myRB.isKinematic = true;
                 _MyAS.Play();
-            }
-            else if (collision.gameObject.GetComponentInParent<Gannet>())
-            {
-                collision.gameObject.GetComponentInParent<Gannet>().OnExplosion();
-
             }
             else if ( collision.transform.tag == "Player")
             {
