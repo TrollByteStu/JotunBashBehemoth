@@ -329,6 +329,14 @@ public class Gannet : InfBadMath
         Destroy(gameObject);
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+       if ( other.GetComponent<KatanaBlade>() != null )
+        {
+            OnDeath();
+        }
+    }
+
     void Update()
     {
         if (!_Dead)
