@@ -39,6 +39,17 @@ public class Fruit : MonoBehaviour
         }
     }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.transform.tag == "Bullet")
+        {
+            var explosion = Instantiate(particleExplosionPrefab, transform.position, transform.rotation);
+            Destroy(explosion, 2f);
+            GameController.Instance.gcFruitNinja._Score += 1;
+            Destroy(gameObject);
+        }
+    }
+
     private void OnTriggerEnter(Collider other) 
     {
         if (other.GetComponent<KatanaBlade>())
