@@ -7,6 +7,7 @@ public class Fruit : MonoBehaviour
     public Transform _Lookat;
     public Rigidbody[] _CutsRB;
     public MeshCollider[] _CutsMC;
+    public GameObject particleExplosionPrefab;
     public float _Mass = 0.5f;
     public float _CutMass = 0.2f;
     private Rigidbody _Rigidbody;
