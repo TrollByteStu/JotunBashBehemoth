@@ -41,7 +41,7 @@ public class Fruit : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.transform.tag == "Bullet")
+        if (collision.transform.tag == "Ammo")
         {
             var explosion = Instantiate(particleExplosionPrefab, transform.position, transform.rotation);
             Destroy(explosion, 2f);
