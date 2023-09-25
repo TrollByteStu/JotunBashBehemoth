@@ -5,6 +5,23 @@ using UnityEngine.InputSystem;
 
 public class KeyboardCommands : MonoBehaviour
 {
+
+    void OnWeatherIncrease(InputValue value)
+    {
+        if (value.isPressed)
+        {
+            GameController.Instance.gcWeather.sliderWind += 0.1f;
+        }
+    }
+
+    void OnWeatherDecrease(InputValue value)
+    {
+        if (value.isPressed)
+        {
+            GameController.Instance.gcWeather.sliderWind -= 0.1f;
+        }
+    }
+
     void OnResetPlayerPos(InputValue value)
     {
         if (value.isPressed)

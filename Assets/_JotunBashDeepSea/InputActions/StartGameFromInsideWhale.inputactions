@@ -49,6 +49,24 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "WeatherIncrease",
+                    "type": "Button",
+                    "id": "d5971868-cee5-4665-b48e-b8acb8c5be3e",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "WeatherDecrease",
+                    "type": "Button",
+                    "id": "aa5e5de3-0478-4412-9ae3-53489f669e3d",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -104,6 +122,28 @@
                     "processors": "",
                     "groups": "Keyboard&Mouse",
                     "action": "ResetPlayerPos",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "8a3a1d7c-cdd2-4c3e-a0e9-4ad1423a8447",
+                    "path": "<Keyboard>/period",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "WeatherIncrease",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "bc20dd38-71dc-4c3d-8e89-2e97fae4c817",
+                    "path": "<Keyboard>/comma",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "WeatherDecrease",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
